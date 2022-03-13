@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_home"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:labelVisibilityMode="unlabeled" />
+
+    <item
+        android:id="@+id/menu_plans"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/plans"
+        android:title="Plans"
+        app:labelVisibilityMode="unlabeled" />
+
+    <item
+        android:id="@+id/menu_activites"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/activites"
+        android:title="Account"
+        app:labelVisibilityMode="unlabeled" />
+
+
+    <item
+        android:id="@+id/menu_messages"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/message"
+        android:title="Account"
+        app:labelVisibilityMode="unlabeled" />
+
+</menu>

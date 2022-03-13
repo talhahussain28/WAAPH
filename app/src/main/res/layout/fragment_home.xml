@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:elevation="10dp"
+        android:background="@drawable/toolbar_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/add_dsl_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/baseline_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WORK SPACE"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageVew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_upload_strn"
+        android:layout_width="185dp"
+        android:layout_height="200dp"
+        android:backgroundTint="@color/ThemeColor"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/profile_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="My Profile"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:backgroundTint="@color/blue"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:layout_constraintStart_toEndOf="@+id/cardView_upload_strn"
+        app:layout_constraintTop_toTopOf="@+id/cardView_upload_strn">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/salary_slip"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Salary Slip"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:backgroundTint="@color/homeGrey"
+        android:layout_marginStart="15dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toTopOf="@+id/cardView2">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/salary_slip"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Leave\nRequest"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CDF"
+        android:layout_width="172dp"
+        android:layout_height="200dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="20dp"
+        app:cardElevation="2dp"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/customer_data_form"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ThemeColor"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Customer Data\nForm"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/carView2"
+        android:layout_width="85dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/darkBlue"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="@+id/cardView_upload_strn"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_upload_strn">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/expense_claim"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Expense\nClaim"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cadView2"
+        android:layout_width="85dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="15dp"
+        android:backgroundTint="@color/lightBlue"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:layout_constraintStart_toEndOf="@+id/carView2"
+        app:layout_constraintTop_toTopOf="@+id/carView2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/order_data_form"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Order Data\nForm"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="185dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/homeGrey"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="@+id/carView2"
+        app:layout_constraintTop_toBottomOf="@+id/cadView2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/order_payment"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Order Payment"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cView2"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        app:cardElevation="2dp"
+        android:backgroundTint="@color/ThemeColor"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="@+id/CDF"
+        app:layout_constraintTop_toBottomOf="@+id/CDF" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/product_literature"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Product\nLiterature"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ca"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/lightBlue"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@+id/cView2"
+        app:layout_constraintTop_toTopOf="@+id/cView2" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/memo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Memo"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="185dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/blue"
+        app:cardElevation="2dp"
+        app:layout_constraintStart_toStartOf="@+id/cardView4"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/medical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Medical"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="175dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/homeGrey"
+        android:layout_marginTop="20dp"
+        app:cardElevation="2dp"
+        app:layout_constraintStart_toStartOf="@+id/cView2"
+        app:layout_constraintTop_toBottomOf="@+id/cView2" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/travel_req"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="Travel"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
