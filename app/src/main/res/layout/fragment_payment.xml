@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="10dp"
-                android:background="#888888" />
+                android:background="@color/viewGrey"  />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:background="#888888" />
+                    android:background="@color/viewGrey"  />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:background="#888888" />
+                    android:background="@color/viewGrey"  />
 
                 <TextView
                     android:id="@+id/bank"
@@ -185,7 +185,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_gravity="center"
-                    android:background="#888888"
+                    android:background="@color/viewGrey"
                     app:layout_constraintStart_toStartOf="@+id/start_gl"
                     app:layout_constraintTop_toBottomOf="@+id/bank" />
 
@@ -227,7 +227,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_gravity="center"
-                    android:background="#888888"
+                    android:background="@color/viewGrey"
                     app:layout_constraintStart_toStartOf="@+id/start_gl"
                     app:layout_constraintTop_toBottomOf="@+id/payOrder_tv" />
 

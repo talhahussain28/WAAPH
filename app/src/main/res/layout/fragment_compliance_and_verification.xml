@@ -14,9 +14,9 @@
             android:id="@+id/upload_cnic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload CNIC"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Upload CNIC"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         <View
             android:layout_width="270dp"
             android:layout_height="1dp"
-            android:background="#BAB9B9"
+            android:background="@color/viewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_cnic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/upload_cnic"
@@ -43,10 +43,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="5dp"
-                android:layout_marginStart="20dp"
                 app:cardElevation="5dp">
 
                 <TextView
@@ -84,9 +84,9 @@
             android:id="@+id/upload_ntn_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:text="Upload NTN"
-            android:layout_marginStart="20dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -95,7 +95,7 @@
             android:id="@+id/view"
             android:layout_width="255dp"
             android:layout_height="1dp"
-            android:background="#BAB9B9"
+            android:background="@color/viewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_ntn_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_ntn_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_ntn_tv"
@@ -105,41 +105,63 @@
             android:id="@+id/cardview_upload_ntn"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_ntn_tv">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/dotted_border"
-                android:paddingTop="20dp"
-                android:text="NTN document.pdf" />
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/pdf_icon" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="NTN document.pdf" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_cancel_circle" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/upload_strn_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload STRN"
-            android:textStyle="bold"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:text="Upload STRN"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardview_upload_ntn"/>
+            app:layout_constraintTop_toBottomOf="@+id/cardview_upload_ntn" />
 
         <View
             android:id="@+id/view2"
             android:layout_width="245dp"
             android:layout_height="1dp"
-            android:background="#BAB9B9"
+            android:background="@color/viewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_strn_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_strn_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_strn_tv"
@@ -168,11 +190,11 @@
             android:id="@+id/cardView_upload_strn"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            app:cardCornerRadius="5dp"
             android:layout_marginStart="20dp"
-            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_strn_tv">
@@ -181,8 +203,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"
-                android:gravity="center"
                 android:background="@drawable/dotted_border"
+                android:gravity="center"
                 android:text="Upload STRN Here Sales tax Registeration Number" />
 
         </androidx.cardview.widget.CardView>
@@ -191,9 +213,9 @@
             android:id="@+id/upload_dsl_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload DSL"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:text="Upload DSL"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView_upload_strn" />
@@ -202,7 +224,7 @@
             android:id="@+id/viw"
             android:layout_width="255dp"
             android:layout_height="1dp"
-            android:background="#BAB9B9"
+            android:background="@color/viewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_dsl_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_dsl_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_dsl_tv"
@@ -212,8 +234,8 @@
             android:id="@+id/add_dsl_iv"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/add_icon"
             android:layout_marginEnd="20dp"
+            android:src="@drawable/add_icon"
             app:layout_constraintBottom_toBottomOf="@+id/viw"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/viw" />
@@ -222,11 +244,11 @@
             android:id="@+id/cardView_upload_dsl"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            app:cardCornerRadius="5dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -246,10 +268,10 @@
             android:id="@+id/upload_other_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload Other"
-            android:textStyle="bold"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:text="Upload Other"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView_upload_dsl" />
 
@@ -257,7 +279,7 @@
             android:id="@+id/vw"
             android:layout_width="255dp"
             android:layout_height="1dp"
-            android:background="#BAB9B9"
+            android:background="@color/viewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_other_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_other_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_other_tv"
@@ -277,22 +299,53 @@
             android:id="@+id/cardView_upload_other"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            app:cardCornerRadius="5dp"
-            android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_other_tv">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/dotted_border"
+                android:orientation="horizontal">
 
-            <TextView
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/word_icon" />
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Other Document.docx" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_cancel_circle" />
+            </LinearLayout>
+   <!--         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"
                 android:background="@drawable/dotted_border"
+                android:drawablePadding="5dp"
                 android:paddingTop="20dp"
-                android:text="other document.docx" />
+                android:text="other document.docx"
+                app:drawableLeftCompat="@drawable/word_icon" />-->
 
         </androidx.cardview.widget.CardView>
 
@@ -300,20 +353,19 @@
             android:id="@+id/upload_card_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload Visiting card"
             android:layout_marginStart="20dp"
-            android:textStyle="bold"
             android:layout_marginTop="20dp"
+            android:text="Upload Visiting card"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView_upload_other" />
 
         <View
             android:id="@+id/v"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:layout_height="1dp"
-            android:background="#BAB9B9"
+            android:background="@color/viewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_card_tv"
-            app:layout_constraintEnd_toStartOf="@+id/add_card_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_card_tv"
             app:layout_constraintTop_toTopOf="@+id/upload_card_tv" />
 
@@ -322,8 +374,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add_icon"
-            app:layout_constraintStart_toEndOf="@+id/v"
             app:layout_constraintBottom_toBottomOf="@+id/v"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/v"
             app:layout_constraintTop_toTopOf="@+id/v" />
 
 
@@ -332,9 +385,9 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="5dp"
-            android:layout_marginTop="20dp"
             app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -355,8 +408,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Upload Degree"
             android:layout_marginTop="20dp"
+            android:text="Upload Degree"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardview_upload_card" />
@@ -365,7 +418,7 @@
             android:id="@+id/iew2"
             android:layout_width="245dp"
             android:layout_height="1dp"
-            android:background="#BAB9B9"
+            android:background="@color/viewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_degree_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_strn_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_degree_tv"
@@ -387,8 +440,8 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -409,10 +462,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="50dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="50dp"
+            android:layout_marginBottom="40dp"
             android:text="Submit"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -15,6 +15,7 @@
     <color name="homeGrey">#6B7A89</color>
     <color name="darkBlue">#5C81AA</color>
     <color name="lightBlue">#60C2D7</color>
+    <color name="viewGrey">#888888</color>
 
 
 </resources>

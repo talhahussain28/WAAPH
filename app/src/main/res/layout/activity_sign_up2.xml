@@ -174,13 +174,13 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/signUp"
+            android:id="@+id/next"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/ThemeColor"
-            android:text="Sign Up" />
+            android:text="Next" />
 
 
         <LinearLayout

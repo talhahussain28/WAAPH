@@ -16,14 +16,14 @@ class SignUp2Activity : AppCompatActivity(), View.OnClickListener, CountryCodePi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up2)
-        val next = findViewById<Button>(R.id.signUp)
+        val next = findViewById<Button>(R.id.next)
         next.setOnClickListener(this)
         country_code_picker.setOnCountryChangeListener(this)
         country_code_picker.setDefaultCountryUsingNameCode("Pk")
     }
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.signUp -> {
+            R.id.next -> {
                 val intent = Intent(this, BottomNavigationActivity::class.java)
                 startActivity(intent)
             }
