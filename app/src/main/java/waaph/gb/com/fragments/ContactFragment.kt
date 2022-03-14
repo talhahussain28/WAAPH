@@ -1,10 +1,12 @@
 package waaph.gb.com.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_contact.*
 import waaph.gb.com.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,7 +19,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ContactFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ContactFragment : Fragment() {
+class ContactFragment : Fragment(),View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,7 +39,22 @@ class ContactFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_contact, container, false)
     }
-    companion object fun newInstance() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        next.setOnClickListener(this)
+    }
 
+    companion object fun newInstance(){
+
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+          /*  R.id.next -> {
+                val intent = Intent(requireActivity(), BankFragment::class.java)
+                startActivity(intent)
+            }*/
+
+        }
     }
 }

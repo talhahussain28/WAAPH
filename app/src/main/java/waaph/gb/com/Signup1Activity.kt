@@ -14,6 +14,7 @@ class Signup1Activity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_signup1)
         val next = findViewById<Button>(R.id.next)
         next.setOnClickListener(this)
+        login.setOnClickListener(this)
         male.setOnClickListener(this)
         female.setOnClickListener(this)
     }
@@ -24,18 +25,24 @@ class Signup1Activity : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(this, SignUp2Activity::class.java)
                 startActivity(intent)
             }
+            R.id.login -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
             R.id.male ->{
-                male.setBackgroundColor(R.color.ThemeColor)
-                female.setBackgroundColor(R.color.white)
+                /*male.setBackgroundColor(R.color.ThemeColor)
+                female.setBackgroundColor(R.color.white)*/
+                male.setBackgroundResource(R.drawable.gender_male)
                 female.setBackgroundResource(R.drawable.gender_female)
-                male.setBackgroundResource(R.drawable.gender_bg)
+               // male.setBackgroundResource(R.drawable.gender_bg)
 
             }
             R.id.female ->{
-                female.setBackgroundColor(R.color.ThemeColor)
-                male.setBackgroundColor(R.color.white)
+                /*female.setBackgroundColor(R.color.ThemeColor)
+                male.setBackgroundColor(R.color.white)*/
+                female.setBackgroundResource(R.drawable.gender_female_selected)
                 male.setBackgroundResource(R.drawable.gender_bg)
-                female.setBackgroundResource(R.drawable.gender_female)
+
 
             }
         }

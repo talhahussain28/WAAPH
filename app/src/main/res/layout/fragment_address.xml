@@ -48,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             app:cardElevation="2dp"
+            app:cardBackgroundColor="#99ffffff"
             android:layout_marginEnd="20dp"
             android:paddingBottom="15dp"
             app:cardCornerRadius="5sp">
@@ -60,16 +61,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Address"
+                    android:text="Address Name"
                     android:textSize="17sp"
                     android:textColor="@color/black"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Home 1"
+                    android:background="@android:color/transparent"
                     android:textSize="15sp"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="20dp"/>
@@ -86,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Type"
+                    android:text="Address Type"
                     android:textSize="17sp"
                     android:textColor="@color/black"
                     android:layout_marginStart="20dp"
@@ -212,10 +214,11 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Home 1"
+                    android:background="@android:color/transparent"
                     android:textSize="15sp"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="20dp"/>
@@ -240,17 +243,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:visibility="visible"
                         android:text="Country"
                         android:textColor="@color/black"
                         android:textSize="17sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+                   <!-- <com.hbb20.CountryPickerView
+                        android:id="@+id/country_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="2dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
+                    </com.hbb20.CountryPickerView>-->
                     <TextView
                         android:id="@+id/textVi10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:visibility="visible"
                         android:text="Pakistan"
                         android:textSize="15sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -261,6 +276,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginEnd="10dp"
+                        android:visibility="visible"
                         android:src="@drawable/drop_down_icon"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -434,10 +450,11 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="75050"
+                    android:background="@android:color/transparent"
                     android:textSize="15sp"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="20dp"/>
@@ -454,7 +471,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dilevery Schedule Days"
+                    android:text="Delivery Schedule Days"
                     android:textSize="17sp"
                     android:textColor="@color/black"
                     android:layout_marginStart="20dp"
@@ -545,10 +562,11 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="9am to 6pm"
+                    android:background="@android:color/transparent"
                     android:textSize="15sp"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="20dp"/>
@@ -571,10 +589,11 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="180* W to 180* E"
+                    android:background="@android:color/transparent"
                     android:textSize="15sp"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="20dp"/>
@@ -597,10 +616,11 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="90* N to 90* 5"
+                    android:background="@android:color/transparent"
                     android:textSize="15sp"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="10dp"
@@ -627,9 +647,10 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"/>
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
                 android:text="Office"
                 android:textSize="15sp"
                 android:layout_marginTop="35dp"
@@ -641,6 +662,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Next"
+            android:id="@+id/next"
             android:textAllCaps="false"
             android:textSize="15sp"
             android:layout_marginTop="30dp"

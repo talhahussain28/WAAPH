@@ -75,19 +75,23 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <com.hbb20.CountryCodePicker
-            android:id="@+id/country_code_picker"
-            app:ccp_defaultNameCode="Pk"
+       <!-- <com.hbb20.CountryPickerView
+            android:id="@+id/countryPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />-->
+
+        <com.hbb20.CountryPickerView
+            android:id="@+id/country_picker"
+            app:cpDialog_showTitle="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="20dp"
             android:clickable="true"
-            android:focusable="true"
-            app:ccp_hintExampleNumber="true">
+            android:focusable="true">
 
-        </com.hbb20.CountryCodePicker>
+        </com.hbb20.CountryPickerView>
 
         <!--<EditText
             android:id="@+id/name"
@@ -203,6 +207,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:id="@+id/login"
                 android:text="Login Now"
                 android:textColor="@color/ThemeColor"
                 android:textSize="13dp"

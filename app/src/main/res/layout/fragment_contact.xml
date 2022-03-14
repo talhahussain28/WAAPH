@@ -47,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            app:cardBackgroundColor="#99ffffff"
             android:layout_marginEnd="20dp"
             android:paddingBottom="15dp"
             app:cardCornerRadius="5sp"
@@ -66,9 +67,10 @@
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
                     android:text="Home 1"
@@ -93,9 +95,10 @@
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
                     android:text="Supervisor"
@@ -215,10 +218,12 @@
                     android:textColor="@color/black"
                     android:textSize="17sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="number"
                     android:layout_marginTop="5dp"
                     android:drawableLeft="@drawable/call_icon"
                     android:drawablePadding="7dp"
@@ -246,11 +251,13 @@
                         android:textColor="@color/black"
                         android:textSize="17sp" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/textVi10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
                         android:layout_marginTop="5dp"
+                        android:inputType="textEmailAddress"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:drawableLeft="@drawable/at_icon"
@@ -287,11 +294,13 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/textViw0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
                         android:layout_marginTop="5dp"
+                        android:inputType="number"
                         android:drawableLeft="@drawable/mobile_icon"
                         android:drawablePadding="7dp"
                         android:paddingStart="2dp"
@@ -376,11 +385,13 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/extViw10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:inputType="number"
+                        android:background="@android:color/transparent"
                         android:drawableLeft="@drawable/mobile_icon"
                         android:drawablePadding="7dp"
                         android:paddingStart="2dp"
@@ -460,11 +471,12 @@
                 android:textColor="@color/black"
                 android:textSize="17sp" />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="35dp"
+                android:background="@android:color/transparent"
                 android:text="Peter Dan"
                 android:textSize="15sp" />
 
@@ -473,6 +485,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:id="@+id/next"
             android:layout_marginStart="50dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="50dp"

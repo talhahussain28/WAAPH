@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import com.hbb20.CountryCodePicker
+import com.hbb20.CountryPickerView
+import com.hbb20.countrypicker.models.CPCountry
 import kotlinx.android.synthetic.main.activity_sign_up2.*
 
-class SignUp2Activity : AppCompatActivity(), View.OnClickListener, CountryCodePicker.OnCountryChangeListener {
+class SignUp2Activity : AppCompatActivity(), View.OnClickListener {
     private var ccp:CountryCodePicker?=null
     private var countryCode:String?=null
     private var countryName:String?=null
@@ -18,8 +20,18 @@ class SignUp2Activity : AppCompatActivity(), View.OnClickListener, CountryCodePi
         setContentView(R.layout.activity_sign_up2)
         val next = findViewById<Button>(R.id.next)
         next.setOnClickListener(this)
-        country_code_picker.setOnCountryChangeListener(this)
-        country_code_picker.setDefaultCountryUsingNameCode("Pk")
+        login.setOnClickListener(this)
+        val countryPicker = findViewById<CountryPickerView>(R.id.country_picker)
+
+        // Modify CPViewConfig if you need. Access cpViewConfig through `cpViewHelper`
+        countryPicker.cpViewHelper.cpViewConfig.viewTextGenerator = { cpCountry: CPCountry ->
+            "${cpCountry.name} (${cpCountry.alpha2})"
+        }
+        // make sure to refresh view once view configuration is changed
+        countryPicker.cpViewHelper.refreshView()
+
+        /*country_code_picker.setOnCountryChangeListener(this)
+        country_code_picker.setDefaultCountryUsingNameCode("Pk")*/
     }
     override fun onClick(v: View?) {
         when (v?.id) {
@@ -27,9 +39,13 @@ class SignUp2Activity : AppCompatActivity(), View.OnClickListener, CountryCodePi
                 val intent = Intent(this, BottomNavigationActivity::class.java)
                 startActivity(intent)
             }
+            R.id.login -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
-    override fun onCountrySelected() {
-    }
+   /* override fun onCountrySelected() {
+    }*/
 }
