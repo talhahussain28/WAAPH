@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/bg"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,35 +25,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:text="Create Account"
             android:textColor="@color/ThemeColor"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="7dp"
-                android:src="@drawable/step_icon"/>
+                android:src="@drawable/step_icon" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="7dp"
-                android:src="@drawable/step_icon"/>
+                android:src="@drawable/step_icon" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/step_icon"/>
+                android:src="@drawable/step_icon" />
 
 
         </LinearLayout>
@@ -75,7 +75,51 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingBottom="10dp"
+                android:drawableStart="@drawable/user_icon"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="2dp"
+                android:drawablePadding="7dp"
+                android:layout_marginRight="20dp"
+                android:hint="Peter "
+                android:textColor="@color/black" />
+
+            <!-- <com.google.android.material.textfield.TextInputLayout
+                 android:id="@+id/tlFullNameLayout"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:layout_marginRight="20dp"
+                 android:inputType="textPassword"
+                 android:textColor="@color/black">
+
+                 <com.google.android.material.textfield.TextInputEditText
+                     android:id="@+id/etFullName"
+                     android:layout_width="match_parent"
+                     android:text="Peter Dan"
+                     android:layout_height="wrap_content"
+                     android:backgroundTint="@android:color/transparent"
+                     android:imeOptions="actionDone"
+                     android:inputType="text"
+                     android:maxLines="1"
+                     android:singleLine="true" />
+
+             </com.google.android.material.textfield.TextInputLayout>-->
+        </LinearLayout>
+
+        <!--<EditText
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,7 +131,7 @@
             android:drawableLeft="@drawable/user_icon"
             android:drawablePadding="7dp"
             android:hint="Peter "
-            android:textColor="@color/black" />
+            android:textColor="@color/black" />-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,15 +143,49 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
+      <!--  <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left|center"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/at_icon" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlEmailLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:inputType="textPassword"
+                android:textColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>-->
+
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:paddingBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@android:color/darker_gray"
             android:drawableLeft="@drawable/at_icon"
             android:drawablePadding="7dp"
             android:hint="abc@gmail.com"
@@ -124,21 +202,87 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/password"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:drawableLeft="@drawable/password_icon"
-            android:drawablePadding="7dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            app:passwordToggleEnabled="true" />
+            android:orientation="horizontal">
+
+            <!--<ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left|center"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/password_icon" />-->
+            <!-- <EditText
+                 android:id="@+id/password"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginTop="2dp"
+                 android:layout_marginRight="20dp"
+                 android:backgroundTint="@android:color/darker_gray"
+                 android:hint="Password"
+                 android:inputType="textPassword"
+                 android:drawableEnd="@drawable/hide_password_icon"
+                 android:textColor="@color/black"
+                 app:passwordToggleEnabled="true" />-->
+            <waaph.gb.com.utils.EditTextDrawableClick
+                android:id="@+id/edit_text_password"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:paddingBottom="10dp"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawableRight="@drawable/hide_password_icon"
+                android:drawablePadding="7dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingEnd="10dp">
+
+
+            </waaph.gb.com.utils.EditTextDrawableClick>
+            <!--<com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlPasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:hint="Password"
+                    app:hintEnabled="false"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>-->
+        </LinearLayout>
+
+        <!-- <EditText
+             android:id="@+id/password"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+             android:layout_marginLeft="20dp"
+             android:layout_marginTop="2dp"
+             android:layout_marginRight="20dp"
+             android:backgroundTint="@android:color/darker_gray"
+             android:drawableLeft="@drawable/password_icon"
+             android:drawablePadding="7dp"
+             android:hint="Password"
+             android:inputType="textPassword"
+             android:textColor="@color/black"
+             app:passwordToggleEnabled="true" />-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -150,21 +294,77 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/confirm_password"
+        <waaph.gb.com.utils.EditTextDrawableClick
+            android:id="@+id/edit_text_confirm_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@android:color/darker_gray"
+            android:layout_height="45dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:paddingBottom="10dp"
             android:drawableLeft="@drawable/password_icon"
+            android:drawableRight="@drawable/hide_password_icon"
             android:drawablePadding="7dp"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@color/black"
-            app:passwordToggleEnabled="true" />
+            android:paddingEnd="10dp">
+
+
+        </waaph.gb.com.utils.EditTextDrawableClick>
+<!--
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="left|center"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/password_icon" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlConfirmPasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:hint="adsffa"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    app:hintEnabled="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+-->
+
+        <!-- <EditText
+             android:id="@+id/confirm_password"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+             android:layout_marginLeft="20dp"
+             android:layout_marginTop="2dp"
+             android:layout_marginRight="20dp"
+             android:backgroundTint="@android:color/darker_gray"
+             android:drawableLeft="@drawable/password_icon"
+             android:drawablePadding="7dp"
+             android:hint="Password"
+             android:inputType="textPassword"
+             android:textColor="@color/black"
+             app:passwordToggleEnabled="true" />-->
 
         <Button
             android:id="@+id/next"
@@ -193,10 +393,10 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/login"
                 android:text="Login Now"
                 android:textColor="@color/ThemeColor"
                 android:textSize="13dp"

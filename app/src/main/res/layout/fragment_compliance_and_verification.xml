@@ -400,6 +400,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"
+                android:textAlignment="center"
                 android:background="@drawable/dotted_border"
                 android:paddingTop="20dp"
                 android:text="Upload Visiting Card Here Front OF Box" />

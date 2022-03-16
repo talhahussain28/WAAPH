@@ -1,7 +1,7 @@
 package waaph.gb.com
 
-import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,7 +18,6 @@ class Signup1Activity : AppCompatActivity(), View.OnClickListener {
         male.setOnClickListener(this)
         female.setOnClickListener(this)
     }
-    @SuppressLint("ResourceAsColor")
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.next -> {
@@ -30,16 +29,16 @@ class Signup1Activity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.male ->{
-                /*male.setBackgroundColor(R.color.ThemeColor)
-                female.setBackgroundColor(R.color.white)*/
+                male.setTextColor(Color.parseColor("#FFFFFF"))
+                female.setTextColor(Color.parseColor("#A8A8A8"))
                 male.setBackgroundResource(R.drawable.gender_male)
                 female.setBackgroundResource(R.drawable.gender_female)
-               // male.setBackgroundResource(R.drawable.gender_bg)
 
             }
             R.id.female ->{
-                /*female.setBackgroundColor(R.color.ThemeColor)
-                male.setBackgroundColor(R.color.white)*/
+               female.setTextColor(Color.parseColor("#FFFFFF"))
+                male.setTextColor(Color.parseColor("#A8A8A8"))
+
                 female.setBackgroundResource(R.drawable.gender_female_selected)
                 male.setBackgroundResource(R.drawable.gender_bg)
 
