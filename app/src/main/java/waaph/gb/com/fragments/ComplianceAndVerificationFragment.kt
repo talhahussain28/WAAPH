@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_compliance_and_verification.*
+import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.R
 
 class ComplianceAndVerificationFragment : Fragment(),View.OnClickListener {
@@ -38,10 +39,14 @@ class ComplianceAndVerificationFragment : Fragment(),View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-           /* R.id.next -> {
-                val intent = Intent(requireActivity(), ResponsibleFragment::class.java)
-                startActivity(intent)
-            }*/
+            R.id.next -> {
+                (activity as CustomerDataFormActivity).setCurrentItem(6)
+
+                // (activity as CustomerDataFormActivity).ViewPagerAdapter(parentFragmentManager).setCurrentItem(6)
+
+                /* val intent = Intent(requireActivity(), ResponsibleFragment::class.java)
+                 startActivity(intent)*/
+            }
 
         }
     }

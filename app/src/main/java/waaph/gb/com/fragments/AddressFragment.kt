@@ -1,12 +1,12 @@
 package waaph.gb.com.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_address.*
+import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -51,10 +51,10 @@ class AddressFragment : Fragment(),View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-         /*   R.id.next -> {
-                val intent = Intent(requireActivity(), ContactFragment::class.java)
-                startActivity(intent)
-            }*/
+
+            R.id.next -> {
+                (activity as CustomerDataFormActivity).setCurrentItem(2)
+            }
 
         }
     }

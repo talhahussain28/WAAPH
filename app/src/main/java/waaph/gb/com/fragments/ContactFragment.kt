@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_contact.*
+import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -50,10 +51,12 @@ class ContactFragment : Fragment(),View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-          /*  R.id.next -> {
-                val intent = Intent(requireActivity(), BankFragment::class.java)
-                startActivity(intent)
-            }*/
+            R.id.next -> {
+                (activity as CustomerDataFormActivity).setCurrentItem(3)
+
+                // (activity as CustomerDataFormActivity).ViewPagerAdapter(parentFragmentManager).setCurrentItem(3)
+
+            }
 
         }
     }

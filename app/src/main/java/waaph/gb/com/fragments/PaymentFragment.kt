@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_payment.*
+import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -51,10 +52,14 @@ class PaymentFragment : Fragment(),View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-           /* R.id.next -> {
-                val intent = Intent(requireActivity(), ComplianceAndVerificationFragment::class.java)
-                startActivity(intent)
-            }*/
+            R.id.next -> {
+                (activity as CustomerDataFormActivity).setCurrentItem(5)
+
+                // (activity as CustomerDataFormActivity).ViewPagerAdapter(parentFragmentManager).setCurrentItem(5)
+
+                /*val intent = Intent(requireActivity(), ComplianceAndVerificationFragment::class.java)
+                startActivity(intent)*/
+            }
 
         }
     }

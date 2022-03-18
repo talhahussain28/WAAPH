@@ -6,6 +6,7 @@
         <entry key="..\:/WAAPH/app/src/main/res/drawable-v24/gender_male.xml" value="0.2045" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable-v24/ic_cancel_circle.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/at_icon.xml" value="0.199" />
+        <entry key="..\:/WAAPH/app/src/main/res/drawable/background_dialog_top_radius.xml" value="0.194" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/call_icon.xml" value="0.194" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/customer_data_form.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/dotted_border.xml" value="0.199" />
@@ -38,14 +39,16 @@
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_sign_up2.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_signup1.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_splash.xml" value="0.15942028985507245" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/custom_dialog.xml" value="0.17418032786885246" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_address.xml" value="0.25" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_bank.xml" value="0.23097826086956522" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_compliance_and_verification.xml" value="0.22" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_compliance_and_verification.xml" value="0.14" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_contact.xml" value="0.23097826086956522" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_general.xml" value="0.23097826086956522" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_general.xml" value="0.18" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_home.xml" value="0.18" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_payment.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_responsible.xml" value="0.23097826086956522" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/row_item_general_bottom.xml" value="0.17418032786885246" />
         <entry key="..\:/WAAPH/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.27291666666666664" />
       </map>
     </option>

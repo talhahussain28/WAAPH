@@ -1,0 +1,5 @@
+<!--Dialog Animations Starts-->
+<style name="DialogAnimation_2">
+    <item name="android:windowExitAnimation">@anim/slide_down</item>
+    <item name="android:windowEnterAnimation">@anim/slide_up</item>
+</style>

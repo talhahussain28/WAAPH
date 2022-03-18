@@ -24,7 +24,7 @@
         <View
             android:layout_width="270dp"
             android:layout_height="1dp"
-            android:background="@color/viewGrey"
+            android:background="@color/TopviewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_cnic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/upload_cnic"
@@ -95,7 +95,7 @@
             android:id="@+id/view"
             android:layout_width="255dp"
             android:layout_height="1dp"
-            android:background="@color/viewGrey"
+            android:background="@color/TopviewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_ntn_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_ntn_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_ntn_tv"
@@ -161,7 +161,7 @@
             android:id="@+id/view2"
             android:layout_width="245dp"
             android:layout_height="1dp"
-            android:background="@color/viewGrey"
+            android:background="@color/TopviewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_strn_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_strn_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_strn_tv"
@@ -225,7 +225,7 @@
             android:id="@+id/viw"
             android:layout_width="255dp"
             android:layout_height="1dp"
-            android:background="@color/viewGrey"
+            android:background="@color/TopviewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_dsl_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_dsl_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_dsl_tv"
@@ -282,7 +282,8 @@
             android:id="@+id/vw"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/viewGrey"
+            android:layout_marginEnd="30dp"
+            android:background="@color/TopviewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_other_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_other_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_other_tv"
@@ -367,7 +368,8 @@
             android:id="@+id/v"
             android:layout_width="220dp"
             android:layout_height="1dp"
-            android:background="@color/viewGrey"
+            android:background="@color/TopviewGrey"
+            app:layout_constraintEnd_toStartOf="@+id/add_card_iv"
             app:layout_constraintBottom_toBottomOf="@+id/upload_card_tv"
             app:layout_constraintStart_toEndOf="@+id/upload_card_tv"
             app:layout_constraintTop_toTopOf="@+id/upload_card_tv" />
@@ -422,11 +424,20 @@
             android:id="@+id/iew2"
             android:layout_width="245dp"
             android:layout_height="1dp"
-            android:background="@color/viewGrey"
+            android:background="@color/TopviewGrey"
             app:layout_constraintBottom_toBottomOf="@+id/upload_degree_tv"
             app:layout_constraintEnd_toStartOf="@+id/add_strn_iv"
             app:layout_constraintStart_toEndOf="@+id/upload_degree_tv"
             app:layout_constraintTop_toTopOf="@+id/upload_degree_tv" />
+        <ImageView
+            android:id="@+id/add_card_ivv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/iew2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iew2"
+            app:layout_constraintTop_toTopOf="@+id/iew2" />
 
         <ImageView
             android:id="@+id/image"
@@ -449,7 +460,6 @@
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_degree_tv">
 
@@ -461,7 +471,9 @@
                 android:gravity="center"
                 android:text="Upload DSL Here Drug Sale Licence Number" />
 
+
         </androidx.cardview.widget.CardView>
+
 
         <Button
             android:layout_width="match_parent"
