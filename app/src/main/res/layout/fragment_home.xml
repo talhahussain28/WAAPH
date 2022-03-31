@@ -122,12 +122,15 @@
         android:id="@+id/cardView3"
         android:layout_width="80dp"
         android:layout_height="120dp"
-        android:backgroundTint="@color/homeGrey"
+        android:layout_marginEnd="20dp"
         android:layout_marginStart="15dp"
+        android:backgroundTint="@color/homeGrey"
         app:cardCornerRadius="10dp"
         app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
         app:layout_constraintTop_toTopOf="@+id/cardView2">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -138,30 +141,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/salary_slip"/>
+                android:src="@drawable/salary_slip" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:textSize="15sp"
-                android:text="Leave\nRequest"/>
+                android:text="Leave\nRequest"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CDF"
         android:layout_width="172dp"
         android:layout_height="200dp"
-        app:cardCornerRadius="10dp"
         android:layout_marginTop="20dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/cardView3"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3" >
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -173,16 +175,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/customer_data_form"/>
+                android:src="@drawable/customer_data_form" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/ThemeColor"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:textSize="15sp"
-                android:text="Customer Data\nForm"/>
+                android:text="Customer Data\nForm"
+                android:textColor="@color/ThemeColor"
+                android:textSize="15sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -330,12 +332,13 @@
         android:id="@+id/ca"
         android:layout_width="80dp"
         android:layout_height="120dp"
-        app:cardElevation="2dp"
-        app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/lightBlue"
         android:layout_marginStart="15dp"
+        android:backgroundTint="@color/lightBlue"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/CDF"
         app:layout_constraintStart_toEndOf="@+id/cView2"
-        app:layout_constraintTop_toTopOf="@+id/cView2" >
+        app:layout_constraintTop_toTopOf="@+id/cView2">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -347,16 +350,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/memo"/>
+                android:src="@drawable/memo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:textSize="15sp"
-                android:text="Memo"/>
+                android:text="Memo"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -396,12 +399,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="175dp"
         android:layout_height="120dp"
-        app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/homeGrey"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/homeGrey"
+        app:cardCornerRadius="10dp"
         app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/ca"
         app:layout_constraintStart_toStartOf="@+id/cView2"
-        app:layout_constraintTop_toBottomOf="@+id/cView2" >
+        app:layout_constraintTop_toBottomOf="@+id/cView2">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -413,16 +417,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/travel_req"/>
+                android:src="@drawable/travel_req" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:textSize="15sp"
-                android:text="Travel"/>
+                android:text="Travel"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
