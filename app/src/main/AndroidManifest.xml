@@ -13,7 +13,6 @@
             android:name=".CreateGeneralDataActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomerDataFormActivity"
             android:name=".BankDetailActivity"
             android:exported="false" />
         <activity

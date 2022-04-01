@@ -117,7 +117,7 @@
                         android:id="@+id/edtCNIC"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLines="1"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -141,7 +141,7 @@
                         android:id="@+id/edtNTN"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLines="1"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -286,7 +286,7 @@
                         android:id="@+id/edtFAX"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLines="1"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -393,7 +393,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/create_general_edt_background"
                 android:orientation="horizontal">
@@ -475,9 +475,9 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginStart="40dp"/>
 
         </LinearLayout>

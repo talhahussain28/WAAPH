@@ -1,4 +1,4 @@
-package waaph.gb.com.adapter
+package waaph.gb.com.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

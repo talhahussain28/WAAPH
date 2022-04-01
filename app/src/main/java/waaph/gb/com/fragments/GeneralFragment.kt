@@ -7,13 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_general.*
 import waaph.gb.com.CreateGeneralDataActivity
-import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.R
-import waaph.gb.com.adapter.GeneralAdapter
+import waaph.gb.com.adapters.GeneralAdapter
 import waaph.gb.com.model.CreateGeneralModel
 
 class GeneralFragment : Fragment(), View.OnClickListener {
@@ -44,7 +41,7 @@ class GeneralFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.routeToCreateGeneral -> {
+            R.id.fab -> {
                 val intent = Intent(requireActivity(), CreateGeneralDataActivity::class.java)
                 startActivity(intent)
             }
@@ -52,7 +49,7 @@ class GeneralFragment : Fragment(), View.OnClickListener {
     }
 
     private fun clickListners(){
-        routeToCreateGeneral.setOnClickListener(this)
+        fab.setOnClickListener(this)
 
     }
 
