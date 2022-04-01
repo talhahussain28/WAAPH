@@ -31,7 +31,9 @@
         <entry key="..\:/WAAPH/app/src/main/res/drawable/user_icon.xml" value="0.194" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/website_icon.xml" value="0.194" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/whatsapp_icon.xml" value="0.194" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/activity_bank_detail.xml" value="0.18" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.23097826086956522" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/activity_create_bank.xml" value="0.15" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_customer_data_form.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_forgot_password.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -41,14 +43,16 @@
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_splash.xml" value="0.15942028985507245" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/custom_dialog.xml" value="0.17418032786885246" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_address.xml" value="0.25" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_bank.xml" value="0.23097826086956522" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_bank.xml" value="0.16" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_compliance_and_verification.xml" value="0.14" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_contact.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_general.xml" value="0.18" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_home.xml" value="0.18" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_payment.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_responsible.xml" value="0.23097826086956522" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/row_item_bank.xml" value="0.22" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/row_item_general_bottom.xml" value="0.17418032786885246" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/toolbar_with_title.xml" value="0.15" />
         <entry key="..\:/WAAPH/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.27291666666666664" />
       </map>
     </option>
