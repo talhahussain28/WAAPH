@@ -8,34 +8,29 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ResponsibleFragment">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        app:cardCornerRadius="5dp">
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fitsSystemWindows="true"
+        android:hint="Saled Taker"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/ThemeColor"
+        app:errorEnabled="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Sales Taker"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtSaledTacker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="17sp" />
+            android:textSize="14sp" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="10dp"
-            android:text="Peter Dan"
-            android:textSize="15sp" />
-
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:layout_width="match_parent"

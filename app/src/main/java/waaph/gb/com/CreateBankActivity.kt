@@ -18,6 +18,7 @@ class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_bank)
+
          bank.setOnClickListener(this)
 
     }
@@ -62,16 +63,16 @@ class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
 
                  when (position) {
                      0 -> {
-                         bank.setText("Meezan Bank")
+                         bank.text = "Meezan Bank"
                      }
                      1 -> {
-                         bank.setText("Option 2")
+                         bank.text = "Option 2"
                      }
                      2 -> {
-                         bank.setText("Option 3")
+                         bank.text = "Option 3"
                      }
                      3 -> {
-                         bank.setText("Option 4")
+                         bank.text = "Option 4"
                      }
                  }
                  dialog.dismiss()

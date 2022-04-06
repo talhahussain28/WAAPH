@@ -96,11 +96,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:inputType="textPersonName|textCapWords"
                     android:layout_marginStart="223dp"
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:hint="Enter Title"
+                    android:inputType="textPersonName|textCapWords"
                     android:lines="1"
                     android:textSize="16sp" />
 
@@ -127,6 +127,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/edtAccountNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -162,9 +163,9 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/bank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/bank"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="223dp"
