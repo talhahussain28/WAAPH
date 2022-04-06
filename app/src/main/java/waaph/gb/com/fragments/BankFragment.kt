@@ -3,12 +3,9 @@ package waaph.gb.com.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_bank.*
-import kotlinx.android.synthetic.main.fragment_general.*
 import waaph.gb.com.BankDetailActivity
 import waaph.gb.com.CreateBankActivity
 import waaph.gb.com.CustomerDataFormActivity
@@ -16,8 +13,9 @@ import waaph.gb.com.R
 import waaph.gb.com.adapters.BankAdapter
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.Data
+import waaph.gb.com.utils.BaseFragment
 
-class BankFragment : Fragment(),View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
+class BankFragment : BaseFragment(),View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
     private var adapter: BankAdapter? = null
     private var list = ArrayList<Data>()
 
@@ -38,10 +36,20 @@ class BankFragment : Fragment(),View.OnClickListener, OnRecyclerViewItemClickLis
         super.onViewCreated(view, savedInstanceState)
         //next.setOnClickListener(this)
        // bank_layout.setOnClickListener(this)
-        fab.setOnClickListener(this)
-
+        setOnClickListener()
         setRecyclerview()
 
+    }
+
+    override fun linkXML(view: View?) {
+    }
+
+    override fun setOnClickListener() {
+        fab.setOnClickListener(this)
+
+    }
+
+    override fun initialize() {
     }
 
     companion object fun newInstance(){

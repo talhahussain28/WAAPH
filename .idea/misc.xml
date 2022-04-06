@@ -36,7 +36,7 @@
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_bank_detail.xml" value="0.18" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_create_bank.xml" value="0.15" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/activity_create_general_data.xml" value="0.18" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/activity_create_general_data.xml" value="0.14" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_customer_data_form.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_forgot_password.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -49,7 +49,7 @@
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_bank.xml" value="0.16" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_compliance_and_verification.xml" value="0.14" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_contact.xml" value="0.23097826086956522" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_general.xml" value="0.18" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_general.xml" value="0.17" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_home.xml" value="0.18" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_payment.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_responsible.xml" value="0.23097826086956522" />

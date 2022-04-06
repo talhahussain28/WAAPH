@@ -6,30 +6,45 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.rv_item_general.view.*
 import waaph.gb.com.R
+import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.CreateGeneralModel
+import waaph.gb.com.model.Data
 
 class GeneralAdapter(
     val context: Context,
     private val list: ArrayList<CreateGeneralModel>,
-    ) : RecyclerView.Adapter<GeneralAdapter.ViewHolder>()  {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.rv_item_general, parent, false)
-
-        return ViewHolder(view)
-    }
+   /* private val listener: OnRecyclerViewItemClickListener<CreateGeneralModel>?*/) : RecyclerView.Adapter<GeneralAdapter.ItemViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): GeneralAdapter.ItemViewHolder = ItemViewHolder(
+        LayoutInflater.from(context).inflate(R.layout.rv_item_general, parent, false)
+    )
 
     override fun getItemCount(): Int {
         return list.size
     }
 
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val textView: TextView = itemView.findViewById(R.id.businessName)
-    }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+    /*override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val information = list[position]
         holder.textView.text = information.company
+        holder.itemView.setOnClickListener {
+            listener?.onItemClick(it*//*, policy*//*, position)
+        }
+    }*/
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val information = list[position]
+        holder.itemView.businessName.text = information.company
+             /*   holder.itemView.setOnClickListener {
+                    listener?.onItemClick(it, position)
+                }*/
     }
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+
 
 }
