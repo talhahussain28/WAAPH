@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WAAPH">
         <activity
+            android:name=".AddPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateAddressDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateGeneralDataActivity"
             android:exported="false" />
         <activity

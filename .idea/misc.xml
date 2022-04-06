@@ -3,65 +3,69 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/WAAPH/app/src/main/res/drawable-v24/gender_male.xml" value="0.2045" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable-v24/ic_cancel_circle.xml" value="0.199" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/add_icon_fab.xml" value="0.159" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/at_icon.xml" value="0.199" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/background_dialog_top_radius.xml" value="0.194" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/call_icon.xml" value="0.194" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/create_general_edt_background.xml" value="0.159" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/customer_data_form.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/dotted_border.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/expense_claim.xml" value="0.199" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/fax_icon.xml" value="0.194" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/gender_bg.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/gender_female.xml" value="0.199" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/gender_female_selected.xml" value="0.2045" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/hide_password_icon.xml" value="0.194" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/medical.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/memo.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/order_data_form.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/order_payment.xml" value="0.199" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/password_icon.xml" value="0.194" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/pdf_icon.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/product_literature.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/salary_slip.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/switch_button_thumb.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/switch_button_track.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/toolbar_view.xml" value="0.199" />
         <entry key="..\:/WAAPH/app/src/main/res/drawable/travel_req.xml" value="0.199" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/user_icon.xml" value="0.194" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/website_icon.xml" value="0.194" />
-        <entry key="..\:/WAAPH/app/src/main/res/drawable/whatsapp_icon.xml" value="0.194" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/activity_bank_detail.xml" value="0.18" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_create_bank.xml" value="0.15" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_create_general_data.xml" value="0.14" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_customer_data_form.xml" value="0.23097826086956522" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/activity_forgot_password.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_sign_up.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_sign_up2.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_signup1.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/activity_splash.xml" value="0.15942028985507245" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/custom_dialog.xml" value="0.17418032786885246" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_address.xml" value="0.25" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_bank.xml" value="0.16" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_compliance_and_verification.xml" value="0.14" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_address.xml" value="0.23097826086956522" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_bank.xml" value="0.23097826086956522" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_compliance_and_verification.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_contact.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_general.xml" value="0.17" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_general.xml" value="0.23097826086956522" />
+        <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_home.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_payment.xml" value="0.23097826086956522" />
         <entry key="..\:/WAAPH/app/src/main/res/layout/fragment_responsible.xml" value="0.23097826086956522" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/row_item_bank.xml" value="0.22" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/row_item_general_bottom.xml" value="0.17418032786885246" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/rv_item_general.xml" value="0.18" />
-        <entry key="..\:/WAAPH/app/src/main/res/layout/toolbar_with_title.xml" value="0.15" />
         <entry key="..\:/WAAPH/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.27291666666666664" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/drawable/activites.xml" value="0.3880208333333333" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/drawable/add_icon_fab.xml" value="0.382051282051282" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/drawable/background_dialog_top_radius.xml" value="0.3880208333333333" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/drawable/baseline_menu.xml" value="0.3880208333333333" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/drawable/create_general_edt_background.xml" value="0.3880208333333333" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/drawable/dotted_border.xml" value="0.3880208333333333" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/drawable/home.xml" value="0.3880208333333333" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/activity_add_payment.xml" value="0.3578125" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/activity_create_address_data.xml" value="0.33" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/activity_create_bank.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/activity_create_contact.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/activity_create_general_data.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/activity_main.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/fragment_address.xml" value="0.33" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/fragment_bank.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/fragment_contact.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/fragment_general.xml" value="0.25" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/fragment_home.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/fragment_payment.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/fragment_responsible.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/rv_item_address.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/layout/rv_item_general.xml" value="0.371875" />
+        <entry key="..\:/Work/WAAPH/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.371875" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

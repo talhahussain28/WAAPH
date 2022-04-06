@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +7,29 @@
     android:background="@drawable/bg"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/rv_item_address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_plus"
+        android:tint="@color/white"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -248,7 +270,7 @@
                         android:textSize="17sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                   <!-- <com.hbb20.CountryPickerView
+                   &lt;!&ndash; <com.hbb20.CountryPickerView
                         android:id="@+id/country_picker"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -258,7 +280,7 @@
                         android:clickable="true"
                         android:focusable="true">
 
-                    </com.hbb20.CountryPickerView>-->
+                    </com.hbb20.CountryPickerView>&ndash;&gt;
                     <TextView
                         android:id="@+id/textVi10"
                         android:layout_width="wrap_content"
@@ -476,7 +498,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"/>
 
-
+z
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -668,6 +690,6 @@
             android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginBottom="30dp"/>
-    </LinearLayout>
+    </LinearLayout>-->
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

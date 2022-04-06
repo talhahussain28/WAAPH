@@ -36,7 +36,6 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     private lateinit var adapter : GeneralAdapter
     private lateinit var list: ArrayList<CreateGeneralModel>
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

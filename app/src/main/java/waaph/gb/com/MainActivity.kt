@@ -14,7 +14,6 @@ import waaph.gb.com.utils.EditTextDrawableClick
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var isVisiblePassword = false
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
