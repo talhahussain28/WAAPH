@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"/>
+        <item
+            android:id="@+id/nav_salarySlip"
+            android:title="Salary Slip" />
+        <item
+            android:id="@+id/nav_leaveRequest"
+            android:title="Leave Request" />
+
+        <item
+            android:id="@+id/nav_expenseClaim"
+            android:title="Expense Claim" />
+
+        <item
+            android:id="@+id/nav_orderDataFrom"
+            android:title="Order Data From" />
+
+        <item
+            android:id="@+id/nav_CDF"
+            android:title="Customer Data From" />
+
+        <item
+            android:id="@+id/nav_orderPayment"
+            android:title="Order Payment" />
+
+        <item
+            android:id="@+id/nav_productLiterature"
+            android:title="Product Literature" />
+
+        <item
+            android:id="@+id/nav_memo"
+            android:title="Memo" />
+
+        <item
+            android:id="@+id/nav_medical"
+            android:title="Medical" />
+
+        <item
+            android:id="@+id/nav_travelRequest"
+            android:title="Travel Request" />
+
+    </group>
+
+</menu>
+
