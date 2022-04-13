@@ -9,8 +9,11 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_address.*
 import waaph.gb.com.CreateAddressDataActivity
 import waaph.gb.com.R
+import waaph.gb.com.model.CreateAddressModel
 
 class AddressFragment : Fragment(),View.OnClickListener {
+
+    private lateinit var list: ArrayList<CreateAddressModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +25,8 @@ class AddressFragment : Fragment(),View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         //setOnClickListeners()
         //fabButton.setOnClickListener(this)

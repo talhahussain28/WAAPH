@@ -1,31 +1,13 @@
 package waaph.gb.com.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.activity_create_general_data.*
 import kotlinx.android.synthetic.main.fragment_general.*
-import kotlinx.android.synthetic.main.fragment_general.btnCreateGeneral
-import kotlinx.android.synthetic.main.fragment_general.edtBussinessName
-import kotlinx.android.synthetic.main.fragment_general.edtBussinessType
-import kotlinx.android.synthetic.main.fragment_general.edtCNIC
-import kotlinx.android.synthetic.main.fragment_general.edtCustomerGroup
-import kotlinx.android.synthetic.main.fragment_general.edtEmail
-import kotlinx.android.synthetic.main.fragment_general.edtFAX
-import kotlinx.android.synthetic.main.fragment_general.edtMobile
-import kotlinx.android.synthetic.main.fragment_general.edtNTN
-import kotlinx.android.synthetic.main.fragment_general.edtOrganizationName
-import kotlinx.android.synthetic.main.fragment_general.edtPhone
-import kotlinx.android.synthetic.main.fragment_general.edtRegion
-import kotlinx.android.synthetic.main.fragment_general.edtWebSite
-import kotlinx.android.synthetic.main.fragment_general.edtWhatsApp
-import waaph.gb.com.CreateGeneralDataActivity
+import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.GeneralAdapter
 import waaph.gb.com.model.CreateGeneralModel
@@ -103,10 +85,10 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
             edtOrganizationName.text!!.isNotEmpty()&&
             edtPhone.text!!.isNotEmpty()
         ) {
+            (activity as CustomerDataFormActivity).setCurrentItem(1)
             Toast.makeText(requireContext(), "task done", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     override fun linkXML(view: View?) {
     }

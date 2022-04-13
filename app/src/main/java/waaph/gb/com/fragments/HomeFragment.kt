@@ -64,12 +64,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     }
 
-    private fun clickListeners() {
-        CDF.setOnClickListener(this)
-        logout.setOnClickListener(this)
-        add_dsl_iv.setOnClickListener(this)
-    }
-
     private fun drawerItemListener() {
         val navView: NavigationView = nav_view
         navView.setNavigationItemSelectedListener {
@@ -114,5 +108,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    private fun clickListeners() {
+        CDF.setOnClickListener(this)
+        logout.setOnClickListener(this)
+        add_dsl_iv.setOnClickListener(this)
+    }
 
 }
