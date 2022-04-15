@@ -10,7 +10,10 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ListView
+import android.widget.Toast
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_bank.*
+import kotlinx.android.synthetic.main.activity_create_general_data.*
 import kotlinx.android.synthetic.main.custom_dialog.*
 import waaph.gb.com.utils.GeneralBottomAdapter
 
@@ -19,7 +22,7 @@ class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_bank)
 
-         bank.setOnClickListener(this)
+        setOnClickListeners()
 
     }
 
@@ -27,6 +30,9 @@ class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.bank -> {
                 pickerActionDialog()
+            }
+            R.id.next ->{
+                createBank()
             }
         }
     }
@@ -81,4 +87,32 @@ class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
          dialog.show()
 
      }
+
+    private fun createBank(){
+        etValidate(editText_Name)
+        etValidate(edtAccountNo)
+        etValidate(editText_budget)
+
+        if (editText_Name.text!!.isNotEmpty()&&
+            editText_budget.text!!.isNotEmpty()&&
+            edtAccountNo.text!!.isNotEmpty()
+        ){
+            Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun etValidate(edittext: TextInputEditText): Boolean {
+        var validate = edittext.text.toString()
+        validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
+        if (validate.isEmpty()) {
+            edittext.error = "Required"
+            return false
+        }
+        return true
+    }
+
+    private fun setOnClickListeners(){
+        next.setOnClickListener(this)
+        bank.setOnClickListener(this)
+    }
 }
