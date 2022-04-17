@@ -6,15 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
 import waaph.gb.com.BottomNavigationActivity
 import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.MainActivity
 import waaph.gb.com.R
 
-
 class HomeFragment : Fragment(), View.OnClickListener {
 
+    private lateinit var toogle: ActionBarDrawerToggle
+    private lateinit var drawerLayout : DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +36,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        CDF.setOnClickListener(this)
-        logout.setOnClickListener(this)
 
+        drawerLayout  = drawer_layout
+        toogle =
+            ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toogle)
+        toogle.syncState()
 
+        drawerItemListener()
+        clickListeners()
     }
 
     override fun onClick(v: View?) {
@@ -46,9 +57,61 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 val intent = Intent(requireActivity(), MainActivity::class.java)
                 startActivity(intent)
             }
+            R.id.add_dsl_iv -> {
+                drawerLayout.open()
+            }
         }
 
     }
 
+    private fun drawerItemListener() {
+        val navView: NavigationView = nav_view
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_CDF ->{
+                    val intent = Intent(requireActivity(), CustomerDataFormActivity::class.java)
+                    startActivity(intent)
+                    drawerLayout.close()
+                }
+                R.id.nav_home ->{
+                    Toast.makeText(requireContext(), "Home", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_salarySlip ->{
+                    Toast.makeText(requireContext(), "Salary Slip", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_leaveRequest ->{
+                    Toast.makeText(requireContext(), "leaveRequest", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_expenseClaim ->{
+                    Toast.makeText(requireContext(), "expenseClaim  ", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_orderDataFrom ->{
+                    Toast.makeText(requireContext(), "orderDataFrom  ", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_orderPayment ->{
+                    Toast.makeText(requireContext(), "orderPayment", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_productLiterature ->{
+                    Toast.makeText(requireContext(), "productLiterature", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_memo ->{
+                    Toast.makeText(requireContext(), "memo", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_medical ->{
+                    Toast.makeText(requireContext(), "medical", Toast.LENGTH_SHORT).show()
+                }
+                R.id.nav_travelRequest ->{
+                    Toast.makeText(requireContext(), "travelRequest", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
+    }
+
+    private fun clickListeners() {
+        CDF.setOnClickListener(this)
+        logout.setOnClickListener(this)
+        add_dsl_iv.setOnClickListener(this)
+    }
 
 }

@@ -16,6 +16,14 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.WAAPH.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WAAPH.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WAAPH.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

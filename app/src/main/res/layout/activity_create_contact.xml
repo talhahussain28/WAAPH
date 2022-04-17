@@ -150,13 +150,14 @@
 
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/openCategoryList"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="Category Name"
                             android:textColor="@color/white"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/cross"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
