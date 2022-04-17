@@ -46,7 +46,7 @@ class BankFragment : BaseFragment(),View.OnClickListener, OnRecyclerViewItemClic
     }
 
     override fun setOnClickListener() {
-        fab.setOnClickListener(this)
+       // fab.setOnClickListener(this)
 
     }
 
