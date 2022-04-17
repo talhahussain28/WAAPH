@@ -76,7 +76,7 @@ class PaymentFragment : Fragment(),View.OnClickListener {
     }
 
     private fun setOnclickListeners(){
-       // routeToAddPayment.setOnClickListener(this)
+        routeToAddPayment.setOnClickListener(this)
     }
 
 }
