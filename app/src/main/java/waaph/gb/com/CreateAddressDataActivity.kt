@@ -1,32 +1,41 @@
 package waaph.gb.com
 
+import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_address_data.*
-import kotlinx.android.synthetic.main.activity_create_contact.*
-import kotlinx.android.synthetic.main.activity_create_general_data.*
 import kotlinx.android.synthetic.main.custom_dialog.*
+import waaph.gb.com.model.SelectedDayCreateAddressModel
 import waaph.gb.com.utils.GeneralBottomAdapter
 
 class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
+
+    private lateinit var selectDay : ArrayList<SelectedDayCreateAddressModel>
+    private var model  : SelectedDayCreateAddressModel? = null
+    private lateinit var days : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_address_data)
 
+        selectDay = ArrayList()
+        days = tvShowDay
+
         setOnClickListeners()
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnAddAddress -> {
@@ -48,7 +57,117 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
             R.id.areaLocationList -> {
                 areaLocationDialog()
             }
-
+            R.id.tvMonday -> {
+                tvMonday.setBackgroundResource(R.drawable.days_selected_background_blue)
+                tvMonday.setTextColor(R.color.white)
+                tvShowDay.text = "Monday"
+                var day = model?.selectAddress
+                day = days.text.toString()
+                selectDay.add(SelectedDayCreateAddressModel("${tvShowDay.text.toString()}"))
+                Toast.makeText(this, "$day", Toast.LENGTH_SHORT).show()
+                tvTuesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvWednesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvThursday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvFriday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSaturday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSunday.setBackgroundResource(R.drawable.days_selected_background_white)
+            }
+            R.id.tvTuesday -> {
+                selectDay.clear()
+                tvTuesday.setBackgroundResource(R.drawable.days_selected_background_blue)
+                tvTuesday.setTextColor(R.color.white)
+                var day = model?.selectAddress
+                day = days.text.toString()
+                tvShowDay.text = "Tuesday"
+                selectDay.add(SelectedDayCreateAddressModel("${tvShowDay.text.toString()}"))
+                Toast.makeText(this, "$day", Toast.LENGTH_SHORT).show()
+                tvMonday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvWednesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvThursday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvFriday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSaturday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSunday.setBackgroundResource(R.drawable.days_selected_background_white)
+            }
+            R.id.tvWednesday -> {
+                selectDay.clear()
+                tvWednesday.setBackgroundResource(R.drawable.days_selected_background_blue)
+                tvWednesday.setTextColor(R.color.white)
+                tvShowDay.text = "Wednesday"
+                var day = model?.selectAddress
+                day = days.text.toString()
+                selectDay.add(SelectedDayCreateAddressModel("${tvShowDay.text.toString()}"))
+                Toast.makeText(this, "$day", Toast.LENGTH_SHORT).show()
+                tvTuesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvMonday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvThursday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvFriday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSaturday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSunday.setBackgroundResource(R.drawable.days_selected_background_white)
+            }
+            R.id.tvThursday -> {
+                selectDay.clear()
+                tvThursday.setBackgroundResource(R.drawable.days_selected_background_blue)
+                tvThursday.setTextColor(R.color.white)
+                tvShowDay.text = "Thursday"
+                var day = model?.selectAddress
+                day = days.text.toString()
+                selectDay.add(SelectedDayCreateAddressModel("${tvShowDay.text.toString()}"))
+                Toast.makeText(this, "$day", Toast.LENGTH_SHORT).show()
+                tvTuesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvWednesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvMonday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvFriday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSaturday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSunday.setBackgroundResource(R.drawable.days_selected_background_white)
+            }
+            R.id.tvFriday -> {
+                selectDay.clear()
+                tvFriday.setBackgroundResource(R.drawable.days_selected_background_blue)
+                tvFriday.setTextColor(R.color.white)
+                tvShowDay.text = "Friday"
+                var day = model?.selectAddress
+                day = days.text.toString()
+                selectDay.add(SelectedDayCreateAddressModel("${tvShowDay.text.toString()}"))
+                Toast.makeText(this, "$day", Toast.LENGTH_SHORT).show()
+                tvTuesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvWednesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvThursday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvMonday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSaturday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSunday.setBackgroundResource(R.drawable.days_selected_background_white)
+            }
+            R.id.tvSaturday -> {
+                selectDay.clear()
+                tvSaturday.setBackgroundResource(R.drawable.days_selected_background_blue)
+                tvSaturday.setTextColor(R.color.white)
+                tvShowDay.text = "Saturday"
+                tvShowDay.visibility = View.VISIBLE
+                selectDay.add(SelectedDayCreateAddressModel("${tvShowDay.text.toString()}"))
+                val day = model?.selectAddress
+                Toast.makeText(this, "$day", Toast.LENGTH_SHORT).show()
+                tvTuesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvWednesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvThursday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvFriday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvMonday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSunday.setBackgroundResource(R.drawable.days_selected_background_white)
+            }
+            R.id.tvSunday -> {
+                selectDay.clear()
+                tvSunday.setTextColor(R.color.white)
+                tvShowDay.text = "Sunday"
+                var day = model?.selectAddress
+                day = days.text.toString()
+                selectDay.add(SelectedDayCreateAddressModel("${tvShowDay.text.toString()}"))
+                Toast.makeText(this, "$day", Toast.LENGTH_SHORT).show()
+                tvSunday.setBackgroundResource(R.drawable.days_selected_background_blue)
+                tvTuesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvWednesday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvThursday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvFriday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvSaturday.setBackgroundResource(R.drawable.days_selected_background_white)
+                tvMonday.setBackgroundResource(R.drawable.days_selected_background_white)
+            }
         }
     }
 
@@ -343,6 +462,10 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         }
     }
 
+    private fun selectWeekDays(){
+
+    }
+
     private fun etValidate(edittext: TextInputEditText): Boolean {
         var validate = edittext.text.toString()
         validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
@@ -360,8 +483,13 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         regionList.setOnClickListener(this)
         areaLocationList.setOnClickListener(this)
         provinceList.setOnClickListener(this)
+        tvMonday.setOnClickListener(this)
+        tvSunday.setOnClickListener(this)
+        tvSaturday.setOnClickListener(this)
+        tvFriday.setOnClickListener(this)
+        tvThursday.setOnClickListener(this)
+        tvWednesday.setOnClickListener(this)
+        tvTuesday.setOnClickListener(this)
     }
-
-
 
 }

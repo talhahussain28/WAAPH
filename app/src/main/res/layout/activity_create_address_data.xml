@@ -15,6 +15,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/tvShowDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="day"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
@@ -370,7 +379,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
@@ -399,75 +408,99 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="20dp"
                             android:orientation="horizontal"
+                            android:background="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/schedule">
 
                             <TextView
+                                android:id="@+id/tvMonday"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:layout_margin="2dp"
+                                android:padding="8dp"
+                                android:textColor="@color/ThemeColor"
                                 android:layout_weight="1"
+                                android:background="@drawable/days_selected_background_white"
                                 android:gravity="center"
                                 android:text="Mon"
-                                android:textSize="15sp" />
+                                android:textSize="13sp" />
 
                             <TextView
+                                android:id="@+id/tvTuesday"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginTop="2dp"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
+                                android:textColor="@color/ThemeColor"
+                                android:background="@drawable/days_selected_background_white"
                                 android:gravity="center"
                                 android:text="Tue"
-                                android:textSize="15sp" />
+                                android:textSize="13sp" />
 
                             <TextView
+                                android:id="@+id/tvWednesday"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginTop="2dp"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
+                                android:background="@drawable/days_selected_background_white"
                                 android:gravity="center"
                                 android:text="Wed"
-                                android:textSize="15sp" />
+                                android:textColor="@color/ThemeColor"
+                                android:textSize="13sp" />
 
                             <TextView
+                                android:id="@+id/tvThursday"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginTop="2dp"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
+                                android:background="@drawable/days_selected_background_white"
                                 android:gravity="center"
+                                android:textColor="@color/ThemeColor"
                                 android:text="Thu"
-                                android:textSize="15sp" />
+                                android:textSize="13sp" />
 
                             <TextView
+                                android:id="@+id/tvFriday"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginTop="2dp"
+                                android:layout_margin="2dp"
+                                android:background="@drawable/days_selected_background_white"
                                 android:layout_weight="1"
+                                android:textColor="@color/ThemeColor"
                                 android:gravity="center"
                                 android:text="Fri"
-                                android:textSize="15sp" />
+                                android:textSize="13sp" />
 
                             <TextView
+                                android:id="@+id/tvSaturday"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginTop="2dp"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
+                                android:background="@drawable/days_selected_background_white"
                                 android:gravity="center"
                                 android:text="Sat"
-                                android:textSize="15sp" />
+                                android:textColor="@color/ThemeColor"
+                                android:textSize="13sp" />
 
                             <TextView
+                                android:id="@+id/tvSunday"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
+                                android:background="@drawable/days_selected_background_white"
                                 android:gravity="center"
+                                android:textColor="@color/ThemeColor"
                                 android:text="Sun"
-                                android:textSize="15sp" />
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 
