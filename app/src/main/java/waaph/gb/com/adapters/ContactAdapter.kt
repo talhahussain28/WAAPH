@@ -7,11 +7,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rv_item_contact.view.*
 import waaph.gb.com.R
+import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.CreateContactModel
+import waaph.gb.com.model.Data
 
-class ContactAdapter (
+class ContactAdapter(
     val context: Context,
-    private val list: ArrayList<CreateContactModel>, ) : RecyclerView.Adapter<ContactAdapter.ItemViewHolder>() {
+    private val list: ArrayList<CreateContactModel>,
+    private val listener: OnRecyclerViewItemClickListener<Data>?
+) : RecyclerView.Adapter<ContactAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -27,6 +31,11 @@ class ContactAdapter (
         val information = list[position]
         holder.itemView.contactName.text = information.name
         holder.itemView.contactNumber.text = information.number
+
+        holder.itemView.setOnClickListener {
+            listener?.onItemClick(it, position)
+        }
+
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

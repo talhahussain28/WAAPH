@@ -69,16 +69,16 @@ class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
 
                  when (position) {
                      0 -> {
-                         bank.text = "Meezan Bank"
+                         tvBank.text = "Meezan Bank"
                      }
                      1 -> {
-                         bank.text = "Option 2"
+                         tvBank.text = "UBL Bank"
                      }
                      2 -> {
-                         bank.text = "Option 3"
+                         tvBank.text = "HBL Bank"
                      }
                      3 -> {
-                         bank.text = "Option 4"
+                         tvBank.text = "Alied Bank"
                      }
                  }
                  dialog.dismiss()

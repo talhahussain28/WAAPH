@@ -189,11 +189,11 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("waleed"))
-        list.add(GeneralBottomAdapter.ListItemModel("anus ali"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 3"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 4"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 5"))
+        list.add(GeneralBottomAdapter.ListItemModel("Static 01"))
+        list.add(GeneralBottomAdapter.ListItemModel("Static 02"))
+        list.add(GeneralBottomAdapter.ListItemModel("Static 03"))
+        list.add(GeneralBottomAdapter.ListItemModel("Static 04"))
+        list.add(GeneralBottomAdapter.ListItemModel("Static 05"))
 
         val adapter = GeneralBottomAdapter(this, "", list)
         listView.adapter = adapter
@@ -202,23 +202,23 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
                 val data = parent.getItemAtPosition(position)
                         as GeneralBottomAdapter.ListItemModel
 
-//                when (position) {
-//                    0 -> {
-//                        openCategoryList.text = "waleed"
-//                    }
-//                    1 -> {
-//                        openCategoryList.text = "anus ali"
-//                    }
-//                    2 -> {
-//                        openCategoryList.text = "Option 3"
-//                    }
-//                    3 -> {
-//                        openCategoryList.text = "Option 4"
-//                    }
-//                    4 -> {
-//                        openCategoryList.text = "Option 5"
-//                    }
-//                }
+                when (position) {
+                    0 -> {
+                        locationType.text = "Static 01"
+                    }
+                    1 -> {
+                        locationType.text = "Static 02"
+                    }
+                    2 -> {
+                        locationType.text = "Static 03"
+                    }
+                    3 -> {
+                        locationType.text = "Static 04"
+                    }
+                    4 -> {
+                        locationType.text = "Static 05"
+                    }
+                }
                 dialog.dismiss()
 
             }
@@ -244,11 +244,11 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("waleed"))
-        list.add(GeneralBottomAdapter.ListItemModel("anus ali"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 3"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 4"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 5"))
+        list.add(GeneralBottomAdapter.ListItemModel("Sindh"))
+        list.add(GeneralBottomAdapter.ListItemModel("Punjab"))
+        list.add(GeneralBottomAdapter.ListItemModel("KPK"))
+        list.add(GeneralBottomAdapter.ListItemModel("Balochistan"))
+        list.add(GeneralBottomAdapter.ListItemModel("Gilgit"))
 
         val adapter = GeneralBottomAdapter(this, "", list)
         listView.adapter = adapter
@@ -257,23 +257,23 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
                 val data = parent.getItemAtPosition(position)
                         as GeneralBottomAdapter.ListItemModel
 
-//                when (position) {
-//                    0 -> {
-//                        openCategoryList.text = "waleed"
-//                    }
-//                    1 -> {
-//                        openCategoryList.text = "anus ali"
-//                    }
-//                    2 -> {
-//                        openCategoryList.text = "Option 3"
-//                    }
-//                    3 -> {
-//                        openCategoryList.text = "Option 4"
-//                    }
-//                    4 -> {
-//                        openCategoryList.text = "Option 5"
-//                    }
-//                }
+                when (position) {
+                    0 -> {
+                        tvProvince.text = "Sindh"
+                    }
+                    1 -> {
+                        tvProvince.text = "Punjab"
+                    }
+                    2 -> {
+                        tvProvince.text = "KPK"
+                    }
+                    3 -> {
+                        tvProvince.text = "Balochistan"
+                    }
+                    4 -> {
+                        tvProvince.text = "Gilgit"
+                    }
+                }
                 dialog.dismiss()
 
             }
@@ -299,8 +299,8 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("waleed"))
-        list.add(GeneralBottomAdapter.ListItemModel("anus ali"))
+        list.add(GeneralBottomAdapter.ListItemModel("Option 1"))
+        list.add(GeneralBottomAdapter.ListItemModel("Option 2"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 3"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 4"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 5"))
@@ -312,23 +312,23 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
                 val data = parent.getItemAtPosition(position)
                         as GeneralBottomAdapter.ListItemModel
 
-//                when (position) {
-//                    0 -> {
-//                        openCategoryList.text = "waleed"
-//                    }
-//                    1 -> {
-//                        openCategoryList.text = "anus ali"
-//                    }
-//                    2 -> {
-//                        openCategoryList.text = "Option 3"
-//                    }
-//                    3 -> {
-//                        openCategoryList.text = "Option 4"
-//                    }
-//                    4 -> {
-//                        openCategoryList.text = "Option 5"
-//                    }
-//                }
+                when (position) {
+                    0 -> {
+                        tvRegion.text = "Option 1"
+                    }
+                    1 -> {
+                        tvRegion.text = "Option 2"
+                    }
+                    2 -> {
+                        tvRegion.text = "Option 3"
+                    }
+                    3 -> {
+                        tvRegion.text = "Option 4"
+                    }
+                    4 -> {
+                        tvRegion.text = "Option 5"
+                    }
+                }
                 dialog.dismiss()
 
             }
@@ -354,8 +354,8 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("waleed"))
-        list.add(GeneralBottomAdapter.ListItemModel("anus ali"))
+        list.add(GeneralBottomAdapter.ListItemModel("Option 1"))
+        list.add(GeneralBottomAdapter.ListItemModel("Option 2"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 3"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 4"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 5"))
@@ -367,23 +367,23 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
                 val data = parent.getItemAtPosition(position)
                         as GeneralBottomAdapter.ListItemModel
 
-//                when (position) {
-//                    0 -> {
-//                        openCategoryList.text = "waleed"
-//                    }
-//                    1 -> {
-//                        openCategoryList.text = "anus ali"
-//                    }
-//                    2 -> {
-//                        openCategoryList.text = "Option 3"
-//                    }
-//                    3 -> {
-//                        openCategoryList.text = "Option 4"
-//                    }
-//                    4 -> {
-//                        openCategoryList.text = "Option 5"
-//                    }
-//                }
+                when (position) {
+                    0 -> {
+                        tvLocation.text = "Option 1"
+                    }
+                    1 -> {
+                        tvLocation.text = "Option 2"
+                    }
+                    2 -> {
+                        tvLocation.text = "Option 3"
+                    }
+                    3 -> {
+                        tvLocation.text = "Option 4"
+                    }
+                    4 -> {
+                        tvLocation.text = "Option 5"
+                    }
+                }
                 dialog.dismiss()
 
             }
@@ -409,11 +409,11 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("waleed"))
-        list.add(GeneralBottomAdapter.ListItemModel("anus ali"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 3"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 4"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 5"))
+        list.add(GeneralBottomAdapter.ListItemModel("Pakistan"))
+        list.add(GeneralBottomAdapter.ListItemModel("India"))
+        list.add(GeneralBottomAdapter.ListItemModel("Turkey"))
+        list.add(GeneralBottomAdapter.ListItemModel("Dubai"))
+        list.add(GeneralBottomAdapter.ListItemModel("Australia"))
 
         val adapter = GeneralBottomAdapter(this, "", list)
         listView.adapter = adapter
@@ -422,23 +422,23 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
                 val data = parent.getItemAtPosition(position)
                         as GeneralBottomAdapter.ListItemModel
 
-//                when (position) {
-//                    0 -> {
-//                        openCategoryList.text = "waleed"
-//                    }
-//                    1 -> {
-//                        openCategoryList.text = "anus ali"
-//                    }
-//                    2 -> {
-//                        openCategoryList.text = "Option 3"
-//                    }
-//                    3 -> {
-//                        openCategoryList.text = "Option 4"
-//                    }
-//                    4 -> {
-//                        openCategoryList.text = "Option 5"
-//                    }
-//                }
+                when (position) {
+                    0 -> {
+                        tvCountry.text = "Pakistan"
+                    }
+                    1 -> {
+                        tvCountry.text = "India"
+                    }
+                    2 -> {
+                        tvCountry.text = "Turkey"
+                    }
+                    3 -> {
+                        tvCountry.text = "Dubai"
+                    }
+                    4 -> {
+                        tvCountry.text = "Australia"
+                    }
+                }
                 dialog.dismiss()
 
             }
@@ -460,10 +460,6 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         ) {
             Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    private fun selectWeekDays(){
-
     }
 
     private fun etValidate(edittext: TextInputEditText): Boolean {

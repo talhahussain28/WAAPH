@@ -16,7 +16,7 @@ import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.Data
 import waaph.gb.com.utils.BaseFragment
 
-class BankFragment : BaseFragment(),View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
+class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
     private var adapter: BankAdapter? = null
     private var list = ArrayList<Data>()
 
@@ -36,10 +36,9 @@ class BankFragment : BaseFragment(),View.OnClickListener, OnRecyclerViewItemClic
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //next.setOnClickListener(this)
-       // bank_layout.setOnClickListener(this)
+        // bank_layout.setOnClickListener(this)
         setOnClickListener()
         setRecyclerview()
-
     }
 
     override fun linkXML(view: View?) {
@@ -53,7 +52,9 @@ class BankFragment : BaseFragment(),View.OnClickListener, OnRecyclerViewItemClic
     override fun initialize() {
     }
 
-    companion object fun newInstance(){
+    companion object
+
+    fun newInstance() {
 
     }
 
@@ -64,13 +65,13 @@ class BankFragment : BaseFragment(),View.OnClickListener, OnRecyclerViewItemClic
 
                 // (activity as CustomerDataFormActivity).ViewPagerAdapter(parentFragmentManager).setCurrentItem(4)
 
-              /*  val intent = Intent(requireActivity(), PaymentFragment::class.java)
-                startActivity(intent)*/
+                /*  val intent = Intent(requireActivity(), PaymentFragment::class.java)
+                  startActivity(intent)*/
             }
-           /* R.id.bank_layout ->{
-                pickerActionDialog()
-            }*/
-            R.id.fab ->{
+            /* R.id.bank_layout ->{
+                 pickerActionDialog()
+             }*/
+            R.id.fab -> {
                 val intent = Intent(requireActivity(), CreateBankActivity::class.java)
                 startActivity(intent)
             }
@@ -79,27 +80,28 @@ class BankFragment : BaseFragment(),View.OnClickListener, OnRecyclerViewItemClic
     }
 
     private fun setRecyclerview() {
-       // list = arrayListOf()
+        // list = arrayListOf()
         list.add(Data("Meezan bank", "None"))
         list.add(Data("Alfa bank", "None"))
         list.add(Data("Js bank", "None"))
         list.add(Data("HBL bank", "None"))
         list.add(Data("Habib bank", "None"))
         list.add(Data("AL Habib bank", "None"))
-        adapter = BankAdapter(requireContext(), list,this )
-        val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        adapter = BankAdapter(requireContext(), list, this)
+        val linearLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
     }
 
     override fun onItemClick(itemView: View?/*, data: Data?*/, position: Int) {
-       /* data?.let {*/
-            val intent = Intent(requireContext(), BankDetailActivity::class.java)
-            //intent.putExtra("data", Gson().toJson(data))
-            startActivity(intent)
+        /* data?.let {*/
+        val intent = Intent(requireContext(), BankDetailActivity::class.java)
+        //intent.putExtra("data", Gson().toJson(data))
+        startActivity(intent)
 
-           // overridePendingTransition(R.anim.slide_up, android.R.anim.fade_out)
-       /* }*/
+        // overridePendingTransition(R.anim.slide_up, android.R.anim.fade_out)
+        /* }*/
     }
     /* private fun pickerActionDialog() {
 
@@ -146,7 +148,7 @@ class BankFragment : BaseFragment(),View.OnClickListener, OnRecyclerViewItemClic
                      }
                  }
                  dialog.dismiss()
-
+                 
              }
          dialog.show()
 

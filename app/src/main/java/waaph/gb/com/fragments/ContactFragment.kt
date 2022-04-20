@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_create_address_data.*
 import kotlinx.android.synthetic.main.fragment_bank.*
 import kotlinx.android.synthetic.main.fragment_contact.*
-import waaph.gb.com.CreateContactActivity
-import waaph.gb.com.CustomerDataFormActivity
-import waaph.gb.com.R
+import waaph.gb.com.*
 import waaph.gb.com.adapters.ContactAdapter
+import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.CreateContactModel
+import waaph.gb.com.model.Data
 
-class ContactFragment : Fragment(),View.OnClickListener {
+class ContactFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
 
-   private lateinit var list : ArrayList<CreateContactModel>
-   private lateinit var recyclerView: RecyclerView
-   private lateinit var adapter : ContactAdapter
+    private lateinit var list: ArrayList<CreateContactModel>
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: ContactAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,46 +30,53 @@ class ContactFragment : Fragment(),View.OnClickListener {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_contact, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         list = ArrayList()
         recyclerView = contactRecyclerView
-        adapter = ContactAdapter(requireContext(),list)
+        adapter = ContactAdapter(requireContext(), list, this)
 
         setOnClickListeners()
-        setUpRecyclerViewData(recyclerView,adapter)
+        setUpRecyclerViewData(recyclerView, adapter)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.routeToCreateAddress -> {
-                val intent = Intent(requireContext(),CreateContactActivity::class.java)
+                val intent = Intent(requireContext(), CreateContactActivity::class.java)
                 startActivity(intent)
                 //(activity as CustomerDataFormActivity).setCurrentItem(3)
             }
         }
     }
 
-    private fun setOnClickListeners(){
+    private fun setOnClickListeners() {
         routeToCreateAddress.setOnClickListener(this)
     }
 
-    private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: ContactAdapter){
-        list.add(CreateContactModel("waleed","018236153421536172736"))
-        list.add(CreateContactModel("tlaha","018236153421536172736"))
-        list.add(CreateContactModel("hammad","018236153421536172736"))
-        list.add(CreateContactModel("huzaifa","018236153421536172736"))
-        list.add(CreateContactModel("anus ali","018236153421536172736"))
-        list.add(CreateContactModel("hameed","018236153421536172736"))
-        list.add(CreateContactModel("uzair","018236153421536172736"))
-        list.add(CreateContactModel("saud","018236153421536172736"))
-        list.add(CreateContactModel("rohit","018236153421536172736"))
-        list.add(CreateContactModel("bilal","018236153421536172736"))
-        list.add(CreateContactModel("majSHdyg","018236153421536172736"))
-        val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+    private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: ContactAdapter) {
+        list.add(CreateContactModel("waleed", "018236153421536172736"))
+        list.add(CreateContactModel("tlaha", "018236153421536172736"))
+        list.add(CreateContactModel("hammad", "018236153421536172736"))
+        list.add(CreateContactModel("huzaifa", "018236153421536172736"))
+        list.add(CreateContactModel("anus ali", "018236153421536172736"))
+        list.add(CreateContactModel("hameed", "018236153421536172736"))
+        list.add(CreateContactModel("uzair", "018236153421536172736"))
+        list.add(CreateContactModel("saud", "018236153421536172736"))
+        list.add(CreateContactModel("rohit", "018236153421536172736"))
+        list.add(CreateContactModel("bilal", "018236153421536172736"))
+        list.add(CreateContactModel("majSHdyg", "018236153421536172736"))
+        val linearLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
+    }
+
+    override fun onItemClick(itemView: View?, position: Int) {
+        val intent = Intent(requireContext(), ContactDetailActivity::class.java)
+        startActivity(intent)
     }
 
 }

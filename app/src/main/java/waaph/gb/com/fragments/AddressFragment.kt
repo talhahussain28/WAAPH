@@ -9,15 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_address.*
+import waaph.gb.com.AddressDetailActivity
+import waaph.gb.com.BankDetailActivity
 import waaph.gb.com.CreateAddressDataActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.AddressAdapter
+import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.CreateAddressModel
+import waaph.gb.com.model.Data
 
-class AddressFragment : Fragment(),View.OnClickListener {
+class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
 
     private lateinit var list: ArrayList<CreateAddressModel>
-    private lateinit var adapter : AddressAdapter
+    private lateinit var adapter: AddressAdapter
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
@@ -41,14 +45,14 @@ class AddressFragment : Fragment(),View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         list = ArrayList()
-        adapter = AddressAdapter(requireContext(),list)
+        adapter = AddressAdapter(requireContext(), list, this)
         recyclerView = recyclerViewAddress
 
         fab.setOnClickListener(this)
-        setUpRecyclerViewData(recyclerView,adapter)
+        setUpRecyclerViewData(recyclerView, adapter)
     }
 
-    private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: AddressAdapter){
+    private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: AddressAdapter) {
         list.add(CreateAddressModel("waleed"))
         list.add(CreateAddressModel("tlaha"))
         list.add(CreateAddressModel("hammad"))
@@ -60,9 +64,15 @@ class AddressFragment : Fragment(),View.OnClickListener {
         list.add(CreateAddressModel("rohit"))
         list.add(CreateAddressModel("bilal"))
         list.add(CreateAddressModel("majSHdyg"))
-        val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        val linearLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
+    }
+
+    override fun onItemClick(itemView: View?, position: Int) {
+        val intent = Intent(requireContext(), AddressDetailActivity::class.java)
+        startActivity(intent)
     }
 
 }

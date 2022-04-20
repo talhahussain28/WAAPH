@@ -55,8 +55,8 @@ class CreateContactActivity : AppCompatActivity(), View.OnClickListener  {
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("waleed"))
-        list.add(GeneralBottomAdapter.ListItemModel("anus ali"))
+        list.add(GeneralBottomAdapter.ListItemModel("Option 1"))
+        list.add(GeneralBottomAdapter.ListItemModel("Option 2"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 3"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 4"))
         list.add(GeneralBottomAdapter.ListItemModel("Option 5"))
@@ -70,10 +70,10 @@ class CreateContactActivity : AppCompatActivity(), View.OnClickListener  {
 
                 when (position) {
                     0 -> {
-                        openCategoryList.text = "waleed"
+                        openCategoryList.text = "Option 1"
                     }
                     1 -> {
-                        openCategoryList.text = "anus ali"
+                        openCategoryList.text = "Option 2"
                     }
                     2 -> {
                         openCategoryList.text = "Option 3"

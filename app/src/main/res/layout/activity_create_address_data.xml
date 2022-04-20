@@ -230,7 +230,7 @@
                     android:background="@drawable/create_general_edt_background">
 
                     <TextView
-                        android:id="@+id/textView91"
+                        android:id="@+id/tvCountry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -263,7 +263,7 @@
                     android:background="@drawable/create_general_edt_background">
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/tvProvince"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -296,7 +296,7 @@
                     android:background="@drawable/create_general_edt_background">
 
                     <TextView
-                        android:id="@+id/ttView9"
+                        android:id="@+id/tvRegion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -329,7 +329,7 @@
                     android:background="@drawable/create_general_edt_background">
 
                     <TextView
-                        android:id="@+id/textiew"
+                        android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
