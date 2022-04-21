@@ -127,7 +127,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="ABC Branch"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -166,7 +166,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="ABC location"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -200,7 +200,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="Abc Cube"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -234,7 +234,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="Pakistan"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -268,7 +268,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="Asia"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -302,7 +302,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="Sindh"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -336,7 +336,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="ABC Area"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -370,7 +370,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="42321"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -404,7 +404,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="5"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -438,7 +438,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="5"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -472,7 +472,7 @@
                     android:layout_marginStart="223dp"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="Meezan Bank"
+                    android:text="M60-"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -506,7 +506,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="223dp"
                     android:gravity="end"
-                    android:hint="Defence Branch"
+                    android:hint="L-90*"
                     android:lines="1"
                     android:textSize="16sp" />
 

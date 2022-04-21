@@ -57,17 +57,13 @@ class ContactFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
     }
 
     private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: ContactAdapter) {
-        list.add(CreateContactModel("waleed", "018236153421536172736"))
-        list.add(CreateContactModel("tlaha", "018236153421536172736"))
-        list.add(CreateContactModel("hammad", "018236153421536172736"))
-        list.add(CreateContactModel("huzaifa", "018236153421536172736"))
-        list.add(CreateContactModel("anus ali", "018236153421536172736"))
-        list.add(CreateContactModel("hameed", "018236153421536172736"))
-        list.add(CreateContactModel("uzair", "018236153421536172736"))
-        list.add(CreateContactModel("saud", "018236153421536172736"))
-        list.add(CreateContactModel("rohit", "018236153421536172736"))
-        list.add(CreateContactModel("bilal", "018236153421536172736"))
-        list.add(CreateContactModel("majSHdyg", "018236153421536172736"))
+        list.add(CreateContactModel("John", "018236153421536172736"))
+        list.add(CreateContactModel("Mark", "018236153421536172736"))
+        list.add(CreateContactModel("Ali", "018236153421536172736"))
+        list.add(CreateContactModel("Pelo", "018236153421536172736"))
+        list.add(CreateContactModel("Cris", "018236153421536172736"))
+        list.add(CreateContactModel("Haris", "018236153421536172736"))
+        list.add(CreateContactModel("Martix", "018236153421536172736"))
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager

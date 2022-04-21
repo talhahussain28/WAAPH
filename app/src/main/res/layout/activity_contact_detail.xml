@@ -94,7 +94,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="Meezan Bank"
+                    android:text="John Audio"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -128,7 +128,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="Meezan Bank"
+                    android:text="Software Eng"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -162,7 +162,7 @@
                     android:background="@android:color/transparent"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="42321-23921831"
+                    android:text="Whatsapp"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -183,7 +183,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:drawableLeft="@drawable/call_icon"
                     android:drawablePadding="10dp"
                     android:text="Phone Number"
                     android:textColor="@color/black"
@@ -198,7 +197,7 @@
                     android:layout_marginStart="223dp"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="Meezan Bank"
+                    android:text="0233311231"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -220,7 +219,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:drawableLeft="@drawable/at_icon"
                     android:drawablePadding="10dp"
                     android:text="Email"
                     android:textColor="@color/black"
@@ -235,7 +233,7 @@
                     android:layout_marginStart="223dp"
                     android:gravity="end"
                     android:lines="1"
-                    android:text="Defence Branch"
+                    android:text="abc@gmail.com"
                     android:textSize="16sp" />
 
             </RelativeLayout>
