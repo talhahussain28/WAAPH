@@ -1,24 +1,27 @@
 package waaph.gb.com
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
-import waaph.gb.com.fragments.*
 import waaph.gb.com.fragments.CustomerDataFormFragments.*
+import waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment.ComplianceFragment
+import waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment.GeneralFragmentODF
+import waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment.ItemSelectionFragment
 import waaph.gb.com.model.ViewPagerItemModel
 
-class CustomerDataFormActivity : AppCompatActivity() {
+class OrderDataFormActivity : AppCompatActivity() {
 
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
-    var viewPagerAdapter:ViewPagerAdapter?=null
+     var viewPagerAdapter: ViewPagerAdapter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_customer_data_form)
+        setContentView(R.layout.activity_order_data_form)
         setupViewPager()
     }
 
@@ -52,25 +55,13 @@ class CustomerDataFormActivity : AppCompatActivity() {
 
         init {
             fragments.add(ViewPagerItemModel("General",
-                GeneralFragment()
+                GeneralFragmentODF()
             ))
-            fragments.add(ViewPagerItemModel("Address",
-                AddressFragment()
+            fragments.add(ViewPagerItemModel("ItemSelection",
+                ItemSelectionFragment()
             ))
-            fragments.add(ViewPagerItemModel("Contact",
-                ContactFragment()
-            ))
-            fragments.add(ViewPagerItemModel("Bank",
-                BankFragment()
-            ))
-            fragments.add(ViewPagerItemModel("Payment",
-                PaymentFragment()
-            ))
-            fragments.add(ViewPagerItemModel("Compliance And Verification",
-                ComplianceAndVerificationFragment()
-            ))
-            fragments.add(ViewPagerItemModel("Responsible",
-                ResponsibleFragment()
+            fragments.add(ViewPagerItemModel("Compliance",
+                ComplianceFragment()
             ))
         }
 
@@ -86,9 +77,11 @@ class CustomerDataFormActivity : AppCompatActivity() {
             return fragments[position].title
         }
     }
+
     fun setCurrentItem(item: Int) {
         viewPager.currentItem = item
         viewPagerAdapter?.notifyDataSetChanged()
     }
 
 }
+

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WAAPH">
         <activity
+            android:name=".fragments.CustomerDataFormFragments.CreateItemSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderDataFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".ContactDetailActivity"
             android:exported="false" />
         <activity

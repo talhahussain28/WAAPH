@@ -1,4 +1,4 @@
-package waaph.gb.com.fragments
+package waaph.gb.com.fragments.CustomerDataFormFragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.fragment_payment.*
 import kotlinx.android.synthetic.main.fragment_responsible.*
 import waaph.gb.com.BottomNavigationActivity
 import waaph.gb.com.R
@@ -29,7 +28,6 @@ class ResponsibleFragment : Fragment(),View.OnClickListener {
 
         setOnClickListener()
     }
-
 
     override fun onClick(v: View?) {
         when (v?.id) {

@@ -1,4 +1,4 @@
-package waaph.gb.com.fragments
+package waaph.gb.com.fragments.CustomerDataFormFragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,12 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
-import waaph.gb.com.BottomNavigationActivity
 import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.MainActivity
+import waaph.gb.com.OrderDataFormActivity
 import waaph.gb.com.R
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -60,6 +59,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
             R.id.add_dsl_iv -> {
                 drawerLayout.open()
             }
+            R.id.ODF -> {
+                val intent = Intent(requireActivity(), OrderDataFormActivity::class.java)
+                startActivity(intent)
+            }
+
         }
 
     }
@@ -112,6 +116,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         CDF.setOnClickListener(this)
         logout.setOnClickListener(this)
         add_dsl_iv.setOnClickListener(this)
+        ODF.setOnClickListener(this)
     }
 
 }

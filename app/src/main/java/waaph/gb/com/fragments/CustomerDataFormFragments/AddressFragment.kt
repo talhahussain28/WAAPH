@@ -1,5 +1,7 @@
-package waaph.gb.com.fragments
+package waaph.gb.com.fragments.CustomerDataFormFragments
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_address.*
 import waaph.gb.com.AddressDetailActivity
-import waaph.gb.com.BankDetailActivity
 import waaph.gb.com.CreateAddressDataActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.AddressAdapter

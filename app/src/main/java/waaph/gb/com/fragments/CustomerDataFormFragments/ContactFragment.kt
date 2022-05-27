@@ -1,4 +1,4 @@
-package waaph.gb.com.fragments
+package waaph.gb.com.fragments.CustomerDataFormFragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_create_address_data.*
-import kotlinx.android.synthetic.main.fragment_bank.*
 import kotlinx.android.synthetic.main.fragment_contact.*
 import waaph.gb.com.*
 import waaph.gb.com.adapters.ContactAdapter

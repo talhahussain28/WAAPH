@@ -3,9 +3,8 @@ package waaph.gb.com
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import waaph.gb.com.fragments.HomeFragment
+import waaph.gb.com.fragments.CustomerDataFormFragments.HomeFragment
 
 
 class BottomNavigationActivity : AppCompatActivity() {
