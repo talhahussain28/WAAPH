@@ -40,7 +40,6 @@ class OrderDataFormActivity : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 if (position > 1) {
-                    // java.lang.IllegalArgumentException: No view found for id 0x7f070055 (com.example.viewpagerfragmentswap:id/root_frame) for fragment SecondFragment
                     for (i in 0 until supportFragmentManager.backStackEntryCount) {
                         supportFragmentManager.popBackStack()
                     }
