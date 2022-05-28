@@ -8,3 +8,7 @@ data class AddressData(
     val title:String,
     val Address:String
 )
+
+class SelectItemModel (
+    var itemName : String
+)

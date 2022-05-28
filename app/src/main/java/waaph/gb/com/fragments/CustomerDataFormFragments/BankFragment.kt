@@ -1,12 +1,10 @@
-package waaph.gb.com.fragments
+package waaph.gb.com.fragments.CustomerDataFormFragments
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_bank.*
-import kotlinx.android.synthetic.main.fragment_general.*
 import waaph.gb.com.BankDetailActivity
 import waaph.gb.com.CreateBankActivity
 import waaph.gb.com.CustomerDataFormActivity
