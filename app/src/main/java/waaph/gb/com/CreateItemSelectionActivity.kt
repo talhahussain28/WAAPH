@@ -1,4 +1,4 @@
-package waaph.gb.com.fragments.CustomerDataFormFragments
+package waaph.gb.com
 
 import android.app.Dialog
 import android.graphics.Color
@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_item_selection.*
 import kotlinx.android.synthetic.main.custom_dialog.*
-import waaph.gb.com.R
 import waaph.gb.com.utils.GeneralBottomAdapter
 
 class CreateItemSelectionActivity : AppCompatActivity(),View.OnClickListener {

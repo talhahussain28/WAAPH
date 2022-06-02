@@ -1,6 +1,5 @@
 package waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,15 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_address.*
 import kotlinx.android.synthetic.main.fragment_item_selection.*
+import waaph.gb.com.ItemSelectedDetailActivity
 import waaph.gb.com.R
-import waaph.gb.com.adapters.AddressAdapter
 import waaph.gb.com.adapters.SelectItemAdapter
-import waaph.gb.com.fragments.CustomerDataFormFragments.CreateItemSelectionActivity
+import waaph.gb.com.CreateItemSelectionActivity
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
-import waaph.gb.com.model.CreateAddressModel
-import waaph.gb.com.model.Data
 import waaph.gb.com.model.SelectItemModel
 
 class ItemSelectionFragment : Fragment() , View.OnClickListener,
@@ -50,16 +46,16 @@ class ItemSelectionFragment : Fragment() , View.OnClickListener,
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.fabSelectItem -> {
-                startActivity(Intent(requireContext(),CreateItemSelectionActivity::class.java))
+                startActivity(Intent(requireContext(), CreateItemSelectionActivity::class.java))
             }
 
         }
     }
 
     override fun onItemClick(itemView: View?, position: Int) {
-
+        val intent = Intent(requireContext(), ItemSelectedDetailActivity::class.java)
+        startActivity(intent)
     }
-
 
     private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: SelectItemAdapter) {
         list.add(SelectItemModel("waleed"))

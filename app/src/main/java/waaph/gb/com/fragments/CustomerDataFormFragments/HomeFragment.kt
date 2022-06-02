@@ -73,8 +73,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_CDF ->{
-                    val intent = Intent(requireActivity(), CustomerDataFormActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(requireActivity(), CustomerDataFormActivity::class.java))
                     drawerLayout.close()
                 }
                 R.id.nav_home ->{
@@ -90,7 +89,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     Toast.makeText(requireContext(), "expenseClaim  ", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_orderDataFrom ->{
-                    Toast.makeText(requireContext(), "orderDataFrom  ", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(requireActivity(), OrderDataFormActivity::class.java))
+                    drawerLayout.close()
                 }
                 R.id.nav_orderPayment ->{
                     Toast.makeText(requireContext(), "orderPayment", Toast.LENGTH_SHORT).show()
