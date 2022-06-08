@@ -7,8 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
-import waaph.gb.com.fragments.*
-import waaph.gb.com.fragments.CustomerDataFormFragments.*
+import waaph.gb.com.fragments.customerDataFormFragments.*
 import waaph.gb.com.model.ViewPagerItemModel
 
 class CustomerDataFormActivity : AppCompatActivity() {

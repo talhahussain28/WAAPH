@@ -1,4 +1,4 @@
-package waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment
+package waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment
+package waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment
 
 import android.app.Dialog
 import android.graphics.Color
@@ -9,11 +9,11 @@ import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_general_odf.*
 import waaph.gb.com.R
 import waaph.gb.com.utils.GeneralBottomAdapter
+import waaph.gb.com.utils.Utils.Companion.etValidate
 
 class GeneralFragmentODF : Fragment(), View.OnClickListener {
 
@@ -238,7 +238,7 @@ class GeneralFragmentODF : Fragment(), View.OnClickListener {
 
     }
 
-    private fun etValidate(edittext: TextInputEditText): Boolean {
+    /*private fun etValidate(edittext: TextInputEditText): Boolean {
         var validate = edittext.text.toString()
         validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
         if (validate.isEmpty()) {
@@ -246,7 +246,7 @@ class GeneralFragmentODF : Fragment(), View.OnClickListener {
             return false
         }
         return true
-    }
+    }*/
 
 
     private fun setOnClickListeners() {

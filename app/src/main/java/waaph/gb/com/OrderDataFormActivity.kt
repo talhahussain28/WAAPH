@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
-import waaph.gb.com.fragments.CustomerDataFormFragments.*
-import waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment.ComplianceFragment
-import waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment.GeneralFragmentODF
-import waaph.gb.com.fragments.CustomerDataFormFragments.OrderDataFormFragment.ItemSelectionFragment
+import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.ComplianceFragment
+import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.GeneralFragmentODF
+import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.ItemSelectionFragment
 import waaph.gb.com.model.ViewPagerItemModel
 
 class OrderDataFormActivity : AppCompatActivity() {

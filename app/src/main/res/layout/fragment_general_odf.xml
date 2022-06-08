@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical"
-    tools:context=".fragments.CustomerDataFormFragments.OrderDataFormFragment.GeneralFragmentODF">
+    tools:context=".fragments.customerDataFormFragments.orderDataFormFragment.GeneralFragmentODF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

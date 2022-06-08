@@ -1,4 +1,4 @@
-package waaph.gb.com.fragments.CustomerDataFormFragments
+package waaph.gb.com.fragments.customerDataFormFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

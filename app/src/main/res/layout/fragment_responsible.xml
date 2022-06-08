@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@drawable/bg"
     android:layout_height="match_parent"
-    tools:context=".fragments.CustomerDataFormFragments.ResponsibleFragment">
+    tools:context=".fragments.customerDataFormFragments.ResponsibleFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayoutStyle"
