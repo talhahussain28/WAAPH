@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "251259694321",
+    "project_id": "waaph-c120f",
+    "storage_bucket": "waaph-c120f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251259694321:android:5fd95355cdda4ab4accd50",
+        "android_client_info": {
+          "package_name": "waaph.gb.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251259694321-5fgdld11sdf0l0gb7l2momgneqe2d6pi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "waaph.gb.com",
+            "certificate_hash": "85937e41c61d46532f45260b0b2351414baf3ec1"
+          }
+        },
+        {
+          "client_id": "251259694321-q20pd49hv0c3j12j87k1im75e35iret4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN5zgxEc-nvmCJcKWYWp3aGNqUDd37g2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251259694321-q20pd49hv0c3j12j87k1im75e35iret4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
