@@ -16,14 +16,27 @@ import kotlinx.android.synthetic.main.activity_create_bank.*
 import kotlinx.android.synthetic.main.activity_create_contact.*
 import kotlinx.android.synthetic.main.activity_create_general_data.*
 import kotlinx.android.synthetic.main.custom_dialog.*
+import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter
+import waaph.gb.com.utils.Utils
 
-class CreateContactActivity : AppCompatActivity(), View.OnClickListener  {
+class CreateContactActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_contact)
 
         setOnClickListener()
+    }
+
+    override fun linkXML() {
+    }
+
+    override fun setOnClickListener() {
+        btnNext.setOnClickListener(this)
+        openCategoryList.setOnClickListener(this)
+    }
+
+    override fun initialize() {
     }
 
     override fun onClick(v: View?) {
@@ -92,33 +105,19 @@ class CreateContactActivity : AppCompatActivity(), View.OnClickListener  {
 
     }
 
-    private fun addAddress(){
-        etValidate(edtPersonName)
-        etValidate(edtDesignation)
-        etValidate(edtPhoneNumber)
-        etValidate(edtEmailContact)
+    private fun addAddress() {
+        Utils.etValidate(edtPersonName)
+        Utils.etValidate(edtDesignation)
+        Utils.etValidate(edtPhoneNumber)
+        Utils.etValidate(edtEmailContact)
 
-        if (edtPersonName.text!!.isNotEmpty()&&
-            edtDesignation.text!!.isNotEmpty()&&
-            edtPhoneNumber.text!!.isNotEmpty()&&
+        if (edtPersonName.text!!.isNotEmpty() &&
+            edtDesignation.text!!.isNotEmpty() &&
+            edtPhoneNumber.text!!.isNotEmpty() &&
             edtEmailContact.text!!.isNotEmpty()
         ) {
             Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun etValidate(edittext: TextInputEditText): Boolean {
-        var validate = edittext.text.toString()
-        validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
-        if (validate.isEmpty()) {
-            edittext.error = "Required"
-            return false
-        }
-        return true
-    }
-
-    private fun setOnClickListener(){
-        btnNext.setOnClickListener(this)
-        openCategoryList.setOnClickListener(this)
-    }
 }

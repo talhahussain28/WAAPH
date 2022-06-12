@@ -7,17 +7,33 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_signup1.*
+import waaph.gb.com.utils.BaseActivity
 
-class Signup1Activity : AppCompatActivity(), View.OnClickListener {
+class Signup1Activity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup1)
+        initialize()
+        setOnClickListener()
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
         val next = findViewById<Button>(R.id.next)
         next.setOnClickListener(this)
         login.setOnClickListener(this)
         male.setOnClickListener(this)
         female.setOnClickListener(this)
+
     }
+
+    override fun initialize() {
+
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.next -> {

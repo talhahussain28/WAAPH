@@ -17,9 +17,11 @@ import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_address_data.*
 import kotlinx.android.synthetic.main.custom_dialog.*
 import waaph.gb.com.model.SelectedDayCreateAddressModel
+import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter
+import waaph.gb.com.utils.Utils
 
-class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
+class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
 
     private lateinit var selectDay : ArrayList<SelectedDayCreateAddressModel>
     private var model  : SelectedDayCreateAddressModel? = null
@@ -28,11 +30,32 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_address_data)
+        initialize()
+        setOnClickListener()
+    }
 
+    override fun linkXML() {
+    }
+
+    override fun setOnClickListener() {
+        btnAddAddress.setOnClickListener(this)
+        locationTypeList.setOnClickListener(this)
+        countryList.setOnClickListener(this)
+        regionList.setOnClickListener(this)
+        areaLocationList.setOnClickListener(this)
+        provinceList.setOnClickListener(this)
+        tvMonday.setOnClickListener(this)
+        tvSunday.setOnClickListener(this)
+        tvSaturday.setOnClickListener(this)
+        tvFriday.setOnClickListener(this)
+        tvThursday.setOnClickListener(this)
+        tvWednesday.setOnClickListener(this)
+        tvTuesday.setOnClickListener(this)
+   }
+
+    override fun initialize() {
         selectDay = ArrayList()
         days = tvShowDay
-
-        setOnClickListeners()
     }
 
     @SuppressLint("ResourceAsColor")
@@ -448,10 +471,10 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
 
     private fun addAddress(){
 
-        etValidate(edtAddressName)
-        etValidate(edtAddressLine)
-        etValidate(edtPostalCode)
-        etValidate(edtWorkingHours)
+        Utils.etValidate(edtAddressName)
+        Utils.etValidate(edtAddressLine)
+        Utils.etValidate(edtPostalCode)
+        Utils.etValidate(edtWorkingHours)
 
         if (edtAddressName.text!!.isNotEmpty()&&
             edtAddressLine.text!!.isNotEmpty()&&
@@ -462,30 +485,5 @@ class CreateAddressDataActivity : AppCompatActivity() , View.OnClickListener{
         }
     }
 
-    private fun etValidate(edittext: TextInputEditText): Boolean {
-        var validate = edittext.text.toString()
-        validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
-        if (validate.isEmpty()) {
-            edittext.error = "Required"
-            return false
-        }
-        return true
-    }
-
-    private fun setOnClickListeners(){
-        btnAddAddress.setOnClickListener(this)
-        locationTypeList.setOnClickListener(this)
-        countryList.setOnClickListener(this)
-        regionList.setOnClickListener(this)
-        areaLocationList.setOnClickListener(this)
-        provinceList.setOnClickListener(this)
-        tvMonday.setOnClickListener(this)
-        tvSunday.setOnClickListener(this)
-        tvSaturday.setOnClickListener(this)
-        tvFriday.setOnClickListener(this)
-        tvThursday.setOnClickListener(this)
-        tvWednesday.setOnClickListener(this)
-        tvTuesday.setOnClickListener(this)
-    }
 
 }

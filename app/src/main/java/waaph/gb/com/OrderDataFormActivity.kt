@@ -11,8 +11,9 @@ import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.Co
 import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.GeneralFragmentODF
 import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.ItemSelectionFragment
 import waaph.gb.com.model.ViewPagerItemModel
+import waaph.gb.com.utils.BaseActivity
 
-class OrderDataFormActivity : AppCompatActivity() {
+class OrderDataFormActivity : BaseActivity() {
 
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
      var viewPagerAdapter: ViewPagerAdapter?=null
@@ -20,6 +21,17 @@ class OrderDataFormActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_data_form)
+        initialize()
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
+    }
+
+    override fun initialize() {
         setupViewPager()
     }
 

@@ -9,19 +9,32 @@ import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.edit_text_password
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.EditTextDrawableClick
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : BaseActivity(), View.OnClickListener {
     private var isVisiblePassword = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setOnClickListener()
+        initialize()
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
         val login = findViewById<Button>(R.id.login)
         login.setOnClickListener(this)
         tv_signup.setOnClickListener(this)
         forgot_pass.setOnClickListener(this)
         edit_text_password.setOnClickListener(this)
+    }
+
+    override fun initialize() {
         edit_text_password.setDrawableClickListener { target ->
             when (target) {
                 EditTextDrawableClick.DrawableClickListener.DrawablePosition.LEFTT -> {

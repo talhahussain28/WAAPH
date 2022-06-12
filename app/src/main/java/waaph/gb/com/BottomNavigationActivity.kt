@@ -5,13 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import waaph.gb.com.fragments.customerDataFormFragments.HomeFragment
+import waaph.gb.com.utils.BaseActivity
 
 
-class BottomNavigationActivity : AppCompatActivity() {
+class BottomNavigationActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_navigation)
-        loadFragment(HomeFragment())
+        initialize()
+        setOnClickListener()
 
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_nav)
@@ -29,11 +31,11 @@ class BottomNavigationActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
 
-               /* R.id.navigation_settings -> {
-                    title = resources.getString(R.string.settings)
-                    loadFragment(SettingsFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }*/
+                /* R.id.navigation_settings -> {
+                     title = resources.getString(R.string.settings)
+                     loadFragment(SettingsFragment())
+                     return@setOnNavigationItemSelectedListener true
+                 }*/
 
             }
             false
@@ -45,6 +47,17 @@ class BottomNavigationActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
+    }
+
+    override fun initialize() {
+        loadFragment(HomeFragment())
     }
 
     private fun loadFragment(fragment: Fragment) {

@@ -6,13 +6,27 @@ import android.view.View
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_add_payment.*
+import waaph.gb.com.utils.BaseActivity
+import waaph.gb.com.utils.Utils
 
-class AddPaymentActivity : AppCompatActivity(), View.OnClickListener {
+class AddPaymentActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_payment)
 
-        setOnClickListeners()
+        setOnClickListener()
+        initialize()
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
+        next.setOnClickListener(this)
+    }
+
+    override fun initialize() {
     }
 
     override fun onClick(v: View?) {
@@ -24,25 +38,12 @@ class AddPaymentActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun addPayment(){
-        etValidate(edtPersonName)
+        Utils.etValidate(edtPersonName)
 
         if (edtPersonName.text.toString().isNotEmpty()){
             Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun etValidate(edittext: TextInputEditText): Boolean {
-        var validate = edittext.text.toString()
-        validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
-        if (validate.isEmpty()) {
-            edittext.error = "Required"
-            return false
-        }
-        return true
-    }
-
-    private fun setOnClickListeners(){
-        next.setOnClickListener(this)
-    }
 
 }

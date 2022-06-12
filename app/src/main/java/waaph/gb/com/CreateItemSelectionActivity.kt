@@ -14,14 +14,31 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_item_selection.*
 import kotlinx.android.synthetic.main.custom_dialog.*
+import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter
+import waaph.gb.com.utils.Utils
 
-class CreateItemSelectionActivity : AppCompatActivity(),View.OnClickListener {
+class CreateItemSelectionActivity : BaseActivity(),View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_item_selection)
 
-        setOnClickListeners()
+        setOnClickListener()
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
+        btnCreateItem.setOnClickListener(this)
+        showContactDetailList.setOnClickListener(this)
+        salesTakerList.setOnClickListener(this)
+        termsOfPaymentList.setOnClickListener(this)
+        tvMethodOfPaymentList.setOnClickListener(this)
+    }
+
+    override fun initialize() {
     }
 
     override fun onClick(v: View?) {
@@ -265,20 +282,20 @@ class CreateItemSelectionActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun addItem(){
-        etValidate(edtItemName)
-        etValidate(edtItemCode)
-        etValidate(edtSaleUnit)
-        etValidate(edtRateAndUnitPrice)
-        etValidate(edtQuality)
-        etValidate(edtDiscount)
-        etValidate(edtSchemeCode)
-        etValidate(edtFOC)
-        etValidate(edtSalesTaxAmount)
-        etValidate(edtTotalAmount)
-        etValidate(edtModeOfPayment)
-        etValidate(edtOrderPriority)
-        etValidate(edtDeliverDateAndTime)
-        etValidate(edtDeliveryAddress)
+        Utils.etValidate(edtItemName)
+        Utils.etValidate(edtItemCode)
+        Utils.etValidate(edtSaleUnit)
+        Utils.etValidate(edtRateAndUnitPrice)
+        Utils.etValidate(edtQuality)
+        Utils.etValidate(edtDiscount)
+        Utils.etValidate(edtSchemeCode)
+        Utils.etValidate(edtFOC)
+        Utils.etValidate(edtSalesTaxAmount)
+        Utils.etValidate(edtTotalAmount)
+        Utils.etValidate(edtModeOfPayment)
+        Utils.etValidate(edtOrderPriority)
+        Utils.etValidate(edtDeliverDateAndTime)
+        Utils.etValidate(edtDeliveryAddress)
 
         if (edtItemName.text!!.isNotEmpty()&&
             edtItemCode.text!!.isNotEmpty()&&
@@ -300,22 +317,5 @@ class CreateItemSelectionActivity : AppCompatActivity(),View.OnClickListener {
     }
 
 
-    private fun etValidate(edittext: TextInputEditText): Boolean {
-        var validate = edittext.text.toString()
-        validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
-        if (validate.isEmpty()) {
-            edittext.error = "Required"
-            return false
-        }
-        return true
-    }
-
-    private fun setOnClickListeners(){
-        btnCreateItem.setOnClickListener(this)
-        showContactDetailList.setOnClickListener(this)
-        salesTakerList.setOnClickListener(this)
-        termsOfPaymentList.setOnClickListener(this)
-        tvMethodOfPaymentList.setOnClickListener(this)
-    }
 
 }

@@ -12,6 +12,7 @@ import waaph.gb.com.R
 import waaph.gb.com.adapters.GeneralAdapter
 import waaph.gb.com.model.CreateGeneralModel
 import waaph.gb.com.utils.BaseFragment
+import waaph.gb.com.utils.Utils
 
 class GeneralFragment : BaseFragment(), View.OnClickListener {
 
@@ -27,13 +28,6 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-  /*      val linearLayoutManager = LinearLayoutManager(requireContext())
-        list = ArrayList()
-        adapter = GeneralAdapter(requireContext(),list)
-
-        recyclerViewGeneral.layoutManager = linearLayoutManager
-        recyclerViewGeneral.adapter = adapter*/
         setOnClickListener()
         initialize()
     }
@@ -46,30 +40,21 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
-    private fun etValidate(edittext: TextInputEditText): Boolean {
-        var validate = edittext.text.toString()
-        validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
-        if (validate.isEmpty()) {
-            edittext.error = "Required"
-            return false
-        }
-        return true
-    }
 
     private fun createGeneral(){
-        etValidate(edtBussinessName)
-        etValidate(edtCustomerGroup)
-        etValidate(edtBussinessType)
-        etValidate(edtCNIC)
-        etValidate(edtNTN)
-        etValidate(edtRegion)
-        etValidate(edtFAX)
-        etValidate(edtMobile)
-        etValidate(edtWhatsApp)
-        etValidate(edtWebSite)
-        etValidate(edtEmail)
-        etValidate(edtOrganizationName)
-        etValidate(edtPhone)
+        Utils.etValidate(edtBussinessName)
+        Utils.etValidate(edtCustomerGroup)
+        Utils.etValidate(edtBussinessType)
+        Utils.etValidate(edtCNIC)
+        Utils.etValidate(edtNTN)
+        Utils.etValidate(edtRegion)
+        Utils.etValidate(edtFAX)
+        Utils.etValidate(edtMobile)
+        Utils.etValidate(edtWhatsApp)
+        Utils.etValidate(edtWebSite)
+        Utils.etValidate(edtEmail)
+        Utils.etValidate(edtOrganizationName)
+        Utils.etValidate(edtPhone)
 
         if (edtBussinessName.text!!.isNotEmpty()&&
             edtCustomerGroup.text!!.isNotEmpty()&&

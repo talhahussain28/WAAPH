@@ -6,13 +6,26 @@ import android.view.View
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_general_data.*
+import waaph.gb.com.utils.BaseActivity
+import waaph.gb.com.utils.Utils
 
-class CreateGeneralDataActivity : AppCompatActivity(), View.OnClickListener {
+class CreateGeneralDataActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_general_data)
 
-        setUpClickListeners()
+        setOnClickListener()
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
+        btnCreateGeneral.setOnClickListener(this)
+    }
+
+    override fun initialize() {
     }
 
     override fun onClick(v: View?) {
@@ -23,30 +36,21 @@ class CreateGeneralDataActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun etValidate(edittext: TextInputEditText): Boolean {
-        var validate = edittext.text.toString()
-        validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
-        if (validate.isEmpty()) {
-            edittext.error = "Required"
-            return false
-        }
-        return true
-    }
 
     private fun createGeneral(){
-        etValidate(edtBussinessName)
-        etValidate(edtCustomerGroup)
-        etValidate(edtBussinessType)
-        etValidate(edtCNIC)
-        etValidate(edtNTN)
-        etValidate(edtRegion)
-        etValidate(edtFAX)
-        etValidate(edtMobile)
-        etValidate(edtWhatsApp)
-        etValidate(edtWebSite)
-        etValidate(edtEmail)
-        etValidate(edtOrganizationName)
-        etValidate(edtPhone)
+        Utils.etValidate(edtBussinessName)
+        Utils.etValidate(edtCustomerGroup)
+        Utils.etValidate(edtBussinessType)
+        Utils.etValidate(edtCNIC)
+        Utils.etValidate(edtNTN)
+        Utils.etValidate(edtRegion)
+        Utils.etValidate(edtFAX)
+        Utils.etValidate(edtMobile)
+        Utils.etValidate(edtWhatsApp)
+        Utils.etValidate(edtWebSite)
+        Utils.etValidate(edtEmail)
+        Utils.etValidate(edtOrganizationName)
+        Utils.etValidate(edtPhone)
 
         if (edtBussinessName.text!!.isNotEmpty()&&
             edtCustomerGroup.text!!.isNotEmpty()&&
@@ -64,11 +68,6 @@ class CreateGeneralDataActivity : AppCompatActivity(), View.OnClickListener {
         ) {
             Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    private fun setUpClickListeners(){
-        btnCreateGeneral.setOnClickListener(this)
-
     }
 
 }

@@ -15,15 +15,29 @@ import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_bank.*
 import kotlinx.android.synthetic.main.activity_create_general_data.*
 import kotlinx.android.synthetic.main.custom_dialog.*
+import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter
+import waaph.gb.com.utils.Utils
 
-class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
+class CreateBankActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_bank)
 
-        setOnClickListeners()
+        setOnClickListener()
 
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
+        next.setOnClickListener(this)
+        bank.setOnClickListener(this)
+    }
+
+    override fun initialize() {
     }
 
     override fun onClick(v: View?) {
@@ -89,9 +103,9 @@ class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
      }
 
     private fun createBank(){
-        etValidate(editText_Name)
-        etValidate(edtAccountNo)
-        etValidate(editText_budget)
+        Utils.etValidate(editText_Name)
+        Utils.etValidate(edtAccountNo)
+        Utils.etValidate(editText_budget)
 
         if (editText_Name.text!!.isNotEmpty()&&
             editText_budget.text!!.isNotEmpty()&&
@@ -101,18 +115,5 @@ class CreateBankActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun etValidate(edittext: TextInputEditText): Boolean {
-        var validate = edittext.text.toString()
-        validate = validate.replace("\\s+".toRegex(), " ").trim { it <= ' ' }
-        if (validate.isEmpty()) {
-            edittext.error = "Required"
-            return false
-        }
-        return true
-    }
 
-    private fun setOnClickListeners(){
-        next.setOnClickListener(this)
-        bank.setOnClickListener(this)
-    }
 }

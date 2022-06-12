@@ -9,8 +9,9 @@ import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
 import waaph.gb.com.fragments.customerDataFormFragments.*
 import waaph.gb.com.model.ViewPagerItemModel
+import waaph.gb.com.utils.BaseActivity
 
-class CustomerDataFormActivity : AppCompatActivity() {
+class CustomerDataFormActivity : BaseActivity() {
 
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
     var viewPagerAdapter:ViewPagerAdapter?=null
@@ -18,6 +19,17 @@ class CustomerDataFormActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_data_form)
+        initialize()
+    }
+
+    override fun linkXML() {
+
+    }
+
+    override fun setOnClickListener() {
+    }
+
+    override fun initialize() {
         setupViewPager()
     }
 
