@@ -11,6 +11,7 @@ class ContactDetailActivity : BaseActivity() {
     }
 
     override fun linkXML() {
+        //t
 
     }
 
