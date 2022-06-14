@@ -188,7 +188,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView_ordePaymet"
+                android:id="@+id/cardView_ordePayment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -221,7 +221,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView_orderPayment"
+                android:id="@+id/cardView_medical"
                 android:layout_width="match_parent"
                 android:backgroundTint="@color/blue"
                 android:layout_height="match_parent"
@@ -377,7 +377,7 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardVie_exnsClaim"
+                    android:id="@+id/cardView_expClaim"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -411,7 +411,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView_expeneCim"
+                    android:id="@+id/cardView_memo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -447,7 +447,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardViw_orderPayment"
+                android:id="@+id/cardView_travel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"

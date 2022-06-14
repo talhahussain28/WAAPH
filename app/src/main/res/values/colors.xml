@@ -16,7 +16,8 @@
     <color name="darkBlue">#5C81AA</color>
     <color name="lightBlue">#60C2D7</color>
     <color name="viewGrey">#efefef</color>
-    <color name="TopviewGrey">#888888</color>
+    <color name="TopviewGrey">#888888</color>646464
+    <color name="bg">#646464</color>
 
     <color name="dd">#404040</color>
 

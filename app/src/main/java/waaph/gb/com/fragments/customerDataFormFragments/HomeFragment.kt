@@ -11,10 +11,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
-import waaph.gb.com.CustomerDataFormActivity
-import waaph.gb.com.MainActivity
-import waaph.gb.com.OrderDataFormActivity
-import waaph.gb.com.R
+import waaph.gb.com.*
+import waaph.gb.com.utils.Dialog
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
@@ -63,6 +61,38 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 val intent = Intent(requireActivity(), OrderDataFormActivity::class.java)
                 startActivity(intent)
             }
+            R.id.cardView_my_profile ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+
+               /* val intent = Intent(requireActivity(), MyProfileActivity::class.java)
+                startActivity(intent)*/
+
+            }
+            R.id.cardView_salaryslip ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+
+            }
+            R.id.cardView_leaveRequest ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+            }
+            R.id.cardView_expenseClaim ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+            }
+            R.id.cardView_ordePayment ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+            }
+            R.id.cardView_expClaim ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+            }
+            R.id.cardView_memo ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+            }
+            R.id.cardView_medical ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+            }
+            R.id.cardView_travel ->{
+                activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+            }
 
         }
 
@@ -77,15 +107,23 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     drawerLayout.close()
                 }
                 R.id.nav_home ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "Home", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_salarySlip ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "Salary Slip", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_leaveRequest ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "leaveRequest", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_expenseClaim ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "expenseClaim  ", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_orderDataFrom ->{
@@ -93,18 +131,28 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     drawerLayout.close()
                 }
                 R.id.nav_orderPayment ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "orderPayment", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_productLiterature ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "productLiterature", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_memo ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "memo", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_medical ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "medical", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_travelRequest ->{
+                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
+                    drawerLayout.close()
                     Toast.makeText(requireContext(), "travelRequest", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -117,6 +165,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
         logout.setOnClickListener(this)
         add_dsl_iv.setOnClickListener(this)
         ODF.setOnClickListener(this)
+        cardView_my_profile.setOnClickListener(this)
+        cardView_salaryslip.setOnClickListener(this)
+        cardView_leaveRequest.setOnClickListener(this)
+        cardView_travel.setOnClickListener(this)
+        cardView_medical.setOnClickListener(this)
+        cardView_leaveRequest.setOnClickListener(this)
+        cardView_expenseClaim.setOnClickListener(this)
+        cardView_ordePayment.setOnClickListener(this)
+        cardView_expClaim.setOnClickListener(this)
+        cardView_memo.setOnClickListener(this)
+
     }
 
 }
