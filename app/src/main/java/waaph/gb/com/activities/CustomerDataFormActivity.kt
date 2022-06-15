@@ -19,7 +19,6 @@ class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
 
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
     var viewPagerAdapter: ViewPagerAdapter?=null
-    var viewPagerAdapter:ViewPagerAdapter?=null
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navigationView: NavigationView
 

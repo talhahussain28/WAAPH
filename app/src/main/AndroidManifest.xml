@@ -24,7 +24,6 @@
             android:name=".NavigationSideDrawerAndBottom"
             android:exported="false" />
         <activity
-            android:name=".MyProfileActivity"
             android:name=".activities.MyProfileActivity"
             android:exported="false" />
         <activity
