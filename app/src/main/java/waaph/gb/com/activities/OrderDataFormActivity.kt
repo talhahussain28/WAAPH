@@ -1,12 +1,12 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
+import waaph.gb.com.R
 import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.ComplianceFragment
 import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.GeneralFragmentODF
 import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.ItemSelectionFragment

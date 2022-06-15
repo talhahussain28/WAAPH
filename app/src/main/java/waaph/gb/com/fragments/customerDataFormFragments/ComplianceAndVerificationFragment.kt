@@ -1,12 +1,11 @@
 package waaph.gb.com.fragments.customerDataFormFragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_compliance_and_verification.*
-import waaph.gb.com.CustomerDataFormActivity
+import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.utils.BaseFragment
 

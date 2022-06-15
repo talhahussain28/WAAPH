@@ -21,26 +21,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WAAPH">
         <activity
-            android:name=".MyProfileActivity"
+            android:name=".activities.MyProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ItemSelectedDetailActivity"
+            android:name=".activities.ItemSelectedDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateItemSelectionActivity"
+            android:name=".activities.CreateItemSelectionActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".OrderDataFormActivity"
+            android:name=".activities.OrderDataFormActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ContactDetailActivity"
+            android:name=".activities.ContactDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddressDetailActivity"
+            android:name=".activities.AddressDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <!--
@@ -51,55 +51,55 @@
             android:theme="@style/Theme.WAAPH.NoActionBar" />
         -->
         <activity
-            android:name=".AddPaymentActivity"
+            android:name=".activities.AddPaymentActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateContactActivity"
+            android:name=".activities.CreateContactActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateAddressDataActivity"
+            android:name=".activities.CreateAddressDataActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateGeneralDataActivity"
+            android:name=".activities.CreateGeneralDataActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BankDetailActivity"
+            android:name=".activities.BankDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateBankActivity"
+            android:name=".activities.CreateBankActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".activities.ForgotPasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CustomerDataFormActivity"
+            android:name=".activities.CustomerDataFormActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BottomNavigationActivity"
+            android:name=".activities.BottomNavigationActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignUp2Activity"
+            android:name=".activities.SignUp2Activity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Signup1Activity"
+            android:name=".activities.Signup1Activity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".activities.SignUpActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:noHistory="true"
@@ -111,7 +111,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 

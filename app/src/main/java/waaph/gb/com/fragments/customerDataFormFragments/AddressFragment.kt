@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_address.*
-import waaph.gb.com.AddressDetailActivity
-import waaph.gb.com.CreateAddressDataActivity
+import waaph.gb.com.activities.AddressDetailActivity
+import waaph.gb.com.activities.CreateAddressDataActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.AddressAdapter
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener

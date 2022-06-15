@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_bank.*
-import waaph.gb.com.BankDetailActivity
-import waaph.gb.com.CreateBankActivity
-import waaph.gb.com.CustomerDataFormActivity
+import waaph.gb.com.activities.BankDetailActivity
+import waaph.gb.com.activities.CreateBankActivity
+import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.BankAdapter
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener

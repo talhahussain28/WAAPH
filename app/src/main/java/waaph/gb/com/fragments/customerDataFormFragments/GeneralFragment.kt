@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_general.*
-import waaph.gb.com.CustomerDataFormActivity
+import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.GeneralAdapter
 import waaph.gb.com.model.CreateGeneralModel

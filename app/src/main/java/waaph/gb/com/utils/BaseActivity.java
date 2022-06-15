@@ -30,8 +30,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import waaph.gb.com.BottomNavigationActivity;
-import waaph.gb.com.MainActivity;
+import waaph.gb.com.activities.BottomNavigationActivity;
+import waaph.gb.com.activities.MainActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

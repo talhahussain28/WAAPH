@@ -1,11 +1,10 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_add_payment.*
+import waaph.gb.com.R
 import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.Utils
 

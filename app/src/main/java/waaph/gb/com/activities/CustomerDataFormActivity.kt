@@ -1,12 +1,12 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
+import waaph.gb.com.R
 import waaph.gb.com.fragments.customerDataFormFragments.*
 import waaph.gb.com.model.ViewPagerItemModel
 import waaph.gb.com.utils.BaseActivity
@@ -14,7 +14,7 @@ import waaph.gb.com.utils.BaseActivity
 class CustomerDataFormActivity : BaseActivity() {
 
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
-    var viewPagerAdapter:ViewPagerAdapter?=null
+    var viewPagerAdapter: ViewPagerAdapter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
