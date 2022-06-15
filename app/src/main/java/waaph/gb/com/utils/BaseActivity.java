@@ -28,10 +28,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import waaph.gb.com.BottomNavigationActivity;
-import waaph.gb.com.CustomerDataFormActivity;
-import waaph.gb.com.MainActivity;
-import waaph.gb.com.OrderDataFormActivity;
+
+import waaph.gb.com.activities.BottomNavigationActivity;
+import waaph.gb.com.activities.MainActivity;
 import waaph.gb.com.R;
 import waaph.gb.com.navDrawer.NavDrawer;
 

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_contact.*
 import waaph.gb.com.*
+import waaph.gb.com.activities.ContactDetailActivity
+import waaph.gb.com.activities.CreateContactActivity
 import waaph.gb.com.adapters.ContactAdapter
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.CreateContactModel

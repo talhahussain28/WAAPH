@@ -10,7 +10,7 @@ import android.widget.ListView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_general.*
-import waaph.gb.com.CustomerDataFormActivity
+import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.GeneralAdapter
 import waaph.gb.com.model.CreateGeneralModel

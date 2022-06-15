@@ -1,4 +1,4 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import waaph.gb.com.R
 
 
 class SplashActivity : AppCompatActivity() {

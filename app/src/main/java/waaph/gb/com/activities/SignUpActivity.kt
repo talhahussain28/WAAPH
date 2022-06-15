@@ -1,12 +1,12 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import waaph.gb.com.R
 import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.EditTextDrawableClick
 

@@ -1,4 +1,4 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.app.Dialog
 import android.graphics.Color
@@ -10,10 +10,9 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_item_selection.*
 import kotlinx.android.synthetic.main.custom_dialog.*
+import waaph.gb.com.R
 import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter
 import waaph.gb.com.utils.Utils

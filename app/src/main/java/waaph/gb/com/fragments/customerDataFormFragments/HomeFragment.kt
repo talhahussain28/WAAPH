@@ -12,6 +12,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
 import waaph.gb.com.*
+import waaph.gb.com.activities.CustomerDataFormActivity
+import waaph.gb.com.activities.MainActivity
+import waaph.gb.com.activities.OrderDataFormActivity
 import waaph.gb.com.utils.Dialog
 
 class HomeFragment : Fragment(), View.OnClickListener {

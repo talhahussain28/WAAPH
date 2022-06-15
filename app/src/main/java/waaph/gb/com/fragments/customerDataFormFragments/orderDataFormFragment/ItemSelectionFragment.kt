@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_item_selection.*
-import waaph.gb.com.ItemSelectedDetailActivity
+import waaph.gb.com.activities.ItemSelectedDetailActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.SelectItemAdapter
-import waaph.gb.com.CreateItemSelectionActivity
+import waaph.gb.com.activities.CreateItemSelectionActivity
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.SelectItemModel
 

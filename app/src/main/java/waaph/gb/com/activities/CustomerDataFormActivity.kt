@@ -1,4 +1,4 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
+import waaph.gb.com.R
 import waaph.gb.com.fragments.customerDataFormFragments.*
 import waaph.gb.com.model.ViewPagerItemModel
 import waaph.gb.com.utils.BaseActivity
@@ -17,7 +18,7 @@ import waaph.gb.com.utils.BaseActivity
 class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
 
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
-    var viewPagerAdapter:ViewPagerAdapter?=null
+    var viewPagerAdapter: ViewPagerAdapter?=null
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navigationView: NavigationView
 
