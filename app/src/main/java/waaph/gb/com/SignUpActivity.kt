@@ -21,9 +21,7 @@ class SignUpActivity : BaseActivity(),View.OnClickListener {
 
     }
 
-    override fun linkXML() {
-
-    }
+    override fun linkXML() { }
 
     override fun setOnClickListener() {
         val next = findViewById<Button>(R.id.next)
