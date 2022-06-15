@@ -12,15 +12,14 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.Callable;
@@ -32,8 +31,14 @@ import java.util.concurrent.TimeoutException;
 
 import waaph.gb.com.activities.BottomNavigationActivity;
 import waaph.gb.com.activities.MainActivity;
+import waaph.gb.com.BottomNavigationActivity;
+import waaph.gb.com.CustomerDataFormActivity;
+import waaph.gb.com.MainActivity;
+import waaph.gb.com.OrderDataFormActivity;
+import waaph.gb.com.R;
+import waaph.gb.com.navDrawer.NavDrawer;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends NavDrawer {
 
     private final FragmentManager fragmentManager = getSupportFragmentManager();
     private ProgressDialog dialog;
@@ -220,4 +225,5 @@ public abstract class BaseActivity extends AppCompatActivity {
          */
         void onClick(DialogInterface dialog, int which);
     }
+
 }

@@ -88,6 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:paddingBottom="15dp"
+                android:inputType="textPersonName"
+                android:minLines="1"
                 android:drawableStart="@drawable/user_icon"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="2dp"
@@ -304,7 +306,7 @@
             android:drawableLeft="@drawable/password_icon"
             android:drawableRight="@drawable/hide_password_icon"
             android:drawablePadding="7dp"
-            android:hint="Password"
+            android:hint="Confirm Password"
             android:inputType="textPassword"
             android:paddingEnd="10dp">
 
