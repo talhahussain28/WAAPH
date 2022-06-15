@@ -16,8 +16,8 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.fragment_compliance_and_verification.*
-import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
+import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.utils.BaseFragment
 
 class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
