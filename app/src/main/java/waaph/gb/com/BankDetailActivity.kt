@@ -11,6 +11,7 @@ class BankDetailActivity : BaseActivity() {
     }
 
     override fun linkXML() {
+        //test
 
     }
 
