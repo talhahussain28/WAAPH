@@ -15,7 +15,6 @@ class BottomNavigationActivity : BaseActivity() {
         initialize()
         setOnClickListener()
 
-
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {

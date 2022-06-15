@@ -1,17 +1,14 @@
 package waaph.gb.com
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_customer_data_form.*
 import kotlinx.android.synthetic.main.activity_customer_data_form.add_dsl_iv
 import kotlinx.android.synthetic.main.activity_customer_data_form.tabLayout
 import kotlinx.android.synthetic.main.activity_customer_data_form.viewPager
@@ -21,7 +18,6 @@ import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.Ge
 import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.ItemSelectionFragment
 import waaph.gb.com.model.ViewPagerItemModel
 import waaph.gb.com.utils.BaseActivity
-import waaph.gb.com.utils.Dialog
 
 class OrderDataFormActivity : BaseActivity(),View.OnClickListener {
 

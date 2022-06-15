@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
 import waaph.gb.com.*
@@ -46,12 +44,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
         clickListeners()
     }
 
-
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.CDF -> {
                 val intent = Intent(requireActivity(), CustomerDataFormActivity::class.java)
                 startActivity(intent)
+                activity!!.finish()
             }
             R.id.logout -> {
                 startActivity(Intent(requireContext(),MainActivity::class.java))
@@ -62,6 +60,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             R.id.ODF -> {
                 val intent = Intent(requireActivity(), OrderDataFormActivity::class.java)
                 startActivity(intent)
+                activity!!.finish()
             }
             R.id.cardView_my_profile ->{
                 activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }

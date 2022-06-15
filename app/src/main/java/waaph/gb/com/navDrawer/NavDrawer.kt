@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationView
+import waaph.gb.com.BottomNavigationActivity
 import waaph.gb.com.CustomerDataFormActivity
 import waaph.gb.com.OrderDataFormActivity
 import waaph.gb.com.R
@@ -31,6 +32,8 @@ open class NavDrawer() : AppCompatActivity() {
                     }
                 }
                 R.id.nav_home ->{
+                    startActivity(Intent(this, BottomNavigationActivity::class.java))
+                    finish()
                   /*  val fragment: Fragment = HomeFragment()
                     val fragmentManager: FragmentManager = this.supportFragmentManager
                     val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
