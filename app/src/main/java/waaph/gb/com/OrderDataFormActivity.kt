@@ -28,24 +28,23 @@ class OrderDataFormActivity : BaseActivity(),View.OnClickListener {
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
      var viewPagerAdapter: ViewPagerAdapter?=null
     private lateinit var drawerLayout : DrawerLayout
+    private lateinit var navigationView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_data_form)
 
         drawerLayout = drawer_layout_ODF
+        navigationView = nav_view_ODF
 
         initialize()
         setOnClickListeners()
-        drawerItemListener()
+        drawerItemListener(navigationView,drawerLayout)
     }
 
-    override fun linkXML() {
+    override fun linkXML() { }
 
-    }
-
-    override fun setOnClickListener() {
-    }
+    override fun setOnClickListener() { }
 
     override fun initialize() {
         setupViewPager()
@@ -85,68 +84,6 @@ class OrderDataFormActivity : BaseActivity(),View.OnClickListener {
                 finish()
             }
 
-        }
-    }
-
-    private fun drawerItemListener() {
-        val navView: NavigationView = nav_view_ODF
-        navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.nav_CDF ->{
-                    startActivity(Intent(this, CustomerDataFormActivity::class.java))
-                    closeDrawerLayout()
-                }
-                R.id.nav_home ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_salarySlip ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "Salary Slip", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_leaveRequest ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    drawerLayout.close()
-                    Toast.makeText(this, "leaveRequest", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_expenseClaim ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "expenseClaim  ", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_orderDataFrom ->{
-                    startActivity(Intent(this, OrderDataFormActivity::class.java))
-                    closeDrawerLayout()
-                }
-                R.id.nav_orderPayment ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "orderPayment", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_productLiterature ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "productLiterature", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_memo ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "memo", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_medical ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "medical", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_travelRequest ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "travelRequest", Toast.LENGTH_SHORT).show()
-                }
-            }
-            true
         }
     }
 
