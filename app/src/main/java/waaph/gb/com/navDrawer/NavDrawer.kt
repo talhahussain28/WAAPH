@@ -10,10 +10,10 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationView
-import waaph.gb.com.BottomNavigationActivity
-import waaph.gb.com.CustomerDataFormActivity
-import waaph.gb.com.OrderDataFormActivity
 import waaph.gb.com.R
+import waaph.gb.com.activities.BottomNavigationActivity
+import waaph.gb.com.activities.CustomerDataFormActivity
+import waaph.gb.com.activities.OrderDataFormActivity
 import waaph.gb.com.fragments.customerDataFormFragments.HomeFragment
 import waaph.gb.com.utils.Dialog
 

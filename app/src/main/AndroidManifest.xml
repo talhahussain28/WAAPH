@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WAAPH">
         <activity
+            android:name=".NavigationSideDrawerAndBottom"
+            android:exported="false" />
+        <activity
             android:name=".activities.MyProfileActivity"
             android:exported="false" />
         <activity

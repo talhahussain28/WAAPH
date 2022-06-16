@@ -1,4 +1,4 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import kotlinx.android.synthetic.main.activity_customer_data_form.*
+import waaph.gb.com.R
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_customer_data_form.add_dsl_iv
 import kotlinx.android.synthetic.main.activity_customer_data_form.tabLayout
