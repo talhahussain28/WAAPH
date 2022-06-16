@@ -10,10 +10,13 @@ import android.widget.ListView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_general.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.GeneralAdapter
 import waaph.gb.com.database.cdf.GeneralDatabase
+import waaph.gb.com.entities.cdf.GeneralEnt
 import waaph.gb.com.model.CreateGeneralModel
 import waaph.gb.com.utils.BaseFragment
 import waaph.gb.com.utils.GeneralBottomAdapter
@@ -23,7 +26,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
     private lateinit var adapter: GeneralAdapter
     private lateinit var list: ArrayList<CreateGeneralModel>
-    private var generalDatabase: GeneralDatabase? = null
+    private lateinit var generalDatabase: GeneralDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -86,8 +89,45 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
             edtOrganizationName.text!!.isNotEmpty() &&
             edtPhone.text!!.isNotEmpty()
         ) {
-            (activity as CustomerDataFormActivity).setCurrentItem(1)
-            Toast.makeText(requireContext(), "task done", Toast.LENGTH_SHORT).show()
+
+            GlobalScope.launch {
+                generalDatabase.generalDao.addGeneral(GeneralEnt(0,
+                0,
+                    edtBussinessName.text.toString(),
+                ",",
+                    tvCustomerGroup.text.toString(),
+                    tvBusinessType.text.toString(),
+                    edtCNIC.text.toString(),
+                    edtNTN.text.toString(),
+                "yes",
+                    tvRegion.text.toString(),
+                    edtPhone.text.toString(),
+                    edtFAX.text.toString(),
+                    edtMobile.text.toString(),
+                    edtWhatsApp.text.toString(),
+                    edtWebSite.text.toString(),
+                    edtEmail.text.toString(),
+                    true,
+                    edtOrganizationName.text.toString(),
+                    "",
+                    "",
+                    "",
+                    0L,
+                    "",
+                    0L,
+                    "",
+                    0L,
+                    "",
+                    0L,
+                    "",
+                    true,
+                    true
+                ))
+            }
+
+            showToast("Database Created!")
+            /*(activity as CustomerDataFormActivity).setCurrentItem(1)
+            Toast.makeText(requireContext(), "task done", Toast.LENGTH_SHORT).show()*/
         }
     }
 
