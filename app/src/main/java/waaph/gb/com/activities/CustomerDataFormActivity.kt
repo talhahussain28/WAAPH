@@ -1,36 +1,56 @@
-package waaph.gb.com.activities
+package waaph.gb.com
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
-import waaph.gb.com.R
 import waaph.gb.com.fragments.customerDataFormFragments.*
 import waaph.gb.com.model.ViewPagerItemModel
 import waaph.gb.com.utils.BaseActivity
 
-class CustomerDataFormActivity : BaseActivity() {
+class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
 
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
-    var viewPagerAdapter: ViewPagerAdapter?=null
+    var viewPagerAdapter:ViewPagerAdapter?=null
+    private lateinit var drawerLayout : DrawerLayout
+    private lateinit var navigationView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_data_form)
+
+        drawerLayout = drawer_layout_CDF
+        navigationView = nav_view_CDF
+
         initialize()
+        setOnClickListeners()
+        drawerItemListener(navigationView,drawerLayout)
     }
 
-    override fun linkXML() {
+    override fun linkXML() { }
 
-    }
-
-    override fun setOnClickListener() {
-    }
+    override fun setOnClickListener() { }
 
     override fun initialize() {
         setupViewPager()
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.add_dsl_iv -> {
+                drawerLayout.open()
+            }
+            R.id.logout_CDF -> {
+                startActivity(Intent(this,MainActivity::class.java))
+                finish()
+            }
+        }
     }
 
     private fun setupViewPager() {
@@ -39,12 +59,9 @@ class CustomerDataFormActivity : BaseActivity() {
         tabLayout.setupWithViewPager(viewPager)
 
         viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-            }
+            override fun onPageScrollStateChanged(state: Int) {  }
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-            }
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) { }
 
             override fun onPageSelected(position: Int) {
                 if (position > 1) {
@@ -56,6 +73,16 @@ class CustomerDataFormActivity : BaseActivity() {
             }
         })
 
+    }
+
+    fun setCurrentItem(item: Int) {
+        viewPager.currentItem = item
+        viewPagerAdapter?.notifyDataSetChanged()
+    }
+
+    private fun setOnClickListeners(){
+        add_dsl_iv.setOnClickListener(this)
+        logout_CDF.setOnClickListener(this)
     }
 
     inner class ViewPagerAdapter internal constructor(fm: FragmentManager)
@@ -93,13 +120,9 @@ class CustomerDataFormActivity : BaseActivity() {
             return fragments[position].fragment
         }
 
-        override fun getPageTitle(position: Int): CharSequence? {
+        override fun getPageTitle(position: Int): CharSequence {
             return fragments[position].title
         }
-    }
-    fun setCurrentItem(item: Int) {
-        viewPager.currentItem = item
-        viewPagerAdapter?.notifyDataSetChanged()
     }
 
 }

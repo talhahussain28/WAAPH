@@ -76,6 +76,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             R.id.login -> {
                 val intent = Intent(this, BottomNavigationActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             R.id.tv_signup ->{
                 val intent = Intent(this, SignUpActivity::class.java)
