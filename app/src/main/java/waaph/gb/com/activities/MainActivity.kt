@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Button
 import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.edit_text_password
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -30,8 +29,10 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        userDataBase = Room.databaseBuilder(applicationContext, UserDatabase::class.java,
-        "userDB").build()
+        userDataBase = Room.databaseBuilder(
+            applicationContext, UserDatabase::class.java,
+            "userDB"
+        ).build()
 
         setOnClickListener()
         initialize()
@@ -74,15 +75,17 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.login -> {
-                /*CoroutineScope(Dispatchers.IO).launch {
+               /* CoroutineScope(Dispatchers.IO).launch {
                     validateEdittext()
                 }*/
-                val intent = Intent(this, BottomNavigationActivity::class.java)
-                startActivity(intent)
-                finish()
+                valdateEdittext()
+               // finish()
+                /*val intent = Intent(this, BottomNavigationActivity::class.java)
+                startActivity(intent)*/
+                // finish()
 
             }
-            R.id.tv_signup ->{
+            R.id.tv_signup -> {
                 val intent = Intent(this, SignUpActivity::class.java)
                 startActivity(intent)
             }
@@ -103,27 +106,45 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         emailST = email.text.toString().trim()
         passwordST = edit_text_password.text.toString()
 
-        if (emailST.isNotEmpty()){
-            if (emailST.matches(emailPattern.toRegex())){
-                if (passwordST.isNotEmpty()){
+        if (emailST.isNotEmpty()) {
+            if (emailST.matches(emailPattern.toRegex())) {
+                if (passwordST.isNotEmpty()) {
                     val job = CoroutineScope(Dispatchers.IO).launch {
-                        userEnt = userDataBase.userDao.loginUser(emailST,passwordST)
+                        userEnt = userDataBase.userDao.loginUser(emailST, passwordST)
                     }
                     job.join()
-
-                    if (userEnt == null){
-                        showToast("Invalid Credentials!")
-                    }else{
-                        showToast("Login Successful!")
-                    }
-                }else {
+                    /*val intent = Intent(this, BottomNavigationActivity::class.java)
+                    startActivity(intent)*/
+                    CoroutineScope(Dispatchers.Main).launch {
+                        if (userEnt == null) {
+                            showToast("Invalid Credentials!")
+                        } else {
+                            showToast("Login Successful!")
+                        }
+                    }/*else {
                     edit_text_password.error = "Enter password!"
+                }*/
+                } else {
+                    email.error = "Invalid Email!"
                 }
-            }else {
-                email.error = "Invalid Email!"
+            } else {
+                email.error = "Enter Email!"
             }
-        }else{
-            email.error = "Enter Email!"
+        }
+    }
+
+    private fun valdateEdittext() {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+
+        emailST = email.text.toString().trim()
+        passwordST = edit_text_password.text.toString()
+
+        if (emailST == "test@gmail.com" && passwordST == "123123" || emailST == "talha@gmail.com" && passwordST == "123123") {
+            val intent = Intent(this, BottomNavigationActivity::class.java)
+            startActivity(intent)
+            showToast("Success")
+        } else {
+            showToast("Invalid Credentials!")
         }
     }
 }
