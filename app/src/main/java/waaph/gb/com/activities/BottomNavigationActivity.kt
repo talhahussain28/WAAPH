@@ -1,9 +1,9 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import waaph.gb.com.R
 import waaph.gb.com.fragments.customerDataFormFragments.HomeFragment
 import waaph.gb.com.utils.BaseActivity
 
@@ -14,7 +14,6 @@ class BottomNavigationActivity : BaseActivity() {
         setContentView(R.layout.activity_bottom_navigation)
         initialize()
         setOnClickListener()
-
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavigation.setOnNavigationItemSelectedListener {

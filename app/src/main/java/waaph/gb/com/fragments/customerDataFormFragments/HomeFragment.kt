@@ -12,6 +12,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
 import waaph.gb.com.*
+import waaph.gb.com.activities.CustomerDataFormActivity
+import waaph.gb.com.activities.MainActivity
+import waaph.gb.com.activities.OrderDataFormActivity
 import waaph.gb.com.utils.Dialog
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -34,7 +37,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        drawerLayout  = drawer_layout
+        drawerLayout  = drawer_layout_Home
         toogle =
             ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toogle)
@@ -49,10 +52,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
             R.id.CDF -> {
                 val intent = Intent(requireActivity(), CustomerDataFormActivity::class.java)
                 startActivity(intent)
+                activity!!.finish()
             }
             R.id.logout -> {
                 startActivity(Intent(requireContext(),MainActivity::class.java))
-                activity?.finish()
             }
             R.id.add_dsl_iv -> {
                 openDrawerLayout()
@@ -60,12 +63,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
             R.id.ODF -> {
                 val intent = Intent(requireActivity(), OrderDataFormActivity::class.java)
                 startActivity(intent)
+                activity!!.finish()
             }
             R.id.cardView_my_profile ->{
                 activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
 
-               /* val intent = Intent(requireActivity(), MyProfileActivity::class.java)
-                startActivity(intent)*/
+                /* val intent = Intent(requireActivity(), MyProfileActivity::class.java)
+                 startActivity(intent)*/
 
             }
             R.id.cardView_salaryslip ->{
@@ -106,9 +110,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     closeDrawerLayout()
                 }
                 R.id.nav_home ->{
-                    activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
                     closeDrawerLayout()
-                    Toast.makeText(requireContext(), "Home", Toast.LENGTH_SHORT).show()
                 }
                 R.id.nav_salarySlip ->{
                     activity?.supportFragmentManager?.let { Dialog().show(it, "MyCustomFragment") }
@@ -177,7 +179,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun openDrawerLayout(){
-        drawerLayout  = drawer_layout
+        drawerLayout  = drawer_layout_Home
         drawerLayout.open()
     }
 

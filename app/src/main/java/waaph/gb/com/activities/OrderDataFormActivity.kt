@@ -1,17 +1,16 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
+import waaph.gb.com.R
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_customer_data_form.add_dsl_iv
 import kotlinx.android.synthetic.main.activity_customer_data_form.tabLayout
 import kotlinx.android.synthetic.main.activity_customer_data_form.viewPager
@@ -21,31 +20,29 @@ import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.Ge
 import waaph.gb.com.fragments.customerDataFormFragments.orderDataFormFragment.ItemSelectionFragment
 import waaph.gb.com.model.ViewPagerItemModel
 import waaph.gb.com.utils.BaseActivity
-import waaph.gb.com.utils.Dialog
 
 class OrderDataFormActivity : BaseActivity(),View.OnClickListener {
 
     private val fragments: ArrayList<ViewPagerItemModel> = ArrayList()
      var viewPagerAdapter: ViewPagerAdapter?=null
     private lateinit var drawerLayout : DrawerLayout
+    private lateinit var navigationView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_data_form)
 
         drawerLayout = drawer_layout_ODF
+        navigationView = nav_view_ODF
 
         initialize()
         setOnClickListeners()
-        drawerItemListener()
+        drawerItemListener(navigationView,drawerLayout)
     }
 
-    override fun linkXML() {
+    override fun linkXML() { }
 
-    }
-
-    override fun setOnClickListener() {
-    }
+    override fun setOnClickListener() { }
 
     override fun initialize() {
         setupViewPager()
@@ -85,68 +82,6 @@ class OrderDataFormActivity : BaseActivity(),View.OnClickListener {
                 finish()
             }
 
-        }
-    }
-
-    private fun drawerItemListener() {
-        val navView: NavigationView = nav_view_ODF
-        navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.nav_CDF ->{
-                    startActivity(Intent(this, CustomerDataFormActivity::class.java))
-                    closeDrawerLayout()
-                }
-                R.id.nav_home ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_salarySlip ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "Salary Slip", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_leaveRequest ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    drawerLayout.close()
-                    Toast.makeText(this, "leaveRequest", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_expenseClaim ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "expenseClaim  ", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_orderDataFrom ->{
-                    startActivity(Intent(this, OrderDataFormActivity::class.java))
-                    closeDrawerLayout()
-                }
-                R.id.nav_orderPayment ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "orderPayment", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_productLiterature ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "productLiterature", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_memo ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "memo", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_medical ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "medical", Toast.LENGTH_SHORT).show()
-                }
-                R.id.nav_travelRequest ->{
-                    this.supportFragmentManager.let { Dialog().show(it, "MyCustomFragment") }
-                    closeDrawerLayout()
-                    Toast.makeText(this, "travelRequest", Toast.LENGTH_SHORT).show()
-                }
-            }
-            true
         }
     }
 

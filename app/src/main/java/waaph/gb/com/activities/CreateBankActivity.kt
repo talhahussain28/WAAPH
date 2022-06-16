@@ -1,9 +1,8 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -11,10 +10,9 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_bank.*
-import kotlinx.android.synthetic.main.activity_create_general_data.*
 import kotlinx.android.synthetic.main.custom_dialog.*
+import waaph.gb.com.R
 import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter
 import waaph.gb.com.utils.Utils

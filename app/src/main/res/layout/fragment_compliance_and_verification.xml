@@ -44,14 +44,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginStart="20dp"
+                android:id="@+id/img"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    android:id="@+id/cnic"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/text"
                     android:layout_margin="12dp"
                     android:background="@drawable/dotted_border"
                     android:gravity="center"

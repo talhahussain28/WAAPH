@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_payment.*
-import waaph.gb.com.AddPaymentActivity
+import waaph.gb.com.activities.AddPaymentActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.PaymentAdapter
 import waaph.gb.com.model.CreatePaymentModel
@@ -53,7 +53,7 @@ class PaymentFragment : Fragment(),View.OnClickListener {
             }
 
             R.id.routeToAddPayment ->{
-                val intent = Intent(requireContext(),AddPaymentActivity::class.java)
+                val intent = Intent(requireContext(), AddPaymentActivity::class.java)
                 startActivity(intent)
             }
 

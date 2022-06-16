@@ -1,4 +1,4 @@
-package waaph.gb.com
+package waaph.gb.com.activities
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -12,10 +12,9 @@ import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_create_address_data.*
 import kotlinx.android.synthetic.main.custom_dialog.*
+import waaph.gb.com.R
 import waaph.gb.com.model.SelectedDayCreateAddressModel
 import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter

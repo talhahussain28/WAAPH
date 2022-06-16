@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -26,10 +28,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import waaph.gb.com.BottomNavigationActivity;
-import waaph.gb.com.MainActivity;
 
-public abstract class BaseActivity extends AppCompatActivity {
+import waaph.gb.com.activities.BottomNavigationActivity;
+import waaph.gb.com.activities.MainActivity;
+import waaph.gb.com.R;
+import waaph.gb.com.navDrawer.NavDrawer;
+
+public abstract class BaseActivity extends NavDrawer {
 
     private final FragmentManager fragmentManager = getSupportFragmentManager();
     private ProgressDialog dialog;

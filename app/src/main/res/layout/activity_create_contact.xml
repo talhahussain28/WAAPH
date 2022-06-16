@@ -7,7 +7,7 @@
     android:background="@drawable/bg"
 
     android:layout_height="match_parent"
-    tools:context=".CreateContactActivity">
+    tools:context=".activities.CreateContactActivity">
 
     <ScrollView
 

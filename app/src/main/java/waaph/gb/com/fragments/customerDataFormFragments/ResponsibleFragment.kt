@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_responsible.*
-import waaph.gb.com.BottomNavigationActivity
+import waaph.gb.com.activities.BottomNavigationActivity
 import waaph.gb.com.R
 
 
