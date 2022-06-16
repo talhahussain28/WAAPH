@@ -58,12 +58,7 @@ class ContactFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
 
     private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: ContactAdapter) {
         list.add(CreateContactModel("John", "018236153421536172736"))
-        list.add(CreateContactModel("Mark", "018236153421536172736"))
-        list.add(CreateContactModel("Ali", "018236153421536172736"))
-        list.add(CreateContactModel("Pelo", "018236153421536172736"))
-        list.add(CreateContactModel("Cris", "018236153421536172736"))
-        list.add(CreateContactModel("Haris", "018236153421536172736"))
-        list.add(CreateContactModel("Martix", "018236153421536172736"))
+
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager

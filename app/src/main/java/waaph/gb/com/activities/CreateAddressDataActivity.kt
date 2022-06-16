@@ -13,7 +13,11 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_create_address_data.*
+import kotlinx.android.synthetic.main.activity_create_address_data.region
+import kotlinx.android.synthetic.main.activity_create_address_data.regionList
+import kotlinx.android.synthetic.main.activity_create_address_data.tvRegion
 import kotlinx.android.synthetic.main.custom_dialog.*
+import kotlinx.android.synthetic.main.fragment_general.*
 import waaph.gb.com.R
 import waaph.gb.com.model.SelectedDayCreateAddressModel
 import waaph.gb.com.utils.BaseActivity
@@ -51,6 +55,10 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
         tvWednesday.setOnClickListener(this)
         tvTuesday.setOnClickListener(this)
         location.setOnClickListener(this)
+        country.setOnClickListener(this)
+        province.setOnClickListener(this)
+        region.setOnClickListener(this)
+        arealocation.setOnClickListener(this)
    }
 
     override fun initialize() {
@@ -82,6 +90,18 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
             }
             R.id.location ->{
                 locationTypeDialog()
+            }
+            R.id.country ->{
+                countryDialog()
+            }
+            R.id.province ->{
+                provinceDialog()
+            }
+            R.id.region -> {
+                regionDialog()
+            }
+            R.id.arealocation ->{
+                areaLocationDialog()
             }
             R.id.tvMonday -> {
                 tvMonday.setBackgroundResource(R.drawable.days_selected_background_blue)
@@ -363,9 +383,11 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
         dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation_2
         dialog.window!!.setGravity(Gravity.BOTTOM)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
+
         dialog.window!!.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
+           width
         )
 
         dialog.setCancelable(true)
@@ -374,11 +396,36 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("Option 1"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 2"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 3"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 4"))
-        list.add(GeneralBottomAdapter.ListItemModel("Option 5"))
+        list.add(GeneralBottomAdapter.ListItemModel("FAISALABAD-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("GUJRANWALA-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("MIRPUR KHAS-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("NAWABSHAH-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("PESHAWAR-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("KAMALIA-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("FAISALABAD-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("GUJRANWALA-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("MULTAN-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("HYDERABAD-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("RAWALPINDI-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("QUETTA-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("SUKKUR-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("SAHIWAL-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("MIRPUR KHAS-DEP"))
+        list.add(GeneralBottomAdapter.ListItemModel("NAWABSHAH-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("PESHAWAR-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("KAMALIA-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE 1-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE 2-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("MULTAN-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("HYDERABAD-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("RAWALPINDI-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("QUETTA-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("SUKKUR-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("SAHIWAL-FTD"))
 
         val adapter = GeneralBottomAdapter(this, "", list)
         listView.adapter = adapter
@@ -389,20 +436,130 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
 
                 when (position) {
                     0 -> {
-                        tvRegion.text = "Option 1"
+                        tvRegion.text = "FAISALABAD-FTD"
                     }
                     1 -> {
-                        tvRegion.text = "Option 2"
+                        tvRegion.text = "LAHORE-FTD"
                     }
                     2 -> {
-                        tvRegion.text = "Option 3"
+                        tvRegion.text = "GUJRANWALA-FTD"
                     }
                     3 -> {
-                        tvRegion.text = "Option 4"
+                        tvRegion.text = "MULTAN-PHD"
                     }
                     4 -> {
-                        tvRegion.text = "Option 5"
+                        tvRegion.text = "KARACHI-PHD"
                     }
+                    5 -> {
+                        tvRegion.text = "HYDERABAD-PHD"
+                    }
+                    6 -> {
+                        tvRegion.text = "RAWALPINDI-PHD"
+                    }
+                    7 -> {
+                        tvRegion.text = "QUETTA-PHD"
+                    }
+                    8 -> {
+                        tvRegion.text = "SUKKUR-PHD"
+                    }
+
+                    9 -> {
+                        tvRegion.text = "SAHIWAL-PHD"
+                    }
+
+                    10 -> {
+                        tvRegion.text = "MIRPUR KHAS-"
+                    }
+
+                    11 -> {
+                        tvRegion.text = "NAWABSHAH-PHD"
+                    }
+
+                    12 -> {
+                        tvRegion.text = "PESHAWAR-PHD"
+                    }
+
+                    13 -> {
+                        tvRegion.text = "KAMALIA-PHD"
+                    }
+
+                    14 -> {
+                        tvRegion.text = "LAHORE 1-PHD"
+                    }
+                    15 -> {
+                        tvRegion.text = "LAHORE 2-PHD"
+                    }
+                    16 -> {
+                        tvRegion.text = "FAISALABAD-SPD"
+                    }
+                    17 -> {
+                        tvRegion.text = "LAHORE-SPD"
+                    }
+                    18 -> {
+                        tvRegion.text = "GUJRANWALA-SPD"
+                    }
+                    19 -> {
+                        tvRegion.text = "MULTAN-SPD"
+                    }
+                    20 -> {
+                        tvRegion.text = "KARACHI-SPD"
+                    }
+                    21 -> {
+                        tvRegion.text = "HYDERABAD-SPD"
+                    }
+                    22 -> {
+                        tvRegion.text = "RAWALPINDI-SPD"
+                    }
+                    23 -> {
+                        tvRegion.text = "QUETTA-SPD"
+                    }
+                    24 -> {
+                        tvRegion.text = "SUKKUR-SPD"
+                    }
+                    25 -> {
+                        tvRegion.text = "SAHIWAL-SPD"
+                    }
+                    26 -> {
+                        tvRegion.text = "MIRPUR KHAS-PHD"
+                    }
+                    27 -> {
+                        tvRegion.text = "NAWABSHAH-SPD"
+                    }
+                    28 -> {
+                        tvRegion.text = "PESHAWAR-SPD"
+                    }
+                    29 -> {
+                        tvRegion.text = "KAMALIA-SPD"
+                    }
+                    30 -> {
+                        tvRegion.text = "FAISALABAD-AHD"
+                    }
+                    31 -> {
+                        tvRegion.text = "LAHORE-AHD"
+                    }
+                    ///FTD rem
+                    32 -> {
+                        tvRegion.text = "MULTAN-FTD"
+                    }
+                    33 -> {
+                        tvRegion.text = "KARACHI-FTD"
+                    }
+                    34 -> {
+                        tvRegion.text = "HYDERABAD-FTD"
+                    }
+                    35 -> {
+                        tvRegion.text = "RAWALPINDI-FTD"
+                    }
+                    36 -> {
+                        tvRegion.text = "QUETTA-FTD"
+                    }
+                    37 -> {
+                        tvRegion.text = "SUKKUR-FTD"
+                    }
+                    38 -> {
+                        tvRegion.text = "SAHIWAL-FTD"
+                    }
+
                 }
                 dialog.dismiss()
 

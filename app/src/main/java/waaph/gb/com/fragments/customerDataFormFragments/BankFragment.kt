@@ -4,12 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_bank.*
+import kotlinx.android.synthetic.main.fragment_contact.*
 import waaph.gb.com.activities.BankDetailActivity
 import waaph.gb.com.activities.CreateBankActivity
 import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.BankAdapter
+import waaph.gb.com.adapters.ContactAdapter
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.Data
 import waaph.gb.com.utils.BaseFragment
@@ -17,6 +20,8 @@ import waaph.gb.com.utils.BaseFragment
 class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
     private var adapter: BankAdapter? = null
     private var list = ArrayList<Data>()
+    private lateinit var recyclerVieww: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,9 @@ class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemCli
         super.onViewCreated(view, savedInstanceState)
         //next.setOnClickListener(this)
         // bank_layout.setOnClickListener(this)
+        list = ArrayList()
+        recyclerVieww = recyclerView
+        adapter = BankAdapter(requireContext(), list, this)
         setOnClickListener()
         setRecyclerview()
     }
@@ -80,12 +88,12 @@ class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemCli
     private fun setRecyclerview() {
         // list = arrayListOf()
         list.add(Data("Meezan bank", "None"))
-        list.add(Data("Alfa bank", "None"))
+      /*  list.add(Data("Alfa bank", "None"))
         list.add(Data("Js bank", "None"))
         list.add(Data("HBL bank", "None"))
         list.add(Data("Habib bank", "None"))
-        list.add(Data("AL Habib bank", "None"))
-        adapter = BankAdapter(requireContext(), list, this)
+        list.add(Data("AL Habib bank", "None"))*/
+      //  adapter = BankAdapter(requireContext(), list, this)
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager

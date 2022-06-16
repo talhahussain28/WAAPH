@@ -77,10 +77,17 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    android:id="@+id/cnicB"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="12dp"
+                    android:id="@+id/tt"
                     android:background="@drawable/dotted_border"
                     android:gravity="center"
                     android:text="Upload CNIC Back Here" />
@@ -209,9 +216,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_strn_tv">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imga"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/str"
                 android:layout_margin="12dp"
                 android:background="@drawable/dotted_border"
                 android:gravity="center"

@@ -52,8 +52,8 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
     }
 
     private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: AddressAdapter) {
-        list.add(CreateAddressModel("waleed"))
-        list.add(CreateAddressModel("tlaha"))
+        list.add(CreateAddressModel("Test"))
+/*        list.add(CreateAddressModel("tlaha"))
         list.add(CreateAddressModel("hammad"))
         list.add(CreateAddressModel("huzaifa"))
         list.add(CreateAddressModel("anus ali"))
@@ -62,7 +62,7 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
         list.add(CreateAddressModel("saud"))
         list.add(CreateAddressModel("rohit"))
         list.add(CreateAddressModel("bilal"))
-        list.add(CreateAddressModel("majSHdyg"))
+        list.add(CreateAddressModel("majSHdyg"))*/
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager

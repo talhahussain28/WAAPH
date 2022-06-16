@@ -31,6 +31,9 @@ import androidx.core.provider.FontsContractCompat.Columns.RESULT_CODE
 class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
 
     private var REQUEST_CODE = -1
+    private var REQUEST_CODEE = -2
+    private var REQUEST_CO = -3
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +55,8 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
         next.setOnClickListener(this)
         imgCnicFront.setOnClickListener(this)
         imgCnicBack.setOnClickListener(this)
-        selectPDF.setOnClickListener(this)
+        cardView_upload_strn.setOnClickListener(this)
+        //selectPDF.setOnClickListener(this)
     }
 
     override fun initialize() { }
@@ -65,6 +69,14 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
             text.visibility = View.GONE
             cnic.setImageBitmap(data.extras?.get("data") as Bitmap)
         }
+        else if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODEE && data != null){
+            tt.visibility = View.GONE
+            cnicB.setImageBitmap(data.extras?.get("data") as Bitmap)
+        }
+        else if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CO && data != null){
+            str.visibility = View.GONE
+            imga.setImageBitmap(data.extras?.get("data") as Bitmap)
+        }
     }
 
     override fun onClick(v: View?) {
@@ -76,10 +88,13 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                 capturePhoto()
             }
             R.id.imgCnicBack -> {
-                capturePhoto()
+                capturePhotoBack()
             }
             R.id.selectPDF -> {
                 //openDocuments()
+            }
+            R.id.cardView_upload_strn ->{
+                captureStrn()
             }
         }
     }
@@ -87,6 +102,18 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
     private fun capturePhoto() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(cameraIntent, REQUEST_CODE)
+
+    }
+
+    private fun capturePhotoBack() {
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, REQUEST_CODEE)
+
+    }
+
+    private fun captureStrn() {
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, REQUEST_CO)
 
     }
 
