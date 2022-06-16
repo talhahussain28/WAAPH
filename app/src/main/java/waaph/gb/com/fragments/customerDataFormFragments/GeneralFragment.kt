@@ -44,7 +44,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
             R.id.customer -> {
                 customerDialog()
             }
-            R.id.business ->{
+            R.id.business -> {
                 businessDialog()
             }
             R.id.region -> {
@@ -69,10 +69,10 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
         if (edtBussinessName.text!!.isNotEmpty() &&
             /* edtCustomerGroup.text!!.isNotEmpty()&&*/
-           /* edtBussinessType.text!!.isNotEmpty() &&*/
+            /* edtBussinessType.text!!.isNotEmpty() &&*/
             edtCNIC.text!!.isNotEmpty() &&
             edtNTN.text!!.isNotEmpty() &&
-           /* edtRegion.text!!.isNotEmpty() &&*/
+            /* edtRegion.text!!.isNotEmpty() &&*/
             edtFAX.text!!.isNotEmpty() &&
             edtMobile.text!!.isNotEmpty() &&
             edtWhatsApp.text!!.isNotEmpty() &&
@@ -267,9 +267,9 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
         list.add(GeneralBottomAdapter.ListItemModel("B2B"))
         list.add(GeneralBottomAdapter.ListItemModel("B2C"))
-     /*   list.add(GeneralBottomAdapter.ListItemModel("COMM"))
-        list.add(GeneralBottomAdapter.ListItemModel("COMMISSION"))
-        list.add(GeneralBottomAdapter.ListItemModel("CONS"))*/
+        /*   list.add(GeneralBottomAdapter.ListItemModel("COMM"))
+           list.add(GeneralBottomAdapter.ListItemModel("COMMISSION"))
+           list.add(GeneralBottomAdapter.ListItemModel("CONS"))*/
 
 
         val adapter = GeneralBottomAdapter(requireContext(), "", list)
@@ -322,30 +322,36 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("ASSOCIATES"))
-        list.add(GeneralBottomAdapter.ListItemModel("CLRAGNTS"))
-        list.add(GeneralBottomAdapter.ListItemModel("COMM"))
-        list.add(GeneralBottomAdapter.ListItemModel("COMMISSION"))
-        list.add(GeneralBottomAdapter.ListItemModel("CONS"))
-        list.add(GeneralBottomAdapter.ListItemModel("CONSULT"))
-        list.add(GeneralBottomAdapter.ListItemModel("CORP"))
-        list.add(GeneralBottomAdapter.ListItemModel("DIST"))
-        list.add(GeneralBottomAdapter.ListItemModel("EMPLOYEE"))
-        list.add(GeneralBottomAdapter.ListItemModel("FARM"))
-        list.add(GeneralBottomAdapter.ListItemModel("FEED"))
-        list.add(GeneralBottomAdapter.ListItemModel("GOVT"))
-        list.add(GeneralBottomAdapter.ListItemModel("INDENT"))
-        list.add(GeneralBottomAdapter.ListItemModel("ONLINERETA"))
-        list.add(GeneralBottomAdapter.ListItemModel("OTHRRECBL"))
-        list.add(GeneralBottomAdapter.ListItemModel("PRIV"))
-        list.add(GeneralBottomAdapter.ListItemModel("RETA"))
-        list.add(GeneralBottomAdapter.ListItemModel("SAMPLE"))
-        list.add(GeneralBottomAdapter.ListItemModel("SEC DEP"))
-        list.add(GeneralBottomAdapter.ListItemModel("SPAREPARTS"))
-        list.add(GeneralBottomAdapter.ListItemModel("STCK"))
-        list.add(GeneralBottomAdapter.ListItemModel("UN-IDENTIF"))
-        list.add(GeneralBottomAdapter.ListItemModel("WALK-IN"))
-        list.add(GeneralBottomAdapter.ListItemModel("WHOL"))
+        list.add(GeneralBottomAdapter.ListItemModel("FAISALABAD-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("GUJRANWALA-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("MIRPUR KHAS-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("NAWABSHAH-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("PESHAWAR-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("KAMALIA-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("FAISALABAD-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("GUJRANWALA-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("MULTAN-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("HYDERABAD-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("RAWALPINDI-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("QUETTA-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("SUKKUR-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("SAHIWAL-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("MIRPUR KHAS-DEP"))
+        list.add(GeneralBottomAdapter.ListItemModel("NAWABSHAH-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("PESHAWAR-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("KAMALIA-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE 1-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE 2-PHD"))
+        list.add(GeneralBottomAdapter.ListItemModel("MULTAN-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("HYDERABAD-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("RAWALPINDI-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("QUETTA-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("SUKKUR-FTD"))
+        list.add(GeneralBottomAdapter.ListItemModel("SAHIWAL-FTD"))
 
 
         val adapter = GeneralBottomAdapter(requireContext(), "", list)
@@ -357,86 +363,129 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
                 when (position) {
                     0 -> {
-                        tvRegion.text = "ASSOCIATES"
+                        tvRegion.text = "FAISALABAD-FTD"
                     }
                     1 -> {
-                        tvRegion.text = "CLRAGNTS"
+                        tvRegion.text = "LAHORE-FTD"
                     }
                     2 -> {
-                        tvRegion.text = "COMM"
+                        tvRegion.text = "GUJRANWALA-FTD"
                     }
                     3 -> {
-                        tvRegion.text = "COMMISSION"
+                        tvRegion.text = "MULTAN-PHD"
                     }
                     4 -> {
-                        tvRegion.text = "CONS"
+                        tvRegion.text = "KARACHI-PHD"
                     }
                     5 -> {
-                        tvRegion.text = "CONSULT"
+                        tvRegion.text = "HYDERABAD-PHD"
                     }
-
                     6 -> {
-                        tvRegion.text = "CORP"
+                        tvRegion.text = "RAWALPINDI-PHD"
                     }
                     7 -> {
-                        tvRegion.text = "DIST"
+                        tvRegion.text = "QUETTA-PHD"
                     }
                     8 -> {
-                        tvRegion.text = "EMPLOYEE"
+                        tvRegion.text = "SUKKUR-PHD"
                     }
 
                     9 -> {
-                        tvRegion.text = "FARM"
+                        tvRegion.text = "SAHIWAL-PHD"
                     }
 
                     10 -> {
-                        tvRegion.text = "GOVT"
+                        tvRegion.text = "MIRPUR KHAS-"
                     }
 
                     11 -> {
-                        tvRegion.text = "INDENT"
+                        tvRegion.text = "NAWABSHAH-PHD"
                     }
 
                     12 -> {
-                        tvRegion.text = "LOAN"
+                        tvRegion.text = "PESHAWAR-PHD"
                     }
 
                     13 -> {
-                        tvRegion.text = "ONLINERETA"
+                        tvRegion.text = "KAMALIA-PHD"
                     }
 
                     14 -> {
-                        tvRegion.text = "OTHRRECBL"
+                        tvRegion.text = "LAHORE 1-PHD"
                     }
                     15 -> {
-                        tvRegion.text = "PRIV"
+                        tvRegion.text = "LAHORE 2-PHD"
                     }
                     16 -> {
-                        tvRegion.text = "RITA"
+                        tvRegion.text = "FAISALABAD-SPD"
                     }
                     17 -> {
-                        tvRegion.text = "SAMPLE"
+                        tvRegion.text = "LAHORE-SPD"
                     }
                     18 -> {
-                        tvRegion.text = "SEC DEP"
+                        tvRegion.text = "GUJRANWALA-SPD"
                     }
                     19 -> {
-                        tvRegion.text = "SPAREPARTS"
+                        tvRegion.text = "MULTAN-SPD"
                     }
                     20 -> {
-                        tvRegion.text = "STCK"
+                        tvRegion.text = "KARACHI-SPD"
                     }
                     21 -> {
-                        tvRegion.text = "UN-IDENTIF"
+                        tvRegion.text = "HYDERABAD-SPD"
                     }
                     22 -> {
-                        tvRegion.text = "WALK-IN"
+                        tvRegion.text = "RAWALPINDI-SPD"
                     }
                     23 -> {
-                        tvRegion.text = "WHOL"
+                        tvRegion.text = "QUETTA-SPD"
                     }
-
-
+                    24 -> {
+                        tvRegion.text = "SUKKUR-SPD"
+                    }
+                    25 -> {
+                        tvRegion.text = "SAHIWAL-SPD"
+                    }
+                    26 -> {
+                        tvRegion.text = "MIRPUR KHAS-PHD"
+                    }
+                    27 -> {
+                        tvRegion.text = "NAWABSHAH-SPD"
+                    }
+                    28 -> {
+                        tvRegion.text = "PESHAWAR-SPD"
+                    }
+                    29 -> {
+                        tvRegion.text = "KAMALIA-SPD"
+                    }
+                    30 -> {
+                        tvRegion.text = "FAISALABAD-AHD"
+                    }
+                    31 -> {
+                        tvRegion.text = "LAHORE-AHD"
+                    }
+                    ///FTD rem
+                    32 -> {
+                        tvRegion.text = "MULTAN-FTD"
+                    }
+                    33 -> {
+                        tvRegion.text = "KARACHI-FTD"
+                    }
+                    34 -> {
+                        tvRegion.text = "HYDERABAD-FTD"
+                    }
+                    35 -> {
+                        tvRegion.text = "RAWALPINDI-FTD"
+                    }
+                    36 -> {
+                        tvRegion.text = "QUETTA-FTD"
+                    }
+                    37 -> {
+                        tvRegion.text = "SUKKUR-FTD"
+                    }
+                    38 -> {
+                        tvRegion.text = "SAHIWAL-FTD"
+                    }
                 }
                 dialog.dismiss()
 
