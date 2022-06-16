@@ -17,32 +17,27 @@ class AddPaymentActivity : BaseActivity(), View.OnClickListener {
         initialize()
     }
 
-    override fun linkXML() {
+    override fun linkXML() { }
 
-    }
+    override fun setOnClickListener() { }
 
-    override fun setOnClickListener() {
-        next.setOnClickListener(this)
-    }
-
-    override fun initialize() {
-    }
+    override fun initialize() { }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.next -> {
+           /* R.id.next -> {
                 addPayment()
-            }
+            }*/
         }
     }
 
-    private fun addPayment(){
+    /*private fun addPayment(){
         Utils.etValidate(edtPersonName)
 
         if (edtPersonName.text.toString().isNotEmpty()){
             Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
         }
-    }
+    }*/
 
 
 }

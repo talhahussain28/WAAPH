@@ -7,7 +7,9 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +21,12 @@ import kotlinx.android.synthetic.main.fragment_compliance_and_verification.*
 import waaph.gb.com.R
 import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.utils.BaseFragment
+import java.io.File
+import android.content.ActivityNotFoundException
+import android.provider.FontsContract.Columns.RESULT_CODE
+import androidx.core.content.FileProvider
+import androidx.core.provider.FontsContractCompat.Columns.RESULT_CODE
+
 
 class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
 
@@ -38,40 +46,19 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
         initialize()
     }
 
-    override fun linkXML(view: View?) {
-
-    }
+    override fun linkXML(view: View?) { }
 
     override fun setOnClickListener() {
         next.setOnClickListener(this)
-        img.setOnClickListener(this)
+        imgCnicFront.setOnClickListener(this)
+        imgCnicBack.setOnClickListener(this)
+        selectPDF.setOnClickListener(this)
     }
 
-    override fun initialize() {
-    }
+    override fun initialize() { }
 
-    companion object fun newInstance(){
+    companion object fun newInstance(){ }
 
-    }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.next -> {
-                (activity as CustomerDataFormActivity).setCurrentItem(6)
-
-            }
-            R.id.img -> {
-                capturePhoto()
-            }
-
-        }
-    }
-
-    fun capturePhoto() {
-
-        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, REQUEST_CODE)
-    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
@@ -79,6 +66,45 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
             cnic.setImageBitmap(data.extras?.get("data") as Bitmap)
         }
     }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.next -> {
+                (activity as CustomerDataFormActivity).setCurrentItem(6)
+            }
+            R.id.imgCnicFront -> {
+                capturePhoto()
+            }
+            R.id.imgCnicBack -> {
+                capturePhoto()
+            }
+            R.id.selectPDF -> {
+                openDocuments()
+            }
+        }
+    }
+
+    private fun capturePhoto() {
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, REQUEST_CODE)
+
+    }
+
+    private fun openDocuments(){
+//        val install = Intent(Intent.ACTION_VIEW)
+//        install.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//        install.setDataAndType(Uri.fromFile(file), mimeType)
+//        val uri = context?.let {
+//            FileProvider.getUriForFile(
+//                it,
+//                context!!.applicationContext
+//                    .packageName + ".provider", file)
+//        }
+//        install.setDataAndType(apkURI, mimeType)
+//        install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+//        context.startActivity(install);
+    }
+
     /*fun isPermissionsAllowed(): Boolean {
         return if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
             != PackageManager.PERMISSION_GRANTED) {
