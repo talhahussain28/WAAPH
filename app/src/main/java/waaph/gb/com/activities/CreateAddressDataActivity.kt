@@ -50,6 +50,7 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
         tvThursday.setOnClickListener(this)
         tvWednesday.setOnClickListener(this)
         tvTuesday.setOnClickListener(this)
+        location.setOnClickListener(this)
    }
 
     override fun initialize() {
@@ -78,6 +79,9 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
             }
             R.id.areaLocationList -> {
                 areaLocationDialog()
+            }
+            R.id.location ->{
+                locationTypeDialog()
             }
             R.id.tvMonday -> {
                 tvMonday.setBackgroundResource(R.drawable.days_selected_background_blue)
@@ -200,9 +204,10 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
         dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation_2
         dialog.window!!.setGravity(Gravity.BOTTOM)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
         dialog.window!!.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
+            width
         )
 
         dialog.setCancelable(true)
@@ -211,11 +216,23 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
         val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
-        list.add(GeneralBottomAdapter.ListItemModel("Static 01"))
-        list.add(GeneralBottomAdapter.ListItemModel("Static 02"))
-        list.add(GeneralBottomAdapter.ListItemModel("Static 03"))
-        list.add(GeneralBottomAdapter.ListItemModel("Static 04"))
-        list.add(GeneralBottomAdapter.ListItemModel("Static 05"))
+        list.add(GeneralBottomAdapter.ListItemModel("MULTI LOCATION"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI HEAD OFFICE"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI MAIN OFFICE"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI KORANGI OFFICE"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI CHANDNI CHOWK"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI PORT QASIM"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI PAKISTAN CHOWK"))
+        list.add(GeneralBottomAdapter.ListItemModel("KARACHI SALES OFFICE-I"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE OFFICE"))
+        list.add(GeneralBottomAdapter.ListItemModel("LAHORE WAREHOUSE"))
+        list.add(GeneralBottomAdapter.ListItemModel("MULTAN OFFICE"))
+        list.add(GeneralBottomAdapter.ListItemModel("FAISALABAD OFFICE"))
+        list.add(GeneralBottomAdapter.ListItemModel("RAWALPINDI OFFICE"))
+        list.add(GeneralBottomAdapter.ListItemModel("ISLAMABAD WAREHOUSE"))
+        list.add(GeneralBottomAdapter.ListItemModel("HYDERABAD OFFICE"))
+        list.add(GeneralBottomAdapter.ListItemModel("GUJRANWALA WAREHOUSE"))
+        list.add(GeneralBottomAdapter.ListItemModel("SEMEN PRODUCTION UNIT-"))
 
         val adapter = GeneralBottomAdapter(this, "", list)
         listView.adapter = adapter
@@ -226,19 +243,55 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
 
                 when (position) {
                     0 -> {
-                        locationType.text = "Static 01"
+                        locationType.text = "MULTI LOCATION"
                     }
                     1 -> {
-                        locationType.text = "Static 02"
+                        locationType.text = "KARACHI HEAD OFFICE"
                     }
                     2 -> {
-                        locationType.text = "Static 03"
+                        locationType.text = "KARACHI MAIN OFFICE"
                     }
                     3 -> {
-                        locationType.text = "Static 04"
+                        locationType.text = "KARACHI KORANGI OFFICE"
                     }
                     4 -> {
-                        locationType.text = "Static 05"
+                        locationType.text = "KARACHI CHANDNI CHOWK"
+                    }
+                    5 -> {
+                        locationType.text = "KARACHI PORT QASIM"
+                    }
+                    6 -> {
+                        locationType.text = "KARACHI PAKISTAN CHOWK"
+                    }
+                    7 -> {
+                        locationType.text = "KARACHI SALES OFFICE-I"
+                    }
+                    8 -> {
+                        locationType.text = "LAHORE OFFICE"
+                    }
+                    9 -> {
+                        locationType.text = "LAHORE WAREHOUSE"
+                    }
+                    10 -> {
+                        locationType.text = "MULTAN OFFICE"
+                    }
+                    11-> {
+                        locationType.text = "FAISALABAD OFFICE"
+                    }
+                    12 -> {
+                        locationType.text = "RAWALPINDI OFFICE"
+                    }
+                    13 -> {
+                        locationType.text = "ISLAMABAD WAREHOUSE"
+                    }
+                    14 -> {
+                        locationType.text = "HYDERABAD OFFICE"
+                    }
+                    15 -> {
+                        locationType.text = "GUJRANWALA WAREHOUSE"
+                    }
+                    16 -> {
+                        locationType.text = "SEMEN PRODUCTION UNIT-"
                     }
                 }
                 dialog.dismiss()

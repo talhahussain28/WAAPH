@@ -79,7 +79,7 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                 capturePhoto()
             }
             R.id.selectPDF -> {
-                openDocuments()
+                //openDocuments()
             }
         }
     }

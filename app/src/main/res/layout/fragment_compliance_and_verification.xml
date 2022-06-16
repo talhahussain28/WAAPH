@@ -150,7 +150,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="140dp"
                     android:layout_marginTop="8dp"
                     android:src="@drawable/ic_cancel_circle" />
             </LinearLayout>
