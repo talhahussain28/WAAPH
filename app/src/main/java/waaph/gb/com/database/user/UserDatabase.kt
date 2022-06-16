@@ -1,10 +1,10 @@
-package waaph.gb.com.database
+package waaph.gb.com.database.user
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import waaph.gb.com.dao.UserDao
+import waaph.gb.com.dao.user.UserDao
 import waaph.gb.com.entities.user.UserEnt
 
 

@@ -8,10 +8,12 @@ import android.widget.Button
 import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.edit_text_password
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import waaph.gb.com.R
-import waaph.gb.com.database.UserDatabase
+import waaph.gb.com.database.user.UserDatabase
 import waaph.gb.com.entities.user.UserEnt
 import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.EditTextDrawableClick
@@ -19,7 +21,10 @@ import waaph.gb.com.utils.EditTextDrawableClick
 class MainActivity : BaseActivity(), View.OnClickListener {
     private var isVisiblePassword = false
 
+    private var emailST = ""
+    private var passwordST = ""
     lateinit var userDataBase: UserDatabase
+    private var userEnt: UserEnt? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +32,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
         userDataBase = Room.databaseBuilder(applicationContext, UserDatabase::class.java,
         "userDB").build()
-
-
-
 
         setOnClickListener()
         initialize()
@@ -72,9 +74,13 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.login -> {
+                /*CoroutineScope(Dispatchers.IO).launch {
+                    validateEdittext()
+                }*/
                 val intent = Intent(this, BottomNavigationActivity::class.java)
                 startActivity(intent)
                 finish()
+
             }
             R.id.tv_signup ->{
                 val intent = Intent(this, SignUpActivity::class.java)
@@ -88,6 +94,36 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                     userDataBase.userDao.addUser(UserEnt(0, "Talha", "talha@gmail.com", "123123"))
                 }
             }
+        }
+    }
+
+    private suspend fun validateEdittext() {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+
+        emailST = email.text.toString().trim()
+        passwordST = edit_text_password.text.toString()
+
+        if (emailST.isNotEmpty()){
+            if (emailST.matches(emailPattern.toRegex())){
+                if (passwordST.isNotEmpty()){
+                    val job = CoroutineScope(Dispatchers.IO).launch {
+                        userEnt = userDataBase.userDao.loginUser(emailST,passwordST)
+                    }
+                    job.join()
+
+                    if (userEnt == null){
+                        showToast("Invalid Credentials!")
+                    }else{
+                        showToast("Login Successful!")
+                    }
+                }else {
+                    edit_text_password.error = "Enter password!"
+                }
+            }else {
+                email.error = "Invalid Email!"
+            }
+        }else{
+            email.error = "Enter Email!"
         }
     }
 }

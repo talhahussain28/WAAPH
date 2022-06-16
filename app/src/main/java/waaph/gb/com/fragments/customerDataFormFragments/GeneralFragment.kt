@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_general.*
 import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.GeneralAdapter
+import waaph.gb.com.database.cdf.GeneralDatabase
 import waaph.gb.com.model.CreateGeneralModel
 import waaph.gb.com.utils.BaseFragment
 import waaph.gb.com.utils.GeneralBottomAdapter
@@ -22,6 +23,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
     private lateinit var adapter: GeneralAdapter
     private lateinit var list: ArrayList<CreateGeneralModel>
+    private var generalDatabase: GeneralDatabase? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,9 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        generalDatabase = GeneralDatabase.getInstance(context!!)
+
         setOnClickListener()
         initialize()
     }
