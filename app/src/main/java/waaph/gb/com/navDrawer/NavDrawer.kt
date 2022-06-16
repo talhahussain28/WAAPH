@@ -4,17 +4,11 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationView
 import waaph.gb.com.R
 import waaph.gb.com.activities.BottomNavigationActivity
 import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.activities.OrderDataFormActivity
-import waaph.gb.com.fragments.customerDataFormFragments.HomeFragment
 import waaph.gb.com.utils.Dialog
 
 open class NavDrawer() : AppCompatActivity() {

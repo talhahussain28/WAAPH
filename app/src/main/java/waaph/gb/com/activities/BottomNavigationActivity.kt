@@ -7,7 +7,6 @@ import waaph.gb.com.R
 import waaph.gb.com.fragments.customerDataFormFragments.HomeFragment
 import waaph.gb.com.utils.BaseActivity
 
-
 class BottomNavigationActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

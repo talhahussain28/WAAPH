@@ -10,36 +10,72 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/heading"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingEnd="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="Add General Information "
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6">
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="15dp"
-                android:background="@color/TopviewGrey" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/add_icon"
-                android:visibility="gone" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Add General Information "
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center"
+                        android:background="@color/TopviewGrey"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="20dp"-->
+            <!--                android:src="@drawable/add_icon"-->
+            <!--                android:visibility="gone" />-->
 
 
         </LinearLayout>
@@ -67,12 +103,12 @@
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:hint="Business Name"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:textColorHint="@color/black"
                 android:fitsSystemWindows="true"
+                android:hint="Business Name"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/ThemeColor"
                 app:errorEnabled="true">
 
@@ -86,9 +122,10 @@
                     android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
                 android:id="@+id/customer"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="8dp"
@@ -99,9 +136,9 @@
                     android:id="@+id/tvCustomerGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="Customer Group"
                     android:textColor="@color/black"
-                   android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -142,8 +179,8 @@
 
             </com.google.android.material.textfield.TextInputLayout>-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
                 android:id="@+id/business"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="8dp"
@@ -154,9 +191,9 @@
                     android:id="@+id/tvBusinessType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="Busniess Type"
                     android:textColor="@color/black"
-                    android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -173,39 +210,39 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-           <!-- <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayoutStyle"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:fitsSystemWindows="false"
-                android:hint="Bussiness Type"
-                android:layout_marginEnd="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="15dp"
-                android:textColorHint="@color/black"
-                app:boxStrokeColor="@color/ThemeColor"
-                app:errorEnabled="true">
+            <!-- <com.google.android.material.textfield.TextInputLayout
+                 style="@style/TextInputLayoutStyle"
+                 android:layout_width="match_parent"
+                 android:layout_height="60dp"
+                 android:fitsSystemWindows="false"
+                 android:hint="Bussiness Type"
+                 android:layout_marginEnd="15dp"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginStart="15dp"
+                 android:textColorHint="@color/black"
+                 app:boxStrokeColor="@color/ThemeColor"
+                 app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtBussinessType"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                 <com.google.android.material.textfield.TextInputEditText
+                     android:id="@+id/edtBussinessType"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:inputType="text"
+                     android:maxLines="1"
+                     android:textColor="@color/black"
+                     android:textSize="14sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>-->
+             </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:fitsSystemWindows="false"
-                android:hint="CNIC"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
+                android:fitsSystemWindows="false"
+                android:hint="CNIC"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/ThemeColor"
                 app:errorEnabled="true">
@@ -225,11 +262,11 @@
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
                 android:fitsSystemWindows="false"
                 android:hint="NTN"
-                android:layout_marginEnd="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="15dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/ThemeColor"
                 app:errorEnabled="true">
@@ -257,9 +294,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:background="@color/viewGrey"
                     android:gravity="center"
                     android:paddingStart="4dp"
-                    android:background="@color/viewGrey"
                     android:text="STRN"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -267,12 +304,12 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="#fff"
                     android:backgroundTint="@color/viewGrey"
                     android:gravity="end"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="#fff"
-                    android:layout_marginBottom="2dp"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -280,8 +317,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="15dp"
                         android:layout_marginEnd="52dp"
-                        android:checked="false"
                         android:background="@color/viewGrey"
+                        android:checked="false"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:textOff="off"
@@ -297,8 +334,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
-                        android:text="Yes"
                         android:gravity="center"
+                        android:text="Yes"
                         android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="@+id/customSwitchSTRN"
                         app:layout_constraintStart_toEndOf="@+id/customSwitchSTRN"
@@ -308,8 +345,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="5dp"
-                        android:text="No"
                         android:gravity="center"
+                        android:text="No"
                         android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="@+id/customSwitchSTRN"
                         app:layout_constraintEnd_toStartOf="@+id/customSwitchSTRN"
@@ -318,9 +355,10 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
                 android:id="@+id/region"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="8dp"
@@ -331,9 +369,9 @@
                     android:id="@+id/tvRegion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="Region"
                     android:textColor="@color/black"
-                    android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -350,37 +388,37 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-           <!-- <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayoutStyle"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:fitsSystemWindows="false"
-                android:hint="Region"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
-                android:textColorHint="@color/black"
-                app:boxStrokeColor="@color/ThemeColor"
-                app:errorEnabled="true">
+            <!-- <com.google.android.material.textfield.TextInputLayout
+                 style="@style/TextInputLayoutStyle"
+                 android:layout_width="match_parent"
+                 android:layout_height="60dp"
+                 android:fitsSystemWindows="false"
+                 android:hint="Region"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginEnd="15dp"
+                 android:layout_marginStart="15dp"
+                 android:textColorHint="@color/black"
+                 app:boxStrokeColor="@color/ThemeColor"
+                 app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtRegion"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                 <com.google.android.material.textfield.TextInputEditText
+                     android:id="@+id/edtRegion"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:inputType="text"
+                     android:maxLines="1"
+                     android:textColor="@color/black"
+                     android:textSize="14sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>-->
+             </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
                 android:fitsSystemWindows="false"
                 android:hint="Phone"
                 android:textColorHint="@color/black"
@@ -402,10 +440,10 @@
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:fitsSystemWindows="false"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
+                android:fitsSystemWindows="false"
                 android:hint="FAX"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/ThemeColor"
@@ -426,11 +464,11 @@
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:fitsSystemWindows="false"
-                android:hint="Mobile"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
+                android:fitsSystemWindows="false"
+                android:hint="Mobile"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/ThemeColor"
                 app:errorEnabled="true">
@@ -450,11 +488,11 @@
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:fitsSystemWindows="false"
-                android:hint="Whats App"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
+                android:fitsSystemWindows="false"
+                android:hint="Whats App"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/ThemeColor"
                 app:errorEnabled="true">
@@ -474,11 +512,11 @@
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:fitsSystemWindows="false"
-                android:hint="Web Site"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
+                android:fitsSystemWindows="false"
+                android:hint="Web Site"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/ThemeColor"
                 app:errorEnabled="true">
@@ -498,9 +536,9 @@
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
                 android:fitsSystemWindows="false"
                 android:hint="Email..."
                 android:textColorHint="@color/black"
@@ -530,10 +568,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center|left"
-                    android:background="@color/viewGrey"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"
+                    android:background="@color/viewGrey"
+                    android:gravity="center|left"
                     android:text="Associate With Other Account"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -541,11 +579,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="end"
-                    android:layout_marginEnd="2dp"
                     android:layout_marginTop="2dp"
-                    android:background="@color/viewGrey"
+                    android:layout_marginEnd="2dp"
                     android:layout_marginBottom="2dp"
+                    android:background="@color/viewGrey"
+                    android:gravity="end"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -553,8 +591,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="15dp"
                         android:layout_marginEnd="10dp"
-                        android:checked="false"
                         android:background="@color/viewGrey"
+                        android:checked="false"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:textOff="off"
@@ -574,9 +612,9 @@
                 style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
                 android:fitsSystemWindows="false"
                 android:hint="Organization Name"
                 android:textColorHint="@color/black"
@@ -598,14 +636,14 @@
                 android:id="@+id/btnCreateGeneral"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:text="Create"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textAllCaps="false"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="15dp"
-                android:layout_marginStart="40dp"/>
+                android:text="Create"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
