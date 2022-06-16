@@ -28,9 +28,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         userDataBase = Room.databaseBuilder(applicationContext, UserDatabase::class.java,
         "userDB").build()
 
-        GlobalScope.launch {
-            userDataBase.userDao.addUser(UserEnt(0, "Talha", "talha@gmail.com", "123123"))
-        }
+
 
 
         setOnClickListener()
@@ -83,8 +81,12 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.forgot_pass -> {
-                val intent = Intent(this, ForgotPasswordActivity::class.java)
-                startActivity(intent)
+                /*val intent = Intent(this, ForgotPasswordActivity::class.java)
+                startActivity(intent)*/
+
+                GlobalScope.launch {
+                    userDataBase.userDao.addUser(UserEnt(0, "Talha", "talha@gmail.com", "123123"))
+                }
             }
         }
     }
