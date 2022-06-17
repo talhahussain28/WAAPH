@@ -160,7 +160,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fitsSystemWindows="true"
-                android:hint="Account No"
+                android:hint="Branch"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/ThemeColor"
                 app:errorEnabled="true">
