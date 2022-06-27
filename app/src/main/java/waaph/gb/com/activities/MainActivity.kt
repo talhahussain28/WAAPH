@@ -9,6 +9,8 @@ import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import waaph.gb.com.R
@@ -75,14 +77,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.login -> {
-               /* CoroutineScope(Dispatchers.IO).launch {
-                    validateEdittext()
-                }*/
-                valdateEdittext()
-               // finish()
-                /*val intent = Intent(this, BottomNavigationActivity::class.java)
-                startActivity(intent)*/
-                // finish()
+                validateEdittext()
+
+                /* val intent = Intent(this, BottomNavigationActivity::class.java)
+                 startActivity(intent)
+                 finish()*/
 
             }
             R.id.tv_signup -> {
@@ -93,14 +92,14 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 /*val intent = Intent(this, ForgotPasswordActivity::class.java)
                 startActivity(intent)*/
 
-                GlobalScope.launch {
+                CoroutineScope(IO).launch {
                     userDataBase.userDao.addUser(UserEnt(0, "Talha", "talha@gmail.com", "123123"))
                 }
             }
         }
     }
 
-    private suspend fun validateEdittext() {
+    private fun validateEdittext() {
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
         emailST = email.text.toString().trim()
@@ -109,31 +108,32 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         if (emailST.isNotEmpty()) {
             if (emailST.matches(emailPattern.toRegex())) {
                 if (passwordST.isNotEmpty()) {
-                    val job = CoroutineScope(Dispatchers.IO).launch {
+
+                    CoroutineScope(IO).launch {
                         userEnt = userDataBase.userDao.loginUser(emailST, passwordST)
                     }
-                    job.join()
                     /*val intent = Intent(this, BottomNavigationActivity::class.java)
                     startActivity(intent)*/
-                    CoroutineScope(Dispatchers.Main).launch {
+                    CoroutineScope(Main).launch {
                         if (userEnt == null) {
                             showToast("Invalid Credentials!")
                         } else {
                             showToast("Login Successful!")
                         }
-                    }/*else {
-                    edit_text_password.error = "Enter password!"
-                }*/
+                    }
+
                 } else {
-                    email.error = "Invalid Email!"
+                    edit_text_password.error = "Enter password!"
                 }
             } else {
-                email.error = "Enter Email!"
+                email.error = "Invalid Email!"
             }
+        } else {
+            email.error = "Enter Email!"
         }
     }
 
-    private fun valdateEdittext() {
+    /*private fun valdateEdittext() {
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
         emailST = email.text.toString().trim()
@@ -146,5 +146,5 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         } else {
             showToast("Invalid Credentials!")
         }
-    }
+    }*/
 }

@@ -7,8 +7,8 @@ import waaph.gb.com.entities.user.UserEnt
 @Dao
 interface UserDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(userEnt: UserEnt)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addUser(userEnt: UserEnt): Long
 
     @Update
     suspend fun updateUser(userEnt: UserEnt)
