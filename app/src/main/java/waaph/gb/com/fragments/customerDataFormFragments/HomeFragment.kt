@@ -52,7 +52,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
             R.id.CDF -> {
                 val intent = Intent(requireActivity(), CustomerDataFormActivity::class.java)
                 startActivity(intent)
-                activity!!.finish()
             }
             R.id.logout -> {
                 startActivity(Intent(requireContext(),MainActivity::class.java))

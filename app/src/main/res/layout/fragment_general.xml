@@ -97,6 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:paddingBottom="20dp"
             app:layout_constraintTop_toBottomOf="@+id/heading">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -639,7 +640,8 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
-                android:layout_marginBottom="15dp"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:text="Create"
                 android:textAllCaps="false"
                 android:textSize="16sp"

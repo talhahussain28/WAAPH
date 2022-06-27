@@ -4,29 +4,32 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ListView
-import android.widget.Toast
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_general.*
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.GeneralAdapter
 import waaph.gb.com.database.cdf.GeneralDatabase
 import waaph.gb.com.entities.cdf.GeneralEnt
 import waaph.gb.com.model.CreateGeneralModel
-import waaph.gb.com.utils.BaseFragment
-import waaph.gb.com.utils.GeneralBottomAdapter
-import waaph.gb.com.utils.Utils
+import waaph.gb.com.utils.*
 
 class GeneralFragment : BaseFragment(), View.OnClickListener {
 
     private lateinit var adapter: GeneralAdapter
     private lateinit var list: ArrayList<CreateGeneralModel>
     private lateinit var generalDatabase: GeneralDatabase
+    private var generalData : GeneralEnt? = null
+
+    private var isUpdate = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,14 +43,27 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
         generalDatabase = GeneralDatabase.getInstance(context!!)
 
+        checkDatabase()
         setOnClickListener()
         initialize()
+    }
+
+    private fun checkDatabase() {
+        CoroutineScope(Dispatchers.IO).async{
+            generalData = generalDatabase.generalDao.getGeneralSingle(0)
+            if (generalData!!.businessName.isNullOrEmpty()){
+                isUpdate = false
+                btnCreateGeneral.gone()
+            }else{
+                isUpdate = true
+            }
+        }
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnCreateGeneral -> {
-                createGeneral()
+                createGeneralItem()
             }
             R.id.customer -> {
                 customerDialog()
@@ -61,8 +77,50 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
+    override fun linkXML(view: View?) {
+    }
 
-    private fun createGeneral() {
+    override fun setOnClickListener() {
+        btnCreateGeneral.setOnClickListener(this)
+        customer.setOnClickListener(this)
+        business.setOnClickListener(this)
+        region.setOnClickListener(this)
+    }
+
+    override fun initialize() {
+/*        list.add(CreateGeneralModel("Miletap"))
+        list.add(CreateGeneralModel("LuteBox"))
+        list.add(CreateGeneralModel("Pnc solution"))
+        list.add(CreateGeneralModel("Ibex"))
+        list.add(CreateGeneralModel("rajby"))*/
+
+        setTextWatchers()
+        setCreateButtonStatus()
+
+        /*if (isUpdate){
+            setOldDetail()
+        }*/
+    }
+
+    private fun setOldDetail() {
+        edtBussinessName.setText(generalData!!.businessName)
+    }
+
+    private fun setTextWatchers() {
+        edtBussinessName.addTextChangedListener(textWatcher)
+        edtCNIC.addTextChangedListener(textWatcher)
+        edtNTN.addTextChangedListener(textWatcher)
+        edtPhone.addTextChangedListener(textWatcher)
+        edtFAX.addTextChangedListener(textWatcher)
+        edtMobile.addTextChangedListener(textWatcher)
+        edtWhatsApp.addTextChangedListener(textWatcher)
+        edtWebSite.addTextChangedListener(textWatcher)
+        edtEmail.addTextChangedListener(textWatcher)
+        edtOrganizationName.addTextChangedListener(textWatcher)
+    }
+
+
+    private fun validateEditTexts() {
         Utils.etValidate(edtBussinessName)
         Utils.etValidate(edtCNIC)
         Utils.etValidate(edtNTN)
@@ -89,17 +147,35 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
             edtOrganizationName.text!!.isNotEmpty() &&
             edtPhone.text!!.isNotEmpty()
         ) {
+            btnCreateGeneral.show()
+            setCreateButtonStatus()
+            /*(activity as CustomerDataFormActivity).setCurrentItem(1)
+            Toast.makeText(requireContext(), "task done", Toast.LENGTH_SHORT).show()*/
+        }else {
+            btnCreateGeneral.gone()
+        }
+    }
 
-            GlobalScope.launch {
-                generalDatabase.generalDao.addGeneral(GeneralEnt(0,
-                0,
+    private fun setCreateButtonStatus() {
+        if (isUpdate){
+            btnCreateGeneral.text = "Update"
+        }else {
+            btnCreateGeneral.text = "Create"
+        }
+    }
+
+    private fun createGeneralItem() {
+        CoroutineScope(Dispatchers.IO).async {
+            generalDatabase.generalDao.addGeneral(
+                GeneralEnt(0,
+                    0,
                     edtBussinessName.text.toString(),
-                ",",
+                    ",",
                     tvCustomerGroup.text.toString(),
                     tvBusinessType.text.toString(),
                     edtCNIC.text.toString(),
                     edtNTN.text.toString(),
-                "yes",
+                    "yes",
                     tvRegion.text.toString(),
                     edtPhone.text.toString(),
                     edtFAX.text.toString(),
@@ -122,31 +198,28 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
                     "",
                     true,
                     true
-                ))
-            }
-
-            showToast("Database Created!")
-            /*(activity as CustomerDataFormActivity).setCurrentItem(1)
-            Toast.makeText(requireContext(), "task done", Toast.LENGTH_SHORT).show()*/
+                )
+            )
         }
+        checkDatabase()
+        btnCreateGeneral.gone()
+        setCreateButtonStatus()
+
+        if (isUpdate){
+            showToast("Database Updated!")
+        }else {
+            showToast("Database Created!")
+        }
+
     }
 
-    override fun linkXML(view: View?) {
-    }
 
-    override fun setOnClickListener() {
-        btnCreateGeneral.setOnClickListener(this)
-        customer.setOnClickListener(this)
-        business.setOnClickListener(this)
-        region.setOnClickListener(this)
-    }
-
-    override fun initialize() {
-/*        list.add(CreateGeneralModel("Miletap"))
-        list.add(CreateGeneralModel("LuteBox"))
-        list.add(CreateGeneralModel("Pnc solution"))
-        list.add(CreateGeneralModel("Ibex"))
-        list.add(CreateGeneralModel("rajby"))*/
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable) {
+            validateEditTexts()
+        }
     }
 
     private fun customerDialog() {

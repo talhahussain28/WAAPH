@@ -11,16 +11,19 @@ interface GeneralDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addGeneral(generalEnt: GeneralEnt)
 
-    @Update
-    suspend fun updateGeneral(generalEnt: GeneralEnt)
+    @Query("SELECT * FROM generalTable WHERE id=:id ")
+    suspend fun getGeneralSingle(id: Int): GeneralEnt
 
-    @Query("SELECT * FROM generalTable ORDER BY id ASC")
-    fun getAllGenerals(): LiveData<List<GeneralEnt>>
+    /*@Update
+    suspend fun updateGeneral(generalEnt: GeneralEnt)*/
+
+    /*@Query("SELECT * FROM generalTable ORDER BY id ASC")
+    fun getAllGenerals(): LiveData<List<GeneralEnt>>*/
 
     /*@Query("SELECT * FROM generalTable WHERE id =:email and (:password)")
     fun loginUser(email: String, password: String): UserEnt*/
 
-    @Delete
-    suspend fun deleteGeneral(generalEnt: GeneralEnt)
+    /*@Delete
+    suspend fun deleteGeneral(generalEnt: GeneralEnt)*/
 
 }
