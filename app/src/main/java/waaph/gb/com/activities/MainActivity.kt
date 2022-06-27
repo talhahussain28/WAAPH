@@ -77,11 +77,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.login -> {
-                validateEdittext()
+//                validateEdittext()
 
-                /* val intent = Intent(this, BottomNavigationActivity::class.java)
+                 val intent = Intent(this, BottomNavigationActivity::class.java)
                  startActivity(intent)
-                 finish()*/
+                 finish()
 
             }
             R.id.tv_signup -> {
