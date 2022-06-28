@@ -23,12 +23,16 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
     private lateinit var adapter: AddressAdapter
     private lateinit var recyclerView: RecyclerView
 
+    var title = ""
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_address, container, false)
+        var view = inflater.inflate(R.layout.fragment_address, container, false)
+
+        return view
     }
 
     override fun onClick(v: View?) {

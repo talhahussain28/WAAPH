@@ -16,11 +16,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import waaph.gb.com.R
+import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.adapters.GeneralAdapter
 import waaph.gb.com.database.cdf.GeneralDatabase
 import waaph.gb.com.entities.cdf.GeneralEnt
 import waaph.gb.com.model.CreateGeneralModel
 import waaph.gb.com.utils.*
+import android.R.attr.name
+import com.google.gson.Gson
+import waaph.gb.com.utils.Constants.Companion.ARG_GENERAL
+
 
 class GeneralFragment : BaseFragment(), View.OnClickListener {
 
@@ -28,6 +33,9 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     private lateinit var list: ArrayList<CreateGeneralModel>
     private lateinit var generalDatabase: GeneralDatabase
     private var generalData : GeneralEnt? = null
+
+    private var prefs: SaveInSharedPreference? = null
+    private var gson = Gson()
 
     private var isUpdate = false
 
@@ -41,9 +49,11 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        prefs = SaveInSharedPreference(requireContext())
+
         generalDatabase = GeneralDatabase.getInstance(context!!)
 
-        checkDatabase()
+//        checkDatabase()
         setOnClickListener()
         initialize()
     }
@@ -96,14 +106,6 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
         setTextWatchers()
         setCreateButtonStatus()
-
-        /*if (isUpdate){
-            setOldDetail()
-        }*/
-    }
-
-    private fun setOldDetail() {
-        edtBussinessName.setText(generalData!!.businessName)
     }
 
     private fun setTextWatchers() {
@@ -157,17 +159,16 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun setCreateButtonStatus() {
-        if (isUpdate){
+        /*if (isUpdate){
             btnCreateGeneral.text = "Update"
         }else {
             btnCreateGeneral.text = "Create"
-        }
+        }*/
     }
 
     private fun createGeneralItem() {
-        CoroutineScope(Dispatchers.IO).async {
-            generalDatabase.generalDao.addGeneral(
-                GeneralEnt(0,
+
+            generalData = GeneralEnt(0,
                     0,
                     edtBussinessName.text.toString(),
                     ",",
@@ -199,18 +200,17 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
                     true,
                     true
                 )
-            )
-        }
-        checkDatabase()
-        btnCreateGeneral.gone()
-        setCreateButtonStatus()
 
-        if (isUpdate){
-            showToast("Database Updated!")
-        }else {
-            showToast("Database Created!")
-        }
+        prefs?.setString(
+            ARG_GENERAL,
+            gson.toJson(generalData)
+        )
+        (activity as CustomerDataFormActivity).setCurrentItem(1)
 
+        /*generalData = Gson().fromJson(
+            SaveInSharedPreference(requireContext()).getString(Constants.ARG_GENERAL),
+            GeneralEnt::class.java
+        )*/
     }
 
 
