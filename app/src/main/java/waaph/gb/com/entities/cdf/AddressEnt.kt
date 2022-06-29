@@ -1,0 +1,32 @@
+package waaph.gb.com.entities.cdf
+
+data class AddressEnt(
+    val id: Int,
+
+    var customerIDFK: Int = 0,
+    var addressName: String = "",
+    var addressType: String = "",
+    var locationType: String = "",
+    var addressLine: String = "",
+    var country: String = "",
+    var state: String = "",
+    var city: String = "",
+    var region: String = "",
+    var location: String = "",
+    var postalCode: String = "",
+    var deliveryScheduleDays: ArrayList<Int> = ArrayList(),
+    var workingHoursFrom: Long = 0L,
+    var workingHoursTo: Long = 0L,
+    var longitude: String = "",
+    var latitude: String = "",
+    var spCreatedDate: Long = 0L,
+    var spCreatedBy: String = "",
+    var spModifiedDate: Long = 0L,
+    var spModifiedBy: String = "",
+    var appCreatedDate: Long = 0L,
+    var appCreatedBy: String = "",
+    var appModifiedDate: Long = 0L,
+    var appModifiedBy: String = "",
+    var syncReqdToServer: Boolean,
+    var syncReqdFromServer: Boolean,
+)

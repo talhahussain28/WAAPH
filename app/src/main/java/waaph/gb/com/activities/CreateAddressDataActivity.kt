@@ -1,7 +1,9 @@
 package waaph.gb.com.activities
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -12,23 +14,25 @@ import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_create_address_data.*
 import kotlinx.android.synthetic.main.activity_create_address_data.region
 import kotlinx.android.synthetic.main.activity_create_address_data.regionList
 import kotlinx.android.synthetic.main.activity_create_address_data.tvRegion
 import kotlinx.android.synthetic.main.custom_dialog.*
-import kotlinx.android.synthetic.main.fragment_general.*
 import waaph.gb.com.R
+import waaph.gb.com.entities.cdf.AddressEnt
 import waaph.gb.com.model.SelectedDayCreateAddressModel
-import waaph.gb.com.utils.BaseActivity
-import waaph.gb.com.utils.GeneralBottomAdapter
-import waaph.gb.com.utils.Utils
+import waaph.gb.com.utils.*
 
 class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
 
     private lateinit var selectDay : ArrayList<SelectedDayCreateAddressModel>
     private var model  : SelectedDayCreateAddressModel? = null
     private lateinit var days : TextView
+    private var addressData: AddressEnt? = null
+
+    private var gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -690,7 +694,40 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
             edtPostalCode.text!!.isNotEmpty()&&
             edtWorkingHours.text!!.isNotEmpty()
         ) {
-            Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
+            addressData = AddressEnt(
+                0,
+                0,
+                edtAddressName.getTextToString(),
+                "",
+                "",
+                edtAddressLine.getTextToString(),
+                "",
+                "",
+                "",
+                "",
+                "",
+                edtPostalCode.getTextToString(),
+                ArrayList(),
+                edtWorkingHours.getTextToString().toLong(),
+                0L,
+                "",
+                "",
+                0L,
+                "",
+                0L,
+                "",
+                0L,
+                "",
+                0L,
+                "",
+                false,
+                false
+            )
+
+            var intent = Intent()
+            intent.putExtra("data", gson.toJson(addressData))
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 

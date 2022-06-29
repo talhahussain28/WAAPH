@@ -1,12 +1,12 @@
 
 package waaph.gb.com.utils
 
-import android.graphics.Bitmap
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import android.view.View
-import com.google.gson.GsonBuilder
-import java.lang.reflect.Type
-import kotlin.math.round
+import android.widget.EditText
+
+fun EditText.getTextToString(): String{
+    return this.text.toString().trim()
+}
 
 fun View.show() {
     this.visibility = View.VISIBLE

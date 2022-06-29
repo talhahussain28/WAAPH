@@ -1,5 +1,6 @@
 package waaph.gb.com.fragments.customerDataFormFragments
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,22 +9,31 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_address.*
 import waaph.gb.com.activities.AddressDetailActivity
 import waaph.gb.com.activities.CreateAddressDataActivity
 import waaph.gb.com.R
 import waaph.gb.com.adapters.AddressAdapter
+import waaph.gb.com.entities.cdf.AddressEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.CreateAddressModel
 import waaph.gb.com.model.Data
+import waaph.gb.com.utils.SaveInSharedPreference
 
 class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
 
-    private lateinit var list: ArrayList<CreateAddressModel>
+    companion object{
+        const val CREATE_ADDRESS_CODE = 1001
+    }
+
+    private var list =  ArrayList<AddressEnt>()
     private lateinit var adapter: AddressAdapter
     private lateinit var recyclerView: RecyclerView
+    private var addressData: AddressEnt? = null
 
-    var title = ""
+    private var prefs: SaveInSharedPreference? = null
+    private var gson = Gson()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,38 +45,44 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        prefs = SaveInSharedPreference(requireContext())
+
+        recyclerView = recyclerViewAddress
+
+        fab.setOnClickListener(this)
+        setUpRecyclerViewData()
+    }
+
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.fab -> {
                 val intent = Intent(requireActivity(), CreateAddressDataActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, CREATE_ADDRESS_CODE)
             }
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-        list = ArrayList()
-        adapter = AddressAdapter(requireContext(), list, this)
-        recyclerView = recyclerViewAddress
+        if (resultCode == Activity.RESULT_OK){
+            when(requestCode){
+                CREATE_ADDRESS_CODE -> {
+                    addressData = gson.fromJson(data!!.extras!!.getString("data"),
+                        AddressEnt::class.java)
 
-        fab.setOnClickListener(this)
-        setUpRecyclerViewData(recyclerView, adapter)
+                    adapter.addItem(addressData!!)
+                }
+            }
+        }
     }
 
-    private fun setUpRecyclerViewData(recyclerView: RecyclerView, adapter: AddressAdapter) {
-        list.add(CreateAddressModel("Test"))
-/*        list.add(CreateAddressModel("tlaha"))
-        list.add(CreateAddressModel("hammad"))
-        list.add(CreateAddressModel("huzaifa"))
-        list.add(CreateAddressModel("anus ali"))
-        list.add(CreateAddressModel("hameed"))
-        list.add(CreateAddressModel("uzair"))
-        list.add(CreateAddressModel("saud"))
-        list.add(CreateAddressModel("rohit"))
-        list.add(CreateAddressModel("bilal"))
-        list.add(CreateAddressModel("majSHdyg"))*/
+    private fun setUpRecyclerViewData() {
+        adapter = AddressAdapter(requireContext(), ArrayList(), this)
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager
