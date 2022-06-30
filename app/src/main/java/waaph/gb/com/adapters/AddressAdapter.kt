@@ -16,7 +16,7 @@ import waaph.gb.com.model.Data
 
 class AddressAdapter(
     val context: Context,
-    private val list: ArrayList<AddressEnt>,
+    private var list: ArrayList<AddressEnt>,
     private val listener: OnRecyclerViewItemClickListener<Data>?
 ) : RecyclerView.Adapter<AddressAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(
@@ -44,6 +44,11 @@ class AddressAdapter(
 
     fun addItem(item: AddressEnt) {
         list.add(item)
+        notifyDataSetChanged()
+    }
+
+    fun updateList(newList: ArrayList<AddressEnt>){
+        list = newList
         notifyDataSetChanged()
     }
 

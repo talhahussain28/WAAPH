@@ -15,7 +15,7 @@ public class SaveInSharedPreference {
     @SuppressLint("CommitPrefEdits")
     public SaveInSharedPreference(Context context) {
 //        Context _context = context;
-        pref = context.getSharedPreferences("WAAPH", PRIVATE_MODE);
+        pref = context.getSharedPreferences(Constants.Companion.getPREF_NAME(), PRIVATE_MODE);
         editor = pref.edit();
     }
 

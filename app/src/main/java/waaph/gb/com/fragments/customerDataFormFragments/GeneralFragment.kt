@@ -38,6 +38,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     private var gson = Gson()
 
     private var isUpdate = false
+    private var isSTRN = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -168,6 +169,12 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
     private fun createGeneralItem() {
 
+        isSTRN = if (customSwitchSTRN.isChecked){
+            "yes"
+        }else{
+            "no"
+        }
+
             generalData = GeneralEnt(0,
                     0,
                     edtBussinessName.text.toString(),
@@ -176,7 +183,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
                     tvBusinessType.text.toString(),
                     edtCNIC.text.toString(),
                     edtNTN.text.toString(),
-                    "yes",
+                    isSTRN,
                     tvRegion.text.toString(),
                     edtPhone.text.toString(),
                     edtFAX.text.toString(),
@@ -184,7 +191,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
                     edtWhatsApp.text.toString(),
                     edtWebSite.text.toString(),
                     edtEmail.text.toString(),
-                    true,
+                    customSwitch.isChecked,
                     edtOrganizationName.text.toString(),
                     "",
                     "",

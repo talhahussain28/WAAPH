@@ -684,6 +684,12 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
 
     private fun addAddress(){
 
+        val addressType = if (customSwitchSTN.isChecked){
+            "0"
+        }else{
+            "1"
+        }
+
         Utils.etValidate(edtAddressName)
         Utils.etValidate(edtAddressLine)
         Utils.etValidate(edtPostalCode)
@@ -698,7 +704,7 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
                 0,
                 0,
                 edtAddressName.getTextToString(),
-                "",
+                addressType,
                 "",
                 edtAddressLine.getTextToString(),
                 "",

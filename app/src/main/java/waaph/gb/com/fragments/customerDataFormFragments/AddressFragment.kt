@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_address.*
 import waaph.gb.com.activities.AddressDetailActivity
 import waaph.gb.com.activities.CreateAddressDataActivity
@@ -17,8 +18,8 @@ import waaph.gb.com.R
 import waaph.gb.com.adapters.AddressAdapter
 import waaph.gb.com.entities.cdf.AddressEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
-import waaph.gb.com.model.CreateAddressModel
 import waaph.gb.com.model.Data
+import waaph.gb.com.utils.Constants.Companion.ARG_ADDRESS
 import waaph.gb.com.utils.SaveInSharedPreference
 
 class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
@@ -54,6 +55,11 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
 
         fab.setOnClickListener(this)
         setUpRecyclerViewData()
+
+        if (!prefs!!.getString(ARG_ADDRESS).isNullOrEmpty()){
+            list = getNewList()
+            adapter.updateList(getNewList())
+        }
     }
 
 
@@ -75,10 +81,19 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
                     addressData = gson.fromJson(data!!.extras!!.getString("data"),
                         AddressEnt::class.java)
 
-                    adapter.addItem(addressData!!)
+                    list.add(addressData!!)
+
+                    // Update and get new list from prefs
+                    prefs!!.setString(ARG_ADDRESS, gson.toJson(list))
+                    adapter.updateList(getNewList())
                 }
             }
         }
+    }
+
+    private fun getNewList(): ArrayList<AddressEnt> {
+        val type = object : TypeToken<ArrayList<AddressEnt>>() {}.type!!
+        return gson.fromJson(prefs!!.getString(ARG_ADDRESS), type)
     }
 
     private fun setUpRecyclerViewData() {
