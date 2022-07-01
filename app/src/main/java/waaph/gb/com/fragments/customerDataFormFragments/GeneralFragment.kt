@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.fragment_general.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import waaph.gb.com.R
 import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.adapters.GeneralAdapter
@@ -22,8 +21,8 @@ import waaph.gb.com.database.cdf.GeneralDatabase
 import waaph.gb.com.entities.cdf.GeneralEnt
 import waaph.gb.com.model.CreateGeneralModel
 import waaph.gb.com.utils.*
-import android.R.attr.name
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_customer_data_form.*
 import waaph.gb.com.utils.Constants.Companion.ARG_GENERAL
 
 
@@ -50,6 +49,8 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        disableOtherTabsExcept(0)
         prefs = SaveInSharedPreference(requireContext())
 
         generalDatabase = GeneralDatabase.getInstance(context!!)
@@ -57,6 +58,13 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 //        checkDatabase()
         setOnClickListener()
         initialize()
+    }
+
+    private fun disableOtherTabsExcept(currentTabIndex: Int) {
+        for (i in 1..6){
+            (activity as CustomerDataFormActivity).tabLayout.getTabAt(i)?.view!!.isClickable = false
+        }
+
     }
 
     private fun checkDatabase() {

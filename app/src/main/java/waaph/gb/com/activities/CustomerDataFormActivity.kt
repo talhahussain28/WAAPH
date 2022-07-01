@@ -2,6 +2,7 @@ package waaph.gb.com.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import waaph.gb.com.R
 import waaph.gb.com.fragments.customerDataFormFragments.*
 import waaph.gb.com.model.ViewPagerItemModel
 import waaph.gb.com.utils.BaseActivity
+import waaph.gb.com.utils.SaveInSharedPreference
 
 class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
 
@@ -22,16 +24,27 @@ class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navigationView: NavigationView
 
+    private var prefs: SaveInSharedPreference? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_data_form)
 
+        prefs = SaveInSharedPreference(this)
+        prefs!!.clearSavedInSharedPreference()
+
         drawerLayout = drawer_layout_CDF
         navigationView = nav_view_CDF
+
+        disableSwipeOnViewPager()
 
         initialize()
         setOnClickListeners()
         drawerItemListener(navigationView,drawerLayout)
+    }
+
+    private fun disableSwipeOnViewPager() {
+        viewPager.setOnTouchListener { v, event -> true }
     }
 
     override fun linkXML() { }
@@ -95,6 +108,8 @@ class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
             ))
             fragments.add(ViewPagerItemModel("Address",
                 AddressFragment()
+
+
             ))
             fragments.add(ViewPagerItemModel("Contact",
                 ContactFragment()

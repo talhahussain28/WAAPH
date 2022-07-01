@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_customer_data_form.*
 import kotlinx.android.synthetic.main.fragment_address.*
 import waaph.gb.com.activities.AddressDetailActivity
 import waaph.gb.com.activities.CreateAddressDataActivity
 import waaph.gb.com.R
+import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.adapters.AddressAdapter
 import waaph.gb.com.entities.cdf.AddressEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
@@ -51,15 +53,17 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
 
         prefs = SaveInSharedPreference(requireContext())
 
+        disableOtherTabsExcept(1)
+
         recyclerView = recyclerViewAddress
 
         fab.setOnClickListener(this)
         setUpRecyclerViewData()
 
-        if (!prefs!!.getString(ARG_ADDRESS).isNullOrEmpty()){
+        /*if (!prefs!!.getString(ARG_ADDRESS).isNullOrEmpty()){
             list = getNewList()
             adapter.updateList(getNewList())
-        }
+        }*/
     }
 
 
@@ -89,6 +93,13 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
                 }
             }
         }
+    }
+
+    private fun disableOtherTabsExcept(currentTabIndex: Int) {
+        for (i in 0..6 step currentTabIndex){
+            (activity as CustomerDataFormActivity).tabLayout.getTabAt(i)?.view!!.isClickable = false
+        }
+
     }
 
     private fun getNewList(): ArrayList<AddressEnt> {
