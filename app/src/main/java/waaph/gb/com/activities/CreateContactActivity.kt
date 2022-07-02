@@ -1,6 +1,8 @@
 package waaph.gb.com.activities
 
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,18 +12,28 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_create_contact.*
 import kotlinx.android.synthetic.main.custom_dialog.*
+import kotlinx.android.synthetic.main.fragment_general.*
 import waaph.gb.com.R
+import waaph.gb.com.entities.cdf.ContactEnt
 import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter
 import waaph.gb.com.utils.Utils
+import waaph.gb.com.utils.getTextToString
 
 class CreateContactActivity : BaseActivity(), View.OnClickListener {
+
+    private var contactEnt: ContactEnt? = null
+
+    private var gson = Gson()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_contact)
 
+        initialize()
         setOnClickListener()
     }
 
@@ -39,7 +51,7 @@ class CreateContactActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnNext -> {
-                addAddress()
+                addContact()
             }
             R.id.openCategoryList -> {
                 pickerActionDialog()
@@ -102,7 +114,7 @@ class CreateContactActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    private fun addAddress() {
+    private fun addContact() {
         Utils.etValidate(edtPersonName)
         Utils.etValidate(edtDesignation)
         Utils.etValidate(edtPhoneNumber)
@@ -113,7 +125,35 @@ class CreateContactActivity : BaseActivity(), View.OnClickListener {
             edtPhoneNumber.text!!.isNotEmpty() &&
             edtEmailContact.text!!.isNotEmpty()
         ) {
-            Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
+            contactEnt = ContactEnt(
+                0,
+                0,
+                0,
+                edtPersonName.getTextToString(),
+                edtDesignation.getTextToString(),
+                "",
+                edtPhoneNumber.getTextToString(),
+                edtEmailContact.getTextToString(),
+                "",
+                "",
+                0,
+                "",
+                0,
+                "",
+                0,
+                "",
+                0,
+                "",
+                false,
+                false
+            )
+
+            hideKeyBoard(edtEmailContact)
+
+            var intent = Intent()
+            intent.putExtra("data", gson.toJson(contactEnt))
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 

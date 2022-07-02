@@ -23,6 +23,8 @@ import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.Data
 import waaph.gb.com.utils.Constants.Companion.ARG_ADDRESS
 import waaph.gb.com.utils.SaveInSharedPreference
+import waaph.gb.com.utils.gone
+import waaph.gb.com.utils.show
 
 class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
 
@@ -53,17 +55,18 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
 
         prefs = SaveInSharedPreference(requireContext())
 
-        disableOtherTabsExcept(1)
-
         recyclerView = recyclerViewAddress
 
         fab.setOnClickListener(this)
+        btnNext.setOnClickListener(this)
+
         setUpRecyclerViewData()
 
-        /*if (!prefs!!.getString(ARG_ADDRESS).isNullOrEmpty()){
-            list = getNewList()
-            adapter.updateList(getNewList())
-        }*/
+        if (!prefs!!.getString(ARG_ADDRESS).isNullOrEmpty()){
+            btnNext.show()
+        }else{
+            btnNext.gone()
+        }
     }
 
 
@@ -72,6 +75,9 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
             R.id.fab -> {
                 val intent = Intent(requireActivity(), CreateAddressDataActivity::class.java)
                 startActivityForResult(intent, CREATE_ADDRESS_CODE)
+            }
+            R.id.btnNext -> {
+                (activity as CustomerDataFormActivity).setCurrentItem(2)
             }
         }
     }
@@ -90,16 +96,11 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
                     // Update and get new list from prefs
                     prefs!!.setString(ARG_ADDRESS, gson.toJson(list))
                     adapter.updateList(getNewList())
+
+                    btnNext.show()
                 }
             }
         }
-    }
-
-    private fun disableOtherTabsExcept(currentTabIndex: Int) {
-        for (i in 0..6 step currentTabIndex){
-            (activity as CustomerDataFormActivity).tabLayout.getTabAt(i)?.view!!.isClickable = false
-        }
-
     }
 
     private fun getNewList(): ArrayList<AddressEnt> {

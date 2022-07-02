@@ -44,7 +44,12 @@ class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
     }
 
     private fun disableSwipeOnViewPager() {
-        viewPager.setOnTouchListener { v, event -> true }
+        viewPager.setOnTouchListener(object: View.OnTouchListener{
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                viewPager.currentItem = viewPager.currentItem
+                return true
+            }
+        })
     }
 
     override fun linkXML() { }
@@ -108,8 +113,6 @@ class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
             ))
             fragments.add(ViewPagerItemModel("Address",
                 AddressFragment()
-
-
             ))
             fragments.add(ViewPagerItemModel("Contact",
                 ContactFragment()

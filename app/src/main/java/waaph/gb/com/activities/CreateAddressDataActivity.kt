@@ -221,6 +221,12 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        setResult(Activity.RESULT_CANCELED, intent)
+        finish()
+    }
+
     private fun locationTypeDialog() {
 
         val dialog = Dialog(this)
@@ -729,6 +735,8 @@ class CreateAddressDataActivity : BaseActivity() , View.OnClickListener{
                 false,
                 false
             )
+
+            hideKeyBoard(edtWorkingHours)
 
             var intent = Intent()
             intent.putExtra("data", gson.toJson(addressData))

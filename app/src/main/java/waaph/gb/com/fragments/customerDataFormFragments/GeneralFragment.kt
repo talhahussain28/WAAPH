@@ -49,7 +49,6 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         disableOtherTabsExcept(0)
         prefs = SaveInSharedPreference(requireContext())
 
@@ -61,7 +60,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun disableOtherTabsExcept(currentTabIndex: Int) {
-        for (i in 1..6){
+        for (i in 0..6){
             (activity as CustomerDataFormActivity).tabLayout.getTabAt(i)?.view!!.isClickable = false
         }
 
@@ -82,6 +81,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnCreateGeneral -> {
+                hideKeyBoard(edtOrganizationName)
                 createGeneralItem()
             }
             R.id.customer -> {
@@ -233,7 +233,12 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         override fun afterTextChanged(s: Editable) {
-            validateEditTexts()
+
+            // TODO: Temp Code
+            btnCreateGeneral.show()
+            setCreateButtonStatus()
+
+//            validateEditTexts()
         }
     }
 

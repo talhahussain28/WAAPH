@@ -6,7 +6,6 @@ import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_bank.*
-import kotlinx.android.synthetic.main.fragment_contact.*
 import waaph.gb.com.activities.BankDetailActivity
 import waaph.gb.com.activities.CreateBankActivity
 import waaph.gb.com.activities.CustomerDataFormActivity
@@ -38,8 +37,7 @@ class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemCli
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //next.setOnClickListener(this)
-        // bank_layout.setOnClickListener(this)
+
         list = ArrayList()
         recyclerVieww = recyclerView
         adapter = BankAdapter(requireContext(), list, this)
