@@ -1,6 +1,8 @@
 package waaph.gb.com.activities
 
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,20 +12,31 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_create_bank.*
+import kotlinx.android.synthetic.main.activity_create_contact.*
 import kotlinx.android.synthetic.main.custom_dialog.*
 import waaph.gb.com.R
+import waaph.gb.com.entities.cdf.BankEnt
+import waaph.gb.com.entities.cdf.ContactEnt
 import waaph.gb.com.utils.BaseActivity
 import waaph.gb.com.utils.GeneralBottomAdapter
 import waaph.gb.com.utils.Utils
+import waaph.gb.com.utils.getTextToString
 
 class CreateBankActivity : BaseActivity(), View.OnClickListener {
+
+    private var bankEnt: BankEnt? = null
+
+    private var gson = Gson()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_bank)
 
+        initialize()
         setOnClickListener()
-
     }
 
     override fun linkXML() {
@@ -109,7 +122,31 @@ class CreateBankActivity : BaseActivity(), View.OnClickListener {
             editText_budget.text!!.isNotEmpty()&&
             edtAccountNo.text!!.isNotEmpty()
         ){
-            Toast.makeText(this, "task done", Toast.LENGTH_SHORT).show()
+            var bankEnt = BankEnt(
+                0,
+                0,
+                editText_Name.getTextToString(),
+                edtAccountNo.getTextToString(),
+                "",
+                "",
+                0,
+                "",
+                0,
+                "",
+                0,
+                "",
+                0,
+                "",
+                false,
+                false
+            )
+
+            hideKeyBoard(edtAccountNo)
+
+            var intent = Intent()
+            intent.putExtra("data", gson.toJson(bankEnt))
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 

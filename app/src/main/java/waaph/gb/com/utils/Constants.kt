@@ -5,6 +5,7 @@ class Constants {
         val ARG_GENERAL = "general"
         val ARG_ADDRESS = "address"
         val ARG_CONTACT = "contact"
+        val ARG_BANK = "bank"
         val PREF_NAME = "WAAPH"
     }
 }
