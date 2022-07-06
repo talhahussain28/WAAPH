@@ -36,7 +36,7 @@ class CustomerDataFormActivity : BaseActivity(),View.OnClickListener {
         drawerLayout = drawer_layout_CDF
         navigationView = nav_view_CDF
 
-        disableSwipeOnViewPager()
+       // disableSwipeOnViewPager()
 
         initialize()
         setOnClickListeners()

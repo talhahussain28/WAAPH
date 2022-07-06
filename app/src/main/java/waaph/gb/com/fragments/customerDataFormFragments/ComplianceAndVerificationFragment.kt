@@ -28,6 +28,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.custom_dialog.*
+import waaph.gb.com.BuildConfig
 import waaph.gb.com.utils.GeneralBottomAdapter
 import waaph.gb.com.utils.Utils
 import java.io.File
@@ -146,11 +147,14 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
             when (requestCode) {
                 REQUEST_CAMERA_CAPTURE -> {
                     if (comeFrom == "front"){
-                        imageClicked(cnic)
+                        text.visibility = View.GONE
+                        cnic.setImageBitmap(data?.extras?.get("data") as Bitmap)
+                       // imageClicked(cnic)
                     }
                     else if (comeFrom == "back"){
-                        imageClicked(cnicB)
-
+                        tt.visibility = View.GONE
+                        cnicB.setImageBitmap(data?.extras?.get("data") as Bitmap)
+                        //imageClicked(cnicB)
                     }
                    /* val compressImagePath =
                         captureImageUriPath?.let { Utils.compressImage(requireContext(), it) }
@@ -174,7 +178,22 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                     }
 
                 PICK_MULTIPLE_FILE_REQUEST -> {
-                    val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+                    if (comeFrom == "front"){
+                        if (data?.data != null) {
+                            text.visibility = View.GONE
+                            cnic.setImageURI(data.data)
+                            //addReceiptItem(data.data)
+                        }
+                        else
+                        {
+                            showToast("Image not available")
+                        }
+                    }
+                    else if (comeFrom == "back"){
+                        tt.visibility = View.GONE
+                        cnicB.setImageURI(data?.data)
+                    }
+                   /* val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
                     try {
                         if (data!!.clipData != null) {
                             if (data.clipData!!.itemCount > 0) {
@@ -194,16 +213,18 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                                     val columnIndex = cursor.getColumnIndex(filePathColumn[0])
                                     val imageEncoded = cursor.getString(columnIndex)
                                     cursor.close()
+                                   // cnic.setImageURI(uri)
                                   //  addReceiptItem(uri)
-                                    i++
+                                   // i++
                                 }
                             }
                         } else if (data.data != null) {
+                            cnic.setImageURI(data.data)
                             //addReceiptItem(data.data)
                         }
                     } catch (e: Exception) {
                         Log.d("Attachment-TAG", e.localizedMessage)
-                    }
+                    }*/
                 }
             }
         }
@@ -258,7 +279,6 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
     private fun captureStrn() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(cameraIntent, REQUEST_CO)
-
     }
 
     private fun requestPermission(){
@@ -325,10 +345,10 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                     1 -> {
                         // Camera
                         // use standard intent to capture an image
-                        val chooserIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                       /* val chooserIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
                         // Ensure that there's a camera activity to handle the intent
-                        /*if (chooserIntent.(packageManager) != null) {*/
+                        *//*if (chooserIntent.(packageManager) != null) {*//*
                             // Create the File where the photo should go
                             try {
                                 captureImageFile = createImageFile()
@@ -340,10 +360,10 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                             if (captureImageFile != null) {
                                 try {
                                     val file = createImageFile()
-                                    file?.let {
+                                    file.let {
                                         selectedImage = FileProvider.getUriForFile(
                                             requireContext(),
-                                            "provider",
+                                            BuildConfig.APPLICATION_ID + "provider",
                                             it
                                         )
                                     }
@@ -353,7 +373,11 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                                 }
                                 chooserIntent.putExtra(MediaStore.EXTRA_OUTPUT, selectedImage)
                                 startActivityForResult(chooserIntent, REQUEST_CAMERA_CAPTURE)
-                            }
+                            }*/
+                        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        startActivityForResult(cameraIntent, REQUEST_CAMERA_CAPTURE)
+
+
 
                     }
                 }
