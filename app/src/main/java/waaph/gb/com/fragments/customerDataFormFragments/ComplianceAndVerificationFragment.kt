@@ -6,6 +6,7 @@ import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
@@ -16,12 +17,16 @@ import waaph.gb.com.utils.BaseFragment
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.util.Log
 import android.view.*
 import android.widget.AdapterView
+import android.widget.ImageView
 import android.widget.ListView
+import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.custom_dialog.*
 import waaph.gb.com.utils.GeneralBottomAdapter
 import waaph.gb.com.utils.Utils
@@ -48,6 +53,7 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
     private var captureImageFile: File? = null
     private var captureImageUriPath: String? = null
     private var selectedImage: Uri? = null
+    private var comeFrom: String = ""
 
 
 
@@ -98,17 +104,60 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
             imga.setImageBitmap(data.extras?.get("data") as Bitmap)
         }
     }*/
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS -> {
+                if (grantResults.isNotEmpty()) {
+                    val camera = grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    val readExternalFile = grantResults[1] == PackageManager.PERMISSION_GRANTED
+                    val writeExternalFile = grantResults[2] == PackageManager.PERMISSION_GRANTED
+
+                    if (camera && readExternalFile && writeExternalFile) {
+                        // Permissions are granted
+                        // code here
+                        pickerActionDialog()
+                    } else {
+                        showToast("Please Grant Permissions to upload file")
+                      /*  Snackbar.make(
+                            findViewById(android.R.id.content),
+                            "Please Grant Permissions to upload file",
+                            Snackbar.LENGTH_INDEFINITE
+                        ).setAction(
+                            "ENABLE"
+                        ) {
+                            requestPermissions(
+                                permissionList.toTypedArray(),
+                                REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS
+                            )
+                        }.show()*/
+                    }
+                }
+            }
+        }
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             when (requestCode) {
                 REQUEST_CAMERA_CAPTURE -> {
-                    val compressImagePath =
+                    if (comeFrom == "front"){
+                        imageClicked(cnic)
+                    }
+                    else if (comeFrom == "back"){
+                        imageClicked(cnicB)
+
+                    }
+                   /* val compressImagePath =
                         captureImageUriPath?.let { Utils.compressImage(requireContext(), it) }
                     if (compressImagePath!!.isNotEmpty()) {
                         captureImageFile = File(compressImagePath)
                         text.visibility = View.GONE
-                        cnic.setImageBitmap(captureImageFile as Bitmap)
+                        cnic.setImageBitmap(captureImageFile as Bitmap)*/
                       /*  receiptAdapter?.addReceipt(
                             ExpenseReceiptAdapter.ExpenseReceiptModel(
                                 compressImagePath,
@@ -123,7 +172,7 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                             recyclerView_receipt.scrollToPosition(it.itemCount - 1)
                         }*/
                     }
-                }
+
                 PICK_MULTIPLE_FILE_REQUEST -> {
                     val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
                     try {
@@ -160,16 +209,30 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
         }
     }
 
+    private fun imageClicked(v: ImageView) {
+        val compressImagePath =
+            captureImageUriPath?.let { Utils.compressImage(requireContext(), it) }
+        if (compressImagePath!!.isNotEmpty()) {
+            captureImageFile = File(compressImagePath)
+            text.visibility = View.GONE
+            v.setImageBitmap(captureImageFile as Bitmap)
+        }
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.next -> {
                 (activity as CustomerDataFormActivity).setCurrentItem(6)
             }
             R.id.imgCnicFront -> {
-                capturePhoto()
+                comeFrom = "front"
+                requestPermission()
+                //capturePhoto()
             }
             R.id.imgCnicBack -> {
-                capturePhotoBack()
+                comeFrom = "back"
+                requestPermission()
+                //capturePhotoBack()
             }
             R.id.selectPDF -> {
                 //openDocuments()
