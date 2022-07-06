@@ -1,31 +1,37 @@
 package waaph.gb.com.fragments.customerDataFormFragments
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_bank.*
+import waaph.gb.com.R
 import waaph.gb.com.activities.BankDetailActivity
 import waaph.gb.com.activities.CreateBankActivity
 import waaph.gb.com.activities.CustomerDataFormActivity
-import waaph.gb.com.R
 import waaph.gb.com.adapters.BankAdapter
-import waaph.gb.com.adapters.ContactAdapter
+import waaph.gb.com.entities.cdf.BankEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
-import waaph.gb.com.model.Data
-import waaph.gb.com.utils.BaseFragment
+import waaph.gb.com.utils.*
 
-class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
-    private var adapter: BankAdapter? = null
-    private var list = ArrayList<Data>()
-    private lateinit var recyclerVieww: RecyclerView
+class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemClickListener<BankEnt> {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    companion object{
+        const val CREATE_BANK_CODE = 1003
     }
+
+    private var list =  ArrayList<BankEnt>()
+    private lateinit var adapter: BankAdapter
+    private var bankData: BankEnt? = null
+
+    private var prefs: SaveInSharedPreference? = null
+    private var gson = Gson()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,28 +44,30 @@ class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemCli
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        list = ArrayList()
-        recyclerVieww = recyclerView
-        adapter = BankAdapter(requireContext(), list, this)
-        setOnClickListener()
-        setRecyclerview()
+        prefs = SaveInSharedPreference(requireContext())
+
+        fab.setOnClickListener(this)
+        btnNext.setOnClickListener(this)
+
+        setUpRecyclerViewData()
+
+        if (!prefs!!.getString(Constants.ARG_BANK).isNullOrEmpty()){
+            btnNext.show()
+        }else{
+            btnNext.gone()
+        }
     }
 
     override fun linkXML(view: View?) {
     }
 
     override fun setOnClickListener() {
+        btnNext.setOnClickListener(this)
         fab.setOnClickListener(this)
 
     }
 
     override fun initialize() {
-    }
-
-    companion object
-
-    fun newInstance() {
-
     }
 
     override fun onClick(v: View?) {
@@ -77,21 +85,44 @@ class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemCli
              }*/
             R.id.fab -> {
                 val intent = Intent(requireActivity(), CreateBankActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, CREATE_BANK_CODE)
+            }
+
+            R.id.btnNext -> {
+                (activity as CustomerDataFormActivity).setCurrentItem(4)
             }
 
         }
     }
 
-    private fun setRecyclerview() {
-        // list = arrayListOf()
-        list.add(Data("Meezan bank", "None"))
-      /*  list.add(Data("Alfa bank", "None"))
-        list.add(Data("Js bank", "None"))
-        list.add(Data("HBL bank", "None"))
-        list.add(Data("Habib bank", "None"))
-        list.add(Data("AL Habib bank", "None"))*/
-      //  adapter = BankAdapter(requireContext(), list, this)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK){
+            when(requestCode){
+                CREATE_BANK_CODE -> {
+                    bankData = gson.fromJson(data!!.extras!!.getString("data"),
+                        BankEnt::class.java)
+
+                    list.add(bankData!!)
+
+                    // Update and get new list from prefs
+                    prefs!!.setString(Constants.ARG_BANK, gson.toJson(list))
+                    adapter.updateList(getNewList())
+
+                    btnNext.show()
+                }
+            }
+        }
+    }
+
+    private fun getNewList(): ArrayList<BankEnt> {
+        val type = object : TypeToken<ArrayList<BankEnt>>() {}.type!!
+        return gson.fromJson(prefs!!.getString(Constants.ARG_BANK), type)
+    }
+
+    private fun setUpRecyclerViewData() {
+        adapter = BankAdapter(requireContext(), ArrayList(), this)
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = linearLayoutManager

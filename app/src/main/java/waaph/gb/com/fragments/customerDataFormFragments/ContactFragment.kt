@@ -28,7 +28,6 @@ class ContactFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItem
 
     private var list =  ArrayList<ContactEnt>()
     private lateinit var adapter: ContactAdapter
-    private lateinit var recyclerView: RecyclerView
     private var contactData: ContactEnt? = null
 
     private var prefs: SaveInSharedPreference? = null
@@ -46,8 +45,6 @@ class ContactFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItem
         super.onViewCreated(view, savedInstanceState)
 
         prefs = SaveInSharedPreference(requireContext())
-
-        recyclerView = contactRecyclerView
 
         fab.setOnClickListener(this)
         btnNext.setOnClickListener(this)
@@ -116,8 +113,8 @@ class ContactFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItem
         adapter = ContactAdapter(requireContext(), ArrayList(), this)
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = adapter
+        contactRecyclerView.layoutManager = linearLayoutManager
+        contactRecyclerView.adapter = adapter
     }
 
     override fun onItemClick(itemView: View?, position: Int) {

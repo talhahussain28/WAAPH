@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.row_item_bank.view.*
 import waaph.gb.com.R
+import waaph.gb.com.entities.cdf.BankEnt
+import waaph.gb.com.entities.cdf.ContactEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
 import waaph.gb.com.model.Data
 
 class BankAdapter(private val context: Context,
-                  private val list: ArrayList<Data>,
-                  private val listener: OnRecyclerViewItemClickListener<Data>?):
+                  private var list: ArrayList<BankEnt>,
+                  private val listener: OnRecyclerViewItemClickListener<BankEnt>?):
     RecyclerView.Adapter<BankAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,13 +28,25 @@ class BankAdapter(private val context: Context,
 
     private fun bindItemViewHolder(holder: ItemViewHolder, position: Int) {
         val policy = list[position]
-        holder.itemView.title.text = policy.title
-        holder.itemView.bank.text = policy.babnk
+
+        holder.itemView.title.text = policy.accountTitle
+        holder.itemView.bank.text = policy.branch
 
         holder.itemView.setOnClickListener {
             listener?.onItemClick(it/*, policy*/, position)
         }
     }
+
+    fun addItem(item: BankEnt) {
+        list.add(item)
+        notifyDataSetChanged()
+    }
+
+    fun updateList(newList: ArrayList<BankEnt>){
+        list = newList
+        notifyDataSetChanged()
+    }
+
 
 
     override fun getItemCount(): Int = list.size
