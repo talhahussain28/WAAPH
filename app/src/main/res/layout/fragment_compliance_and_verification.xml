@@ -130,37 +130,48 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_ntn_tv">
 
-            <LinearLayout
-                android:id="@+id/selectPDF"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/dotted_border"
-                android:orientation="horizontal">
+                android:background="@drawable/dotted_border">
+
+                <LinearLayout
+                    android:id="@+id/selectPDF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/pdf_icon" />
+
+                    <TextView
+                        android:id="@+id/docText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="NTN document.pdf" />
+
+
+
+                </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/pdf_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="NTN document.pdf" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="140dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="8dp"
                     android:src="@drawable/ic_cancel_circle" />
-            </LinearLayout>
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -219,7 +230,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imga"/>
+                android:id="@+id/image_Strn"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -277,10 +288,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_dsl_tv">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/image_dsl"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"
+                android:id="@+id/text_dsl"
                 android:background="@drawable/dotted_border"
                 android:gravity="center"
                 android:text="Upload DSL Here Drug Sale Licence Number" />
@@ -333,14 +350,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_other_tv">
-            <LinearLayout
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/dotted_border"
+                android:background="@drawable/dotted_border">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/llOtherDocument"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -351,18 +373,22 @@
                     android:src="@drawable/word_icon" />
 
                 <TextView
-                    android:layout_width="180dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/otherDoc"
                     android:layout_marginTop="10dp"
                     android:text="Other Document.docx" />
+
+            </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="8dp"
+                    android:id="@+id/cancelOther"
                     android:src="@drawable/ic_cancel_circle" />
-            </LinearLayout>
+            </RelativeLayout>
    <!--         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -419,11 +445,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_card_tv">
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/image_card"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"
+                android:id="@+id/text_card"
                 android:textAlignment="center"
                 android:background="@drawable/dotted_border"
                 android:paddingTop="20dp"
@@ -484,11 +514,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload_degree_tv">
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/image_degree"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="12dp"
+                android:id="@+id/text_degree"
                 android:background="@drawable/dotted_border"
                 android:gravity="center"
                 android:text="Upload DSL Here Drug Sale Licence Number" />

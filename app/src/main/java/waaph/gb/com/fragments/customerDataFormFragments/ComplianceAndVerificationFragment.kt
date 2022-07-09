@@ -24,9 +24,11 @@ import android.view.*
 import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.ListView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.google.android.material.snackbar.Snackbar
+import com.miletap.konnect.util.DocPathUtils
 import kotlinx.android.synthetic.main.custom_dialog.*
 import waaph.gb.com.BuildConfig
 import waaph.gb.com.utils.GeneralBottomAdapter
@@ -38,7 +40,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
+class ComplianceAndVerificationFragment : BaseFragment(), View.OnClickListener {
 
     private var REQUEST_CODE = -1
     private var REQUEST_CODEE = -2
@@ -51,16 +53,26 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
     private val REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124
     private val PICK_MULTIPLE_FILE_REQUEST = 3
     private val REQUEST_CAMERA_CAPTURE = 100
+    private val PICK_DOCUMENT = 200
     private var captureImageFile: File? = null
     private var captureImageUriPath: String? = null
     private var selectedImage: Uri? = null
     private var comeFrom: String = ""
+    private var selectedFilePath: String? = null
+    private lateinit var file: File
+    private var fileName: String = ""
 
 
-
-
-
-
+    private val mimeTypes: Array<String> = arrayOf(
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",//.doc & .docx
+        "text/plain",
+        "application/pdf",
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",//.xls & .xlsx
+        "application/vnd.ms-powerpoint",
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation" //.ppt & .pptx
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,19 +88,29 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
         initialize()
     }
 
-    override fun linkXML(view: View?) { }
+    override fun linkXML(view: View?) {}
 
     override fun setOnClickListener() {
         next.setOnClickListener(this)
         imgCnicFront.setOnClickListener(this)
         imgCnicBack.setOnClickListener(this)
         cardView_upload_strn.setOnClickListener(this)
+        docText.setOnClickListener(this)
+        otherDoc.setOnClickListener(this)
+        cardView_upload_dsl.setOnClickListener(this)
+        cancel.setOnClickListener(this)
+        cancelOther.setOnClickListener(this)
+        cardview_upload_card.setOnClickListener(this)
+        cardview_upload_degree.setOnClickListener(this)
         //selectPDF.setOnClickListener(this)
     }
 
-    override fun initialize() { }
+    override fun initialize() {}
 
-    companion object fun newInstance(){ }
+
+    companion object
+
+    fun newInstance() {}
 
     /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -105,6 +127,63 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
             imga.setImageBitmap(data.extras?.get("data") as Bitmap)
         }
     }*/
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.next -> {
+                (activity as CustomerDataFormActivity).setCurrentItem(6)
+            }
+            R.id.imgCnicFront -> {
+                comeFrom = "front"
+                requestPermission()
+                //capturePhoto()
+            }
+            R.id.imgCnicBack -> {
+                comeFrom = "back"
+                requestPermission()
+                //capturePhotoBack()
+            }
+            R.id.docText -> {
+                //openDocuments()
+                comeFrom = "selectPDF"
+                requestPermissionForSelectingDocument()
+            }
+            R.id.otherDoc -> {
+                comeFrom = "selectOther"
+                requestPermissionForSelectingDocument()
+            }
+            R.id.cardView_upload_strn -> {
+                //captureStrn()
+                comeFrom = "STRN"
+                requestPermission()
+
+            }
+            R.id.cardView_upload_dsl -> {
+                comeFrom = "DSL"
+                requestPermission()
+            }
+            R.id.cardview_upload_card -> {
+                comeFrom = "visitingCard"
+                requestPermission()
+            }
+            R.id.cardview_upload_degree -> {
+                comeFrom = "degree"
+                requestPermission()
+            }
+            R.id.cancel -> {
+                selectedFilePath = null
+                // file = File(selectedFilePath)
+                docText.text = "Select Document"
+            }
+            R.id.cancelOther -> {
+                selectedFilePath = null
+                otherDoc.text = "Select Document"
+
+            }
+        }
+    }
+
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -124,110 +203,155 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                         pickerActionDialog()
                     } else {
                         showToast("Please Grant Permissions to upload file")
-                      /*  Snackbar.make(
-                            findViewById(android.R.id.content),
-                            "Please Grant Permissions to upload file",
-                            Snackbar.LENGTH_INDEFINITE
-                        ).setAction(
-                            "ENABLE"
-                        ) {
-                            requestPermissions(
-                                permissionList.toTypedArray(),
-                                REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS
-                            )
-                        }.show()*/
+                        /*  Snackbar.make(
+                              findViewById(android.R.id.content),
+                              "Please Grant Permissions to upload file",
+                              Snackbar.LENGTH_INDEFINITE
+                          ).setAction(
+                              "ENABLE"
+                          ) {
+                              requestPermissions(
+                                  permissionList.toTypedArray(),
+                                  REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS
+                              )
+                          }.show()*/
                     }
                 }
             }
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             when (requestCode) {
                 REQUEST_CAMERA_CAPTURE -> {
-                    if (comeFrom == "front"){
+                    if (comeFrom == "front") {
                         text.visibility = View.GONE
                         cnic.setImageBitmap(data?.extras?.get("data") as Bitmap)
-                       // imageClicked(cnic)
-                    }
-                    else if (comeFrom == "back"){
+                        // imageClicked(cnic)
+                    } else if (comeFrom == "back") {
                         tt.visibility = View.GONE
                         cnicB.setImageBitmap(data?.extras?.get("data") as Bitmap)
                         //imageClicked(cnicB)
+                    } else if (comeFrom == "STRN") {
+                        str.visibility = View.GONE
+                        image_Strn.setImageBitmap(data?.extras?.get("data") as Bitmap)
+
+                    } else if (comeFrom == "DSL") {
+                        text_dsl.visibility = View.GONE
+                        image_dsl.setImageBitmap(data?.extras?.get("data") as Bitmap)
+                    } else if (comeFrom == "visitingCard") {
+                        text_card.visibility = View.GONE
+                        image_card.setImageBitmap(data?.extras?.get("data") as Bitmap)
+                    } else if (comeFrom == "degree") {
+                        text_degree.visibility = View.GONE
+                        image_degree.setImageBitmap(data?.extras?.get("data") as Bitmap)
                     }
-                   /* val compressImagePath =
-                        captureImageUriPath?.let { Utils.compressImage(requireContext(), it) }
-                    if (compressImagePath!!.isNotEmpty()) {
-                        captureImageFile = File(compressImagePath)
-                        text.visibility = View.GONE
-                        cnic.setImageBitmap(captureImageFile as Bitmap)*/
-                      /*  receiptAdapter?.addReceipt(
-                            ExpenseReceiptAdapter.ExpenseReceiptModel(
-                                compressImagePath,
-                                Uri.fromFile(captureImageFile),
-                                captureImageFile
-                            )
-                        )
-                        if (recyclerView_receipt.visibility == View.GONE) {
-                            recyclerView_receipt.visibility = View.VISIBLE
-                        }
-                        receiptAdapter?.let {
-                            recyclerView_receipt.scrollToPosition(it.itemCount - 1)
-                        }*/
-                    }
+                    /* val compressImagePath =
+                         captureImageUriPath?.let { Utils.compressImage(requireContext(), it) }
+                     if (compressImagePath!!.isNotEmpty()) {
+                         captureImageFile = File(compressImagePath)
+                         text.visibility = View.GONE
+                         cnic.setImageBitmap(captureImageFile as Bitmap)*/
+                    /*  receiptAdapter?.addReceipt(
+                          ExpenseReceiptAdapter.ExpenseReceiptModel(
+                              compressImagePath,
+                              Uri.fromFile(captureImageFile),
+                              captureImageFile
+                          )
+                      )
+                      if (recyclerView_receipt.visibility == View.GONE) {
+                          recyclerView_receipt.visibility = View.VISIBLE
+                      }
+                      receiptAdapter?.let {
+                          recyclerView_receipt.scrollToPosition(it.itemCount - 1)
+                      }*/
+                }
 
                 PICK_MULTIPLE_FILE_REQUEST -> {
-                    if (comeFrom == "front"){
+                    if (comeFrom == "front") {
                         if (data?.data != null) {
                             text.visibility = View.GONE
                             cnic.setImageURI(data.data)
                             //addReceiptItem(data.data)
-                        }
-                        else
-                        {
+                        } else {
                             showToast("Image not available")
                         }
-                    }
-                    else if (comeFrom == "back"){
+                    } else if (comeFrom == "back") {
                         tt.visibility = View.GONE
                         cnicB.setImageURI(data?.data)
-                    }
-                   /* val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
-                    try {
-                        if (data!!.clipData != null) {
-                            if (data.clipData!!.itemCount > 0) {
-                                val mClipData = data.clipData
-                                var i = 0
-                                while (i < mClipData!!.itemCount) {
-                                    val item = mClipData.getItemAt(i)
-                                    val uri = item.uri
+                    } else if (comeFrom == "STRN") {
+                        str.visibility = View.GONE
+                        image_Strn.setImageURI(data?.data)
 
-                                    // Get the cursor
-                                    val cursor = requireActivity().contentResolver.query(
-                                        uri, filePathColumn,
-                                        null, null, null
-                                    )
-                                    // Move to first row
-                                    cursor!!.moveToFirst()
-                                    val columnIndex = cursor.getColumnIndex(filePathColumn[0])
-                                    val imageEncoded = cursor.getString(columnIndex)
-                                    cursor.close()
-                                   // cnic.setImageURI(uri)
-                                  //  addReceiptItem(uri)
-                                   // i++
-                                }
-                            }
-                        } else if (data.data != null) {
-                            cnic.setImageURI(data.data)
-                            //addReceiptItem(data.data)
-                        }
-                    } catch (e: Exception) {
-                        Log.d("Attachment-TAG", e.localizedMessage)
-                    }*/
+                    } else if (comeFrom == "DSL") {
+                        text_dsl.visibility = View.GONE
+                        image_dsl.setImageURI(data?.data)
+                    } else if (comeFrom == "visitingCard") {
+                        text_card.visibility = View.GONE
+                        image_card.setImageURI(data?.data)
+                    } else if (comeFrom == "degree") {
+                        text_degree.visibility = View.GONE
+                        image_degree.setImageURI(data?.data)
+                    }
+                    /* val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+                     try {
+                         if (data!!.clipData != null) {
+                             if (data.clipData!!.itemCount > 0) {
+                                 val mClipData = data.clipData
+                                 var i = 0
+                                 while (i < mClipData!!.itemCount) {
+                                     val item = mClipData.getItemAt(i)
+                                     val uri = item.uri
+
+                                     // Get the cursor
+                                     val cursor = requireActivity().contentResolver.query(
+                                         uri, filePathColumn,
+                                         null, null, null
+                                     )
+                                     // Move to first row
+                                     cursor!!.moveToFirst()
+                                     val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+                                     val imageEncoded = cursor.getString(columnIndex)
+                                     cursor.close()
+                                    // cnic.setImageURI(uri)
+                                   //  addReceiptItem(uri)
+                                    // i++
+                                 }
+                             }
+                         } else if (data.data != null) {
+                             cnic.setImageURI(data.data)
+                             //addReceiptItem(data.data)
+                         }
+                     } catch (e: Exception) {
+                         Log.d("Attachment-TAG", e.localizedMessage)
+                     }*/
+                }
+                PICK_DOCUMENT -> {
+                    selectedFilePath = data?.data?.let {
+                        DocPathUtils.getSourceDocPath(
+                            requireContext(),
+                            it
+                        )
+                    }
+                    file = File(selectedFilePath)
+                    fileName = file.name
+                    //docText.text = selectedFilePath.toString()
+                    if (comeFrom == "selectPDF") {
+                        selectedDocument(docText)
+                        selectedFilePath = null
+                    } else if (comeFrom == "selectOther") {
+                        selectedDocument(otherDoc)
+                        selectedFilePath = null
+                    }
                 }
             }
         }
+    }
+
+    private fun selectedDocument(v: TextView) {
+        v.text = fileName
     }
 
     private fun imageClicked(v: ImageView) {
@@ -240,29 +364,6 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
         }
     }
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.next -> {
-                (activity as CustomerDataFormActivity).setCurrentItem(6)
-            }
-            R.id.imgCnicFront -> {
-                comeFrom = "front"
-                requestPermission()
-                //capturePhoto()
-            }
-            R.id.imgCnicBack -> {
-                comeFrom = "back"
-                requestPermission()
-                //capturePhotoBack()
-            }
-            R.id.selectPDF -> {
-                //openDocuments()
-            }
-            R.id.cardView_upload_strn ->{
-                captureStrn()
-            }
-        }
-    }
 
     private fun capturePhoto() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -281,18 +382,43 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
         startActivityForResult(cameraIntent, REQUEST_CO)
     }
 
-    private fun requestPermission(){
+    private fun requestPermission() {
         if (Utils.checkMultipleRunTimePermission(
                 requireContext(), permissionList,
                 REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS
             )
         ) {
             pickerActionDialog()
+        } else {
+            pickerActionDialog()
         }
-     else {
-        pickerActionDialog()
     }
+
+    private fun requestPermissionForSelectingDocument() {
+        if (Utils.checkMultipleRunTimePermission(
+                requireContext(), permissionList,
+                REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS
+            )
+        ) {
+            selectDocumentFromGallery()
+        } else {
+            selectDocumentFromGallery()
+//            val intent = Intent(Intent.ACTION_GET_CONTENT)
+//            intent.addCategory(Intent.CATEGORY_OPENABLE)
+//            intent.type = "*/*"
+//            startActivityForResult(Intent.createChooser(intent, "Choose File"), PICK_DOCUMENT)
+        }
+
     }
+
+    private fun selectDocumentFromGallery() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        intent.type = "*/*"
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+        startActivityForResult(Intent.createChooser(intent, "Choose File"), PICK_DOCUMENT)
+    }
+
 
     @SuppressLint("QueryPermissionsNeeded")
     private fun pickerActionDialog() {
@@ -345,10 +471,10 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                     1 -> {
                         // Camera
                         // use standard intent to capture an image
-                       /* val chooserIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        /* val chooserIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-                        // Ensure that there's a camera activity to handle the intent
-                        *//*if (chooserIntent.(packageManager) != null) {*//*
+                         // Ensure that there's a camera activity to handle the intent
+                         *//*if (chooserIntent.(packageManager) != null) {*//*
                             // Create the File where the photo should go
                             try {
                                 captureImageFile = createImageFile()
@@ -376,7 +502,6 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
                             }*/
                         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                         startActivityForResult(cameraIntent, REQUEST_CAMERA_CAPTURE)
-
 
 
                     }
@@ -410,7 +535,7 @@ class ComplianceAndVerificationFragment : BaseFragment(),View.OnClickListener {
     }
 
 
-    private fun openDocuments(){
+    private fun openDocuments() {
 //        val install = Intent(Intent.ACTION_VIEW)
 //        install.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
 //        install.setDataAndType(Uri.fromFile(file), mimeType)
