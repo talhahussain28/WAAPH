@@ -4,18 +4,30 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_general_odf.*
 import waaph.gb.com.R
+import waaph.gb.com.activities.CustomerDataFormActivity
+import waaph.gb.com.activities.OrderDataFormActivity
+import waaph.gb.com.entities.odf.GeneralOdfEnt
+import waaph.gb.com.utils.BaseFragment
+import waaph.gb.com.utils.Constants.Companion.ARG_GENERAL_ODF
 import waaph.gb.com.utils.GeneralBottomAdapter
+import waaph.gb.com.utils.SaveInSharedPreference
 import waaph.gb.com.utils.Utils.Companion.etValidate
+import waaph.gb.com.utils.show
 
-class GeneralFragmentODF : Fragment(), View.OnClickListener {
+class GeneralFragmentODF : BaseFragment(), View.OnClickListener {
+    private var prefs: SaveInSharedPreference? = null
+    private var gson = Gson()
+    private var generalOdfData : GeneralOdfEnt? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,14 +38,31 @@ class GeneralFragmentODF : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        prefs = SaveInSharedPreference(requireContext())
 
-        setOnClickListeners()
+        setOnClickListener()
+        initialize()
+    }
+
+    override fun linkXML(view: View?) {
+    }
+
+    override fun setOnClickListener() {
+        btnCreateGeneralODF.setOnClickListener(this)
+        currencyTypeList.setOnClickListener(this)
+        dealForBranchTypeList.setOnClickListener(this)
+        orderStatusTypeList.setOnClickListener(this)
+    }
+
+    override fun initialize() {
+        setTextWatchers()
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnCreateGeneralODF -> {
-                createGeneral()
+               // createGeneral()
+                createGeneralODF()
             }
             R.id.currencyTypeList -> {
                 currencyDialog()
@@ -46,6 +75,31 @@ class GeneralFragmentODF : Fragment(), View.OnClickListener {
             }
 
         }
+    }
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable) {
+
+            // TODO: Temp Code
+            btnCreateGeneralODF.show()
+            //setCreateButtonStatus()
+
+//            validateEditTexts()
+        }
+    }
+
+    private fun setTextWatchers() {
+        edtOrderBookerName.addTextChangedListener(textWatcher)
+        /*edtCNIC.addTextChangedListener(textWatcher)
+        edtNTN.addTextChangedListener(textWatcher)
+        edtPhone.addTextChangedListener(textWatcher)
+        edtFAX.addTextChangedListener(textWatcher)
+        edtMobile.addTextChangedListener(textWatcher)
+        edtWhatsApp.addTextChangedListener(textWatcher)
+        edtWebSite.addTextChangedListener(textWatcher)
+        edtEmail.addTextChangedListener(textWatcher)
+        edtOrganizationName.addTextChangedListener(textWatcher)*/
     }
 
     private fun createGeneral() {
@@ -70,6 +124,22 @@ class GeneralFragmentODF : Fragment(), View.OnClickListener {
 
             Toast.makeText(requireContext(), "task Done", Toast.LENGTH_SHORT).show()
         }
+
+
+    }
+
+    private fun createGeneralODF(){
+        generalOdfData = GeneralOdfEnt(
+            0,edtOrderBookerName.text.toString(),
+            edtCustomerName.text.toString(),
+            edtCustomerCode.text.toString(),
+            edtBusinessAndBillingAddress.text.toString(),
+            "PKR",edtOriginMode.text.toString(),
+            "Defence",edtRemarks.text.toString(),0)
+
+        prefs?.setString(ARG_GENERAL_ODF,gson
+            .toJson(generalOdfData))
+        (activity as OrderDataFormActivity).setCurrentItem(1)
 
     }
 
@@ -247,13 +317,5 @@ class GeneralFragmentODF : Fragment(), View.OnClickListener {
         }
         return true
     }*/
-
-
-    private fun setOnClickListeners() {
-        btnCreateGeneralODF.setOnClickListener(this)
-        currencyTypeList.setOnClickListener(this)
-        dealForBranchTypeList.setOnClickListener(this)
-        orderStatusTypeList.setOnClickListener(this)
-    }
 
 }
