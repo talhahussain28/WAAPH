@@ -129,7 +129,7 @@ class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemCli
         recyclerView.adapter = adapter
     }
 
-    override fun onItemClick(itemView: View?/*, data: Data?*/, position: Int) {
+    override fun onItemClick(itemView: View?, data: BankEnt?, position: Int) {
         /* data?.let {*/
         val intent = Intent(requireContext(), BankDetailActivity::class.java)
         //intent.putExtra("data", Gson().toJson(data))
@@ -138,6 +138,8 @@ class BankFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemCli
         // overridePendingTransition(R.anim.slide_up, android.R.anim.fade_out)
         /* }*/
     }
+
+
     /* private fun pickerActionDialog() {
 
          val dialog = Dialog(requireContext())

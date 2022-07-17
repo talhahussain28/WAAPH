@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rv_item_contact.view.*
 import waaph.gb.com.R
-import waaph.gb.com.entities.cdf.AddressEnt
 import waaph.gb.com.entities.cdf.ContactEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
-import waaph.gb.com.model.CreateContactModel
-import waaph.gb.com.model.Data
 
 class ContactAdapter(
     val context: Context,
@@ -35,7 +32,7 @@ class ContactAdapter(
         holder.itemView.contactNumber.text = information.designation
 
         holder.itemView.setOnClickListener {
-            listener?.onItemClick(it, position)
+            listener?.onItemClick(it, information,position)
         }
 
     }

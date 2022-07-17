@@ -6,12 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_customer_data_form.*
 import kotlinx.android.synthetic.main.fragment_address.*
 import waaph.gb.com.activities.AddressDetailActivity
 import waaph.gb.com.activities.CreateAddressDataActivity
@@ -20,13 +18,13 @@ import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.adapters.AddressAdapter
 import waaph.gb.com.entities.cdf.AddressEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
-import waaph.gb.com.model.Data
+import waaph.gb.com.utils.BaseFragment
 import waaph.gb.com.utils.Constants.Companion.ARG_ADDRESS
 import waaph.gb.com.utils.SaveInSharedPreference
 import waaph.gb.com.utils.gone
 import waaph.gb.com.utils.show
 
-class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClickListener<Data> {
+class AddressFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItemClickListener<AddressEnt> {
 
     companion object{
         const val CREATE_ADDRESS_CODE = 1001
@@ -52,7 +50,17 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initialize()
+    }
 
+    override fun linkXML(view: View?) {
+
+    }
+
+    override fun setOnClickListener() {
+    }
+
+    override fun initialize() {
         prefs = SaveInSharedPreference(requireContext())
 
         recyclerView = recyclerViewAddress
@@ -116,9 +124,9 @@ class AddressFragment : Fragment(), View.OnClickListener, OnRecyclerViewItemClic
         recyclerView.adapter = adapter
     }
 
-    override fun onItemClick(itemView: View?, position: Int) {
-        val intent = Intent(requireContext(), AddressDetailActivity::class.java)
-        startActivity(intent)
+    override fun onItemClick(itemView: View?, data: AddressEnt?, position: Int) {
+        intentStartActivityWithData(requireActivity(), AddressDetailActivity::class.java,Gson().toJson(data))
+        //val intent = Intent(requireContext(), AddressDetailActivity::class.java)
+       // startActivity(intent)
     }
-
 }

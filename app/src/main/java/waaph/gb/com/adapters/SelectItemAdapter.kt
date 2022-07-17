@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.rv_item_address.view.*
 import kotlinx.android.synthetic.main.rv_item_address.view.street
 import kotlinx.android.synthetic.main.rvitem_selected_item.view.*
 import waaph.gb.com.R
@@ -34,7 +33,7 @@ class SelectItemAdapter(
         holder.itemView.tvShowItemName.text = information.itemName
 
         holder.itemView.setOnClickListener {
-            listener?.onItemClick(it, position)
+            listener?.onItemClick(it, information,position)
         }
     }
 

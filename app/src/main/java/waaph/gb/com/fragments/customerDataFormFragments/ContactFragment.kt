@@ -117,7 +117,7 @@ class ContactFragment : BaseFragment(), View.OnClickListener, OnRecyclerViewItem
         contactRecyclerView.adapter = adapter
     }
 
-    override fun onItemClick(itemView: View?, position: Int) {
+    override fun onItemClick(itemView: View?, data: ContactEnt?,position: Int) {
         val intent = Intent(requireContext(), ContactDetailActivity::class.java)
         startActivity(intent)
     }

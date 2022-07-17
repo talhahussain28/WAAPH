@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.row_item_bank.view.*
 import waaph.gb.com.R
 import waaph.gb.com.entities.cdf.BankEnt
-import waaph.gb.com.entities.cdf.ContactEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
-import waaph.gb.com.model.Data
 
 class BankAdapter(private val context: Context,
                   private var list: ArrayList<BankEnt>,
@@ -33,7 +31,7 @@ class BankAdapter(private val context: Context,
         holder.itemView.bank.text = policy.branch
 
         holder.itemView.setOnClickListener {
-            listener?.onItemClick(it/*, policy*/, position)
+            listener?.onItemClick(it, policy, position)
         }
     }
 

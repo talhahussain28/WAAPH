@@ -77,11 +77,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.login -> {
-//                validateEdittext()
+                valdateEdittext()
 
-                 val intent = Intent(this, BottomNavigationActivity::class.java)
+                 /*val intent = Intent(this, BottomNavigationActivity::class.java)
                  startActivity(intent)
-                 finish()
+                 finish()*/
 
             }
             R.id.tv_signup -> {
@@ -133,7 +133,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    /*private fun valdateEdittext() {
+    private fun valdateEdittext() {
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
         emailST = email.text.toString().trim()
@@ -146,5 +146,5 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         } else {
             showToast("Invalid Credentials!")
         }
-    }*/
+    }
 }

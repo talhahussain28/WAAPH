@@ -6,18 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rv_item_address.view.*
-import kotlinx.android.synthetic.main.rv_item_contact.view.*
 import waaph.gb.com.R
 import waaph.gb.com.entities.cdf.AddressEnt
-import waaph.gb.com.entities.cdf.GeneralEnt
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
-import waaph.gb.com.model.CreateAddressModel
-import waaph.gb.com.model.Data
 
 class AddressAdapter(
     val context: Context,
     private var list: ArrayList<AddressEnt>,
-    private val listener: OnRecyclerViewItemClickListener<Data>?
+    private val listener: OnRecyclerViewItemClickListener<AddressEnt>?
 ) : RecyclerView.Adapter<AddressAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -37,7 +33,7 @@ class AddressAdapter(
         holder.itemView.street.text = information.addressLine
 
         holder.itemView.setOnClickListener {
-            listener?.onItemClick(it, position)
+            listener?.onItemClick(it, information,position)
         }
 
     }

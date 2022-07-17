@@ -14,6 +14,7 @@ import waaph.gb.com.R
 import waaph.gb.com.adapters.SelectItemAdapter
 import waaph.gb.com.activities.CreateItemSelectionActivity
 import waaph.gb.com.interfaces.OnRecyclerViewItemClickListener
+import waaph.gb.com.model.Data
 import waaph.gb.com.model.SelectItemModel
 
 class ItemSelectionFragment : Fragment() , View.OnClickListener,
@@ -52,7 +53,7 @@ class ItemSelectionFragment : Fragment() , View.OnClickListener,
         }
     }
 
-    override fun onItemClick(itemView: View?, position: Int) {
+    override fun onItemClick(itemView: View?, data: SelectItemModel?,position: Int) {
         val intent = Intent(requireContext(), ItemSelectedDetailActivity::class.java)
         startActivity(intent)
     }
@@ -72,5 +73,6 @@ class ItemSelectionFragment : Fragment() , View.OnClickListener,
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
     }
+
 
 }
