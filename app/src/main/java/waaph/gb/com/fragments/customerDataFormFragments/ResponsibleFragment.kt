@@ -1,19 +1,21 @@
 package waaph.gb.com.fragments.customerDataFormFragments
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_responsible.*
-import waaph.gb.com.activities.BottomNavigationActivity
 import waaph.gb.com.R
+import waaph.gb.com.utils.BaseFragment
+import waaph.gb.com.utils.Utils
+import waaph.gb.com.utils.gone
+import waaph.gb.com.utils.show
 
 
-class ResponsibleFragment : Fragment(),View.OnClickListener {
+class ResponsibleFragment : BaseFragment(),View.OnClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,21 +31,45 @@ class ResponsibleFragment : Fragment(),View.OnClickListener {
         setOnClickListener()
     }
 
+    override fun linkXML(view: View?) {
+
+    }
+
+    override fun setOnClickListener() {
+
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
              R.id.submit -> {
-                 responsible()
+
              }
         }
     }
 
-    private fun responsible(){
-        etValidate(edtSaledTacker)
+    override fun initialize() {
+        setTextWatchers()
+    }
+
+    private fun setTextWatchers() {
+        edtSaledTacker.addTextChangedListener(textWatcher)
+    }
+
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable) {
+            ValidateEdittext()
+        }
+    }
+
+    private fun ValidateEdittext(){
+        Utils.etValidate(edtSaledTacker)
 
         if (edtSaledTacker.text.toString().isNotEmpty()){
-            Toast.makeText(requireContext(), "task done", Toast.LENGTH_SHORT).show()
-            val intent = Intent(requireActivity(), BottomNavigationActivity::class.java)
-            startActivity(intent)
+            submit.show()
+        }else{
+            submit.gone()
         }
     }
 
@@ -57,7 +83,5 @@ class ResponsibleFragment : Fragment(),View.OnClickListener {
         return true
     }
 
-    private fun setOnClickListener(){
-        submit.setOnClickListener(this)
-    }
+
 }

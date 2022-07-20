@@ -165,7 +165,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/customSwitSTRN"
+                    android:id="@+id/isChequeSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_marginEnd="20dp"
@@ -219,7 +219,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/customSwitcN"
+                    android:id="@+id/isBankSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_marginEnd="20dp"
@@ -272,7 +272,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/custRN"
+                    android:id="@+id/isPayOrderSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_marginEnd="20dp"
@@ -325,7 +325,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/customSwitchSTRN"
+                    android:id="@+id/isCreditCardSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_marginEnd="20dp"
@@ -375,6 +375,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Next"
+            android:visibility="gone"
             android:textAllCaps="false"
             android:layout_margin="40dp"/>
 

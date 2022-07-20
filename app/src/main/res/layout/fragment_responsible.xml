@@ -36,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/submit"
+        android:visibility="gone"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
