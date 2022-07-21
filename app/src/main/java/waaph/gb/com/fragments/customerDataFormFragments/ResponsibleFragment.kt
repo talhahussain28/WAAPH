@@ -7,15 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.textfield.TextInputEditText
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_responsible.*
 import waaph.gb.com.R
-import waaph.gb.com.utils.BaseFragment
-import waaph.gb.com.utils.Utils
-import waaph.gb.com.utils.gone
-import waaph.gb.com.utils.show
+import waaph.gb.com.entities.cdf.*
+import waaph.gb.com.utils.*
 
 
 class ResponsibleFragment : BaseFragment(),View.OnClickListener {
+
+    private var generalData : GeneralEnt? = null
+    private var addressList =  ArrayList<AddressEnt>()
+    private var contactList =  ArrayList<ContactEnt>()
+    private var bankList =  ArrayList<BankEnt>()
+    private var paymentData : PaymentEnt? = null
+
+    private var prefs: SaveInSharedPreference? = null
+    private var gson = Gson()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +37,12 @@ class ResponsibleFragment : BaseFragment(),View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        prefs = SaveInSharedPreference(requireContext())
+
+        edtSaledTacker.requestFocus()
+        showKeyBoard()
+
+        initialize()
         setOnClickListener()
     }
 
@@ -36,13 +51,13 @@ class ResponsibleFragment : BaseFragment(),View.OnClickListener {
     }
 
     override fun setOnClickListener() {
-
+        submit.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
              R.id.submit -> {
-
+//                 fetchDataFromPrefs()
              }
         }
     }
@@ -50,6 +65,40 @@ class ResponsibleFragment : BaseFragment(),View.OnClickListener {
     override fun initialize() {
         setTextWatchers()
     }
+
+    private fun fetchDataFromPrefs() {
+
+        generalData = Gson().fromJson(
+        SaveInSharedPreference(requireContext()).getString(Constants.ARG_GENERAL),
+        GeneralEnt::class.java
+        )
+
+        addressList = getAddressList()
+        contactList = getContactList()
+        bankList = getBankList()
+
+        paymentData = Gson().fromJson(
+        SaveInSharedPreference(requireContext()).getString(Constants.ARG_PAYMENT),
+        PaymentEnt::class.java
+        )
+
+    }
+
+    private fun getAddressList(): ArrayList<AddressEnt> {
+        val type = object : TypeToken<ArrayList<AddressEnt>>() {}.type!!
+        return gson.fromJson(prefs!!.getString(Constants.ARG_ADDRESS), type)
+    }
+
+    private fun getContactList(): ArrayList<ContactEnt> {
+        val type = object : TypeToken<ArrayList<ContactEnt>>() {}.type!!
+        return gson.fromJson(prefs!!.getString(Constants.ARG_CONTACT), type)
+    }
+
+    private fun getBankList(): ArrayList<BankEnt> {
+        val type = object : TypeToken<ArrayList<BankEnt>>() {}.type!!
+        return gson.fromJson(prefs!!.getString(Constants.ARG_BANK), type)
+    }
+
 
     private fun setTextWatchers() {
         edtSaledTacker.addTextChangedListener(textWatcher)
@@ -64,9 +113,7 @@ class ResponsibleFragment : BaseFragment(),View.OnClickListener {
     }
 
     private fun ValidateEdittext(){
-        Utils.etValidate(edtSaledTacker)
-
-        if (edtSaledTacker.text.toString().isNotEmpty()){
+        if (Utils.etValidate(edtSaledTacker)){
             submit.show()
         }else{
             submit.gone()
