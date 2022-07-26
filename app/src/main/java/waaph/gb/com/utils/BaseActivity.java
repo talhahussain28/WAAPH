@@ -124,7 +124,10 @@ public abstract class BaseActivity extends NavDrawer {
                 .commitAllowingStateLoss();
     }
     protected void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        if(message!=null){
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
+       // Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     public void showSnackBar(String text, int duration) {
