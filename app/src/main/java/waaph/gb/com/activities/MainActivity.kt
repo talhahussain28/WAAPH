@@ -116,6 +116,60 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         }
     }
 
+
+    private fun loginServiceApi(email: String, password: String) {
+        showDialog("Please wait...")
+
+        val param = LoginRequest(email, password)
+        val call = ServiceUtils.createService().login(param)
+        call.enqueue(this)
+    }
+
+    override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>) {
+        dismissDialog()
+        if (response.isSuccessful) {
+            val loginResponse: LoginResponse? = response.body()
+            if (loginResponse?.Result == true) {
+                prefs?.setString(Constants.ARG_TOKEN, loginResponse.Data)
+                showToast(loginResponse.Data)
+                //intentStartActivityWithFinish(this,BottomNavigationActivity::class.java)
+            } else {
+                showToast("loginResponse.message")
+            }
+        } else {
+            // error case
+            when (response.code()) {
+                404 -> setLog("MainActivity", "not found")
+                500 -> setLog("MainActivity", "server broken")
+                else -> setLog("MainActivity", "unknown error")
+            }
+
+            setLog("MainActivity", response.errorBody().toString())
+            showAlertMessage("Authenticate Error", "Please try again later")
+        }
+
+    }
+
+    override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {
+        dismissDialog()
+        showAlertMessage("Authenticate Error", "Please try again later")
+        setLog("MainActivity", t!!.localizedMessage)
+    }
+
+    private fun showAlertMessage(title: String, message: String) {
+        DialogAlert(false,
+            this,
+            title, R.color.black,
+            message, R.color.black,
+            "", R.color.ThemeColor, R.color.black, false,
+            "Cancel", R.color.ThemeColor, R.color.white, true,
+            false, { dialog: Dialog ->
+                dialog.dismiss()
+                null
+            }) { dialog: Dialog? -> null }.show()
+    }
+
+
     private fun validateEdittext() {
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
@@ -162,63 +216,5 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         } else {
             showToast("Invalid Credentials!")
         }
-    }
-
-    private fun loginServiceApi(email: String, password: String) {
-        showDialog("Please wait...")
-
-        val param = LoginRequest("ather.usmani@waaph.com", "12345")
-        val call = ServiceUtils.createService().login(param)
-        call.enqueue(this)
-        /*val sa = RetroManager.getInstance(this).retrofit
-        val aa : ApiInterface
-        aa = sa.create(ApiInterface::class.java)
-        aa.login(param).enqueue(this)*/
-    }
-
-    override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>) {
-        dismissDialog()
-        if (response.isSuccessful) {
-            val loginResponse: LoginResponse? = response.body()
-            if (loginResponse?.Result == true) {
-                prefs?.setString(Constants.ARG_TOKEN, loginResponse.Data)
-                showToast(loginResponse.Data)
-                //intentStartActivityWithFinish(this,BottomNavigationActivity::class.java)
-            } else {
-                showToast("loginResponse.message")
-                // Toast.makeText(this, loginResponse.message, Toast.LENGTH_SHORT).show()
-                // showAlertMessage("Authenticate Error",loginResponse.message)
-            }
-        } else {
-            // error case
-            when (response.code()) {
-                404 -> setLog("MainActivity", "not found")
-                500 -> setLog("MainActivity", "server broken")
-                else -> setLog("MainActivity", "unknown error")
-            }
-
-            setLog("MainActivity", response.errorBody().toString())
-            showAlertMessage("Authenticate Error", "Please try again later")
-        }
-
-    }
-
-    override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {
-        dismissDialog()
-        showAlertMessage("Authenticate Error", "Please try again later")
-        setLog("MainActivity", t!!.localizedMessage)
-    }
-
-    private fun showAlertMessage(title: String, message: String) {
-        DialogAlert(false,
-            this,
-            title, R.color.black,
-            message, R.color.black,
-            "", R.color.ThemeColor, R.color.black, false,
-            "Cancel", R.color.ThemeColor, R.color.white, true,
-            false, { dialog: Dialog ->
-                dialog.dismiss()
-                null
-            }) { dialog: Dialog? -> null }.show()
     }
 }
