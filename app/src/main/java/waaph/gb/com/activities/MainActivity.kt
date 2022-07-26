@@ -6,24 +6,18 @@ import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 import waaph.gb.com.R
 import waaph.gb.com.database.user.UserDatabase
 import waaph.gb.com.entities.user.UserEnt
-import waaph.gb.com.network.ApiInterface
-import waaph.gb.com.network.RetroManager
 import waaph.gb.com.network.ServiceUtils
 import waaph.gb.com.responses.LoginRequest
 import waaph.gb.com.responses.LoginResponse
@@ -33,7 +27,7 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
     private var isVisiblePassword = false
 
     private var emailST = ""
-    private var passwordST: Int = 0
+    private var passwordST: String = ""
     lateinit var userDataBase: UserDatabase
     private var userEnt: UserEnt? = null
     private var prefs: SaveInSharedPreference? = null
@@ -90,7 +84,7 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
             R.id.login -> {
 //                valdateEdittext()
                 emailST = email.text.toString().trim()
-                passwordST = edit_text_password.text.toString().toInt()
+                passwordST = edit_text_password.text.toString()
                 if (emailST.isNotEmpty()) {
                     if (internetConnectionAvailable(2000)) {
                         loginServiceApi(emailST, passwordST)
@@ -126,11 +120,11 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
         emailST = email.text.toString().trim()
-        passwordST = edit_text_password.text.toString().toInt()
+        passwordST = edit_text_password.text.toString()
 
         if (emailST.isNotEmpty()) {
             if (emailST.matches(emailPattern.toRegex())) {
-                if (passwordST == 0) {
+                if (passwordST == "0") {
 
                     /*CoroutineScope(IO).launch {
                         userEnt = userDataBase.userDao.loginUser(emailST, passwordST)
@@ -160,9 +154,8 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
         emailST = email.text.toString().trim()
-        passwordST = edit_text_password.text.toString().toInt()
-
-        if (emailST == "test@gmail.com" && passwordST == 123123 || emailST == "talha@gmail.com" && passwordST == 123123) {
+        passwordST = edit_text_password.text.toString()
+        if (emailST == "test@gmail.com" && passwordST == "123123" || emailST == "talha@gmail.com" && passwordST == "123123") {
             val intent = Intent(this, BottomNavigationActivity::class.java)
             startActivity(intent)
             showToast("Success")
@@ -171,10 +164,10 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         }
     }
 
-    private fun loginServiceApi(email: String, password: Int) {
+    private fun loginServiceApi(email: String, password: String) {
         showDialog("Please wait...")
 
-        val param = LoginRequest("ather.usmani@waaph.com", 12345)
+        val param = LoginRequest("ather.usmani@waaph.com", "12345")
         val call = ServiceUtils.createService().login(param)
         call.enqueue(this)
         /*val sa = RetroManager.getInstance(this).retrofit
@@ -187,9 +180,9 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         dismissDialog()
         if (response.isSuccessful) {
             val loginResponse: LoginResponse? = response.body()
-            if (loginResponse?.result == true) {
-                prefs?.setString(Constants.ARG_TOKEN, loginResponse.data)
-                showToast(loginResponse.data)
+            if (loginResponse?.Result == true) {
+                prefs?.setString(Constants.ARG_TOKEN, loginResponse.Data)
+                showToast(loginResponse.Data)
                 //intentStartActivityWithFinish(this,BottomNavigationActivity::class.java)
             } else {
                 showToast("loginResponse.message")

@@ -21,9 +21,9 @@ public class ServiceUtils {
 
     public static ApiInterface createService(){
 
-       /* HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-        okHttpClient.addInterceptor(logging);*/
+        okHttpClient.addInterceptor(logging);
 //        okHttpClient.dispatcher(dispatcher);
 
         Retrofit builder = new Retrofit.Builder()
