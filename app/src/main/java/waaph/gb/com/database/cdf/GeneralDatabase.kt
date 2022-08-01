@@ -7,9 +7,10 @@ import androidx.room.RoomDatabase
 import waaph.gb.com.dao.cdf.GeneralDao
 import waaph.gb.com.dao.user.UserDao
 import waaph.gb.com.entities.cdf.GeneralEnt
+import waaph.gb.com.entities.user.UserEnt
 
 
-@Database(entities = [GeneralEnt::class], version = 1)
+@Database(entities = [UserEnt::class, GeneralEnt::class], version = 1)
 abstract class GeneralDatabase : RoomDatabase() {
 
     abstract val generalDao: GeneralDao

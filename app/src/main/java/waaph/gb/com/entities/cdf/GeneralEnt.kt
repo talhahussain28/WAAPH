@@ -8,8 +8,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "generalTable")
 data class GeneralEnt(
     @PrimaryKey(autoGenerate = false)
-    val id: Int,
+    val generalId: Int,
 
+    var creatorId: Int,
     var spRefID: Int = 0,
     var businessName: String = "",
     var customerCode: String = "",

@@ -1,9 +1,8 @@
 package waaph.gb.com.dao.cdf
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import waaph.gb.com.entities.cdf.GeneralEnt
-import waaph.gb.com.entities.user.UserEnt
+import waaph.gb.com.entities.cdf.UserWithGeneral
 
 @Dao
 interface GeneralDao {
@@ -11,8 +10,12 @@ interface GeneralDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addGeneral(generalEnt: GeneralEnt)
 
-    @Query("SELECT * FROM generalTable WHERE id=:id ")
-    suspend fun getGeneralSingle(id: Int): GeneralEnt
+    @Transaction
+    @Query("SELECT * FROM user_table")
+    fun getUsersWithGeneral(): List<UserWithGeneral>
+
+    /*@Query("SELECT * FROM generalTable WHERE id=:id ")
+    suspend fun getGeneralSingle(id: Int): GeneralEnt*/
 
     /*@Update
     suspend fun updateGeneral(generalEnt: GeneralEnt)*/

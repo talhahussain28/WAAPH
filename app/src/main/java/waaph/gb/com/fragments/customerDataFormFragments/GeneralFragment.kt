@@ -54,7 +54,6 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
         generalDatabase = GeneralDatabase.getInstance(context!!)
 
-//        checkDatabase()
         setOnClickListener()
         initialize()
     }
@@ -64,18 +63,6 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
             (activity as CustomerDataFormActivity).tabLayout.getTabAt(i)?.view!!.isClickable = false
         }
 
-    }
-
-    private fun checkDatabase() {
-        CoroutineScope(Dispatchers.IO).async{
-            generalData = generalDatabase.generalDao.getGeneralSingle(0)
-            if (generalData!!.businessName.isNullOrEmpty()){
-                isUpdate = false
-                btnCreateGeneral.gone()
-            }else{
-                isUpdate = true
-            }
-        }
     }
 
     override fun onClick(v: View?) {
@@ -185,6 +172,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
             generalData = GeneralEnt(0,
                     0,
+                   0,
                     edtBussinessName.text.toString(),
                     ",",
                     tvCustomerGroup.text.toString(),

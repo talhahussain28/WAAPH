@@ -10,12 +10,18 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_responsible.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import waaph.gb.com.R
+import waaph.gb.com.database.cdf.GeneralDatabase
 import waaph.gb.com.entities.cdf.*
 import waaph.gb.com.utils.*
 
 
 class ResponsibleFragment : BaseFragment(),View.OnClickListener {
+
+    private lateinit var generalDatabase: GeneralDatabase
 
     private var generalData : GeneralEnt? = null
     private var addressList =  ArrayList<AddressEnt>()
@@ -37,6 +43,7 @@ class ResponsibleFragment : BaseFragment(),View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        generalDatabase = GeneralDatabase.getInstance(context!!)
         prefs = SaveInSharedPreference(requireContext())
 
         edtSaledTacker.requestFocus()
@@ -57,7 +64,7 @@ class ResponsibleFragment : BaseFragment(),View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
              R.id.submit -> {
-//                 fetchDataFromPrefs()
+                 fetchDataFromPrefs()
              }
         }
     }
@@ -74,14 +81,20 @@ class ResponsibleFragment : BaseFragment(),View.OnClickListener {
         )
 
         addressList = getAddressList()
-        contactList = getContactList()
+        /*contactList = getContactList()
         bankList = getBankList()
 
         paymentData = Gson().fromJson(
         SaveInSharedPreference(requireContext()).getString(Constants.ARG_PAYMENT),
         PaymentEnt::class.java
-        )
+        )*/
+        CoroutineScope(Dispatchers.IO).launch {
+            putDataInRoom()
+        }
+    }
 
+    suspend fun putDataInRoom() {
+        generalDatabase.generalDao.addGeneral(generalData!!)
     }
 
     private fun getAddressList(): ArrayList<AddressEnt> {
