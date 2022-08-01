@@ -93,7 +93,7 @@ class ResponsibleFragment : BaseFragment(),View.OnClickListener {
         }
     }
 
-    suspend fun putDataInRoom() {
+    private suspend fun putDataInRoom() {
         generalDatabase.generalDao.addGeneral(generalData!!)
     }
 
