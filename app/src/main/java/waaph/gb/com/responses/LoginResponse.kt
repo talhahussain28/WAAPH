@@ -8,7 +8,11 @@ data class LoginRequest(
 //Output
 data class LoginResponse (
     val Code : Int,
-    val Data : String,
+    val Data :ArrayList<LoginResponseData>,
     val Message : String,
     val Result : Boolean
+)
+
+data class LoginResponseData (
+    val token : String
 )

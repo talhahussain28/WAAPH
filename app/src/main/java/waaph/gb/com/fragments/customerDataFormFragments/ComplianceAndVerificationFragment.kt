@@ -31,6 +31,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.miletap.konnect.util.DocPathUtils
 import kotlinx.android.synthetic.main.custom_dialog.*
 import waaph.gb.com.BuildConfig
+import waaph.gb.com.network.ServiceUtils
+import waaph.gb.com.responses.CustomerGroupResponse
 import waaph.gb.com.utils.GeneralBottomAdapter
 import waaph.gb.com.utils.Utils
 import java.io.File
@@ -38,6 +40,8 @@ import java.io.IOException
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.security.auth.callback.Callback
+import kotlin.collections.ArrayList
 
 
 class ComplianceAndVerificationFragment : BaseFragment(), View.OnClickListener {
@@ -354,7 +358,7 @@ class ComplianceAndVerificationFragment : BaseFragment(), View.OnClickListener {
         v.text = fileName
     }
 
-    private fun imageClicked(v: ImageView) {
+  /*  private fun imageClicked(v: ImageView) {
         val compressImagePath =
             captureImageUriPath?.let { Utils.compressImage(requireContext(), it) }
         if (compressImagePath!!.isNotEmpty()) {
@@ -362,7 +366,7 @@ class ComplianceAndVerificationFragment : BaseFragment(), View.OnClickListener {
             text.visibility = View.GONE
             v.setImageBitmap(captureImageFile as Bitmap)
         }
-    }
+    }*/
 
 
     private fun capturePhoto() {
@@ -599,4 +603,10 @@ class ComplianceAndVerificationFragment : BaseFragment(), View.OnClickListener {
             .setNegativeButton("Cancel",null)
             .show()
     }*/
+
+    private fun getAllCustomerGroupApi(){
+        val call = ServiceUtils.createService()
+            .customerGroup
+        //call.enqueue(object : Callback<CustomerGroupResponse>)
+    }
 }

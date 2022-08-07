@@ -130,8 +130,8 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         if (response.isSuccessful) {
             val loginResponse: LoginResponse? = response.body()
             if (loginResponse?.Result == true) {
-                prefs?.setString(Constants.ARG_TOKEN, loginResponse.Data)
-                showToast(loginResponse.Data)
+                prefs?.setString(Constants.ARG_TOKEN, loginResponse.Data[0].token)
+                showToast(loginResponse.Data[0].token)
                 //intentStartActivityWithFinish(this,BottomNavigationActivity::class.java)
             } else {
                 showToast("loginResponse.message")
