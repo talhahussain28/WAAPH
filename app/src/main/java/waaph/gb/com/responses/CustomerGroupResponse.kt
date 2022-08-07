@@ -1,20 +1,24 @@
 package waaph.gb.com.responses
 
 data class CustomerGroupResponse(
-    val code : Int,
-    val message : String,
-    val result : Boolean,
-    val data : ArrayList<CustomerGroupListData>
+    val Code : Int,
+    val Message : String,
+    val Result : Boolean,
+    val Data : ArrayList<CustomerGroupListData>
 )
 
 data class CustomerGroupListData(
-    val title : String,
-    val description : String,
-    val active : Boolean,
-    val iD : Int,
-    val modified : String,
-    val created : String,
-    val author : String,
-    val editor : String,
-    val gUID : String
-)
+    val Title : String,
+    val Description : String,
+    val Active : Boolean,
+    val ID : Int,
+    val Modified : String,
+    val Created : String,
+    val Author : String,
+    val Editor : String,
+    val GUID : String
+){
+    override fun toString(): String {
+        return Title
+    }
+}

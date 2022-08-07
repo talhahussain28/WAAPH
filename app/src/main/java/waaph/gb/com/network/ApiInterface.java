@@ -17,14 +17,15 @@ import waaph.gb.com.responses.LoginResponse;
  */
 public interface ApiInterface {
 
-    @GET("Master/GetRegion")
-    Call<GetAllRegionResponse> getAllRegion();
-
     @Headers({"Accept: */*", "Content-Type: application/json"})
     @POST("Account/AuthenticateUser")
     Call<LoginResponse> login(@Body LoginRequest body);
 
     //GET
-    @POST("Master/GetCustomerGroup")
+
+    @GET("Master/GetRegion")
+    Call<GetAllRegionResponse> getAllRegion();
+
+    @GET("Master/GetCustomerGroup")
     Call<CustomerGroupResponse> getCustomerGroup();
 }

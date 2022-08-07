@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ListView
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_general.*
@@ -23,10 +24,11 @@ import kotlinx.android.synthetic.main.activity_customer_data_form.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import waaph.gb.com.adapters.dropDown.RegionBottomAdapter
 import waaph.gb.com.entities.cdf.GetAllRegionResponse
 import waaph.gb.com.entities.cdf.RegionData
 import waaph.gb.com.network.ServiceUtils
+import waaph.gb.com.responses.CustomerGroupListData
+import waaph.gb.com.responses.CustomerGroupResponse
 import waaph.gb.com.utils.Constants.Companion.ARG_GENERAL
 
 
@@ -38,9 +40,12 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     private var generalData : GeneralEnt? = null
 
     private var regionList: ArrayList<RegionData>? = ArrayList()
+    private var customerGroupList: ArrayList<CustomerGroupListData>? = ArrayList()
 
     private var prefs: SaveInSharedPreference? = null
     private var gson = Gson()
+    private var selectedRegion: RegionData? = null
+    private var selectedCustomer: CustomerGroupListData? = null
 
     private var isUpdate = false
     private var isSTRN = ""
@@ -78,13 +83,22 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
                 createGeneralItem()
             }
             R.id.customer -> {
-//                customerDialog()
+                customerGroupList.let {
+                    if (it != null) {
+                        customerListDialog(it)
+                    }
+                }
             }
             R.id.business -> {
 //                businessDialog()
             }
             R.id.region -> {
-                regionDialog()
+                regionList.let {
+                    if (it != null) {
+                        regionDialog(it)
+                    }
+                }
+
             }
         }
     }
@@ -109,6 +123,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         setTextWatchers()
         setCreateButtonStatus()
 
+        getAllCustomerGroup()
         getAllRegion()
     }
 
@@ -265,150 +280,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         })
     }
 
-    private fun customerDialog() {
-
-        val dialog = Dialog(requireContext())
-        dialog.setContentView(R.layout.custom_dialog)
-        dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation_2
-        dialog.window!!.setGravity(Gravity.BOTTOM)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
-        dialog.window!!.setLayout(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            width
-        )
-
-        dialog.setCancelable(true)
-        dialog.setCanceledOnTouchOutside(true)
-
-        val listView = dialog.findViewById<ListView>(R.id.listView)
-        val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
-
-        list.add(GeneralBottomAdapter.ListItemModel("ASSOCIATES"))
-        list.add(GeneralBottomAdapter.ListItemModel("CLRAGNTS"))
-        list.add(GeneralBottomAdapter.ListItemModel("COMM"))
-        list.add(GeneralBottomAdapter.ListItemModel("COMMISSION"))
-        list.add(GeneralBottomAdapter.ListItemModel("CONS"))
-        list.add(GeneralBottomAdapter.ListItemModel("CONSULT"))
-        list.add(GeneralBottomAdapter.ListItemModel("CORP"))
-        list.add(GeneralBottomAdapter.ListItemModel("DIST"))
-        list.add(GeneralBottomAdapter.ListItemModel("EMPLOYEE"))
-        list.add(GeneralBottomAdapter.ListItemModel("FARM"))
-        list.add(GeneralBottomAdapter.ListItemModel("FEED"))
-        list.add(GeneralBottomAdapter.ListItemModel("GOVT"))
-        list.add(GeneralBottomAdapter.ListItemModel("INDENT"))
-        list.add(GeneralBottomAdapter.ListItemModel("ONLINERETA"))
-        list.add(GeneralBottomAdapter.ListItemModel("OTHRRECBL"))
-        list.add(GeneralBottomAdapter.ListItemModel("PRIV"))
-        list.add(GeneralBottomAdapter.ListItemModel("RETA"))
-        list.add(GeneralBottomAdapter.ListItemModel("SAMPLE"))
-        list.add(GeneralBottomAdapter.ListItemModel("SEC DEP"))
-        list.add(GeneralBottomAdapter.ListItemModel("SPAREPARTS"))
-        list.add(GeneralBottomAdapter.ListItemModel("STCK"))
-        list.add(GeneralBottomAdapter.ListItemModel("UN-IDENTIF"))
-        list.add(GeneralBottomAdapter.ListItemModel("WALK-IN"))
-        list.add(GeneralBottomAdapter.ListItemModel("WHOL"))
-
-
-        /*val adapter = GeneralBottomAdapter(requireContext(), "", list)
-        listView.adapter = adapter*/
-        dialog.listView.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
-                val data = parent.getItemAtPosition(position)
-                        as GeneralBottomAdapter.ListItemModel
-
-                when (position) {
-                    0 -> {
-                        tvCustomerGroup.text = "ASSOCIATES"
-                    }
-                    1 -> {
-                        tvCustomerGroup.text = "CLRAGNTS"
-                    }
-                    2 -> {
-                        tvCustomerGroup.text = "COMM"
-                    }
-                    3 -> {
-                        tvCustomerGroup.text = "COMMISSION"
-                    }
-                    4 -> {
-                        tvCustomerGroup.text = "CONS"
-                    }
-                    5 -> {
-                        tvCustomerGroup.text = "CONSULT"
-                    }
-
-                    6 -> {
-                        tvCustomerGroup.text = "CORP"
-                    }
-                    7 -> {
-                        tvCustomerGroup.text = "DIST"
-                    }
-                    8 -> {
-                        tvCustomerGroup.text = "EMPLOYEE"
-                    }
-
-                    9 -> {
-                        tvCustomerGroup.text = "FARM"
-                    }
-
-                    10 -> {
-                        tvCustomerGroup.text = "GOVT"
-                    }
-
-                    11 -> {
-                        tvCustomerGroup.text = "INDENT"
-                    }
-
-                    12 -> {
-                        tvCustomerGroup.text = "LOAN"
-                    }
-
-                    13 -> {
-                        tvCustomerGroup.text = "ONLINERETA"
-                    }
-
-                    14 -> {
-                        tvCustomerGroup.text = "OTHRRECBL"
-                    }
-                    15 -> {
-                        tvCustomerGroup.text = "PRIV"
-                    }
-                    16 -> {
-                        tvCustomerGroup.text = "RITA"
-                    }
-                    17 -> {
-                        tvCustomerGroup.text = "SAMPLE"
-                    }
-                    18 -> {
-                        tvCustomerGroup.text = "SEC DEP"
-                    }
-                    19 -> {
-                        tvCustomerGroup.text = "SPAREPARTS"
-                    }
-                    20 -> {
-                        tvCustomerGroup.text = "STCK"
-                    }
-                    21 -> {
-                        tvCustomerGroup.text = "UN-IDENTIF"
-                    }
-                    22 -> {
-                        tvCustomerGroup.text = "WALK-IN"
-                    }
-                    23 -> {
-                        tvCustomerGroup.text = "WHOL"
-                    }
-
-
-                }
-                dialog.dismiss()
-
-            }
-        dialog.show()
-
-    }
-
     private fun businessDialog() {
-
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.custom_dialog)
         dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation_2
@@ -419,22 +291,11 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.WRAP_CONTENT
         )
-
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
-
-        val listView = dialog.findViewById<ListView>(R.id.listView)
         val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
-
         list.add(GeneralBottomAdapter.ListItemModel("B2B"))
         list.add(GeneralBottomAdapter.ListItemModel("B2C"))
-        /*   list.add(GeneralBottomAdapter.ListItemModel("COMM"))
-           list.add(GeneralBottomAdapter.ListItemModel("COMMISSION"))
-           list.add(GeneralBottomAdapter.ListItemModel("CONS"))*/
-
-
-        /*val adapter = GeneralBottomAdapter(requireContext(), "", list)
-        listView.adapter = adapter*/
         dialog.listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val data = parent.getItemAtPosition(position)
@@ -446,15 +307,6 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
                     }
                     1 -> {
                         tvBusinessType.text = "B2C"
-                        /*   }
-                    2 -> {
-                        tvCustomerGroup.text = "COMM"
-                    }
-                    3 -> {
-                        tvCustomerGroup.text = "COMMISSION"
-                    }*/
-
-
                     }
                 }
                 dialog.dismiss()
@@ -464,8 +316,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
     }
 
-    private fun regionDialog() {
-
+    private fun regionDialog(list: List<RegionData>) {
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.custom_dialog)
         dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation_2
@@ -480,179 +331,68 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
 
-        val listView = dialog.findViewById<ListView>(R.id.listView)
-        /*val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
+        val adapterList = ArrayAdapter(requireContext(),
+            android.R.layout.simple_list_item_1,android.R.id.text1,list)
+        dialog.listView.adapter = adapterList
+        dialog.listView.setOnItemClickListener{parent, view, position, id ->
+            selectedRegion = parent.getItemAtPosition(position) as RegionData
+            tvRegion.text = selectedRegion.toString()
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
 
-        list.add(GeneralBottomAdapter.ListItemModel("FAISALABAD-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("LAHORE-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("GUJRANWALA-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("MIRPUR KHAS-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("NAWABSHAH-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("PESHAWAR-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("KAMALIA-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("FAISALABAD-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("LAHORE-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("GUJRANWALA-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("MULTAN-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("KARACHI-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("HYDERABAD-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("RAWALPINDI-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("QUETTA-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("SUKKUR-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("SAHIWAL-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("MIRPUR KHAS-DEP"))
-        list.add(GeneralBottomAdapter.ListItemModel("NAWABSHAH-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("PESHAWAR-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("KAMALIA-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("LAHORE 1-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("LAHORE 2-PHD"))
-        list.add(GeneralBottomAdapter.ListItemModel("MULTAN-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("KARACHI-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("HYDERABAD-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("RAWALPINDI-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("QUETTA-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("SUKKUR-FTD"))
-        list.add(GeneralBottomAdapter.ListItemModel("SAHIWAL-FTD"))
-*/
-
-        val adapter = RegionBottomAdapter(requireContext(), "", regionList)
-        listView.adapter = adapter
-        dialog.listView.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
-                val data = parent.getItemAtPosition(position)
-                        as GeneralBottomAdapter.ListItemModel
-
-                when (position) {
-                    0 -> {
-                        tvRegion.text = "FAISALABAD-FTD"
-                    }
-                    1 -> {
-                        tvRegion.text = "LAHORE-FTD"
-                    }
-                    2 -> {
-                        tvRegion.text = "GUJRANWALA-FTD"
-                    }
-                    3 -> {
-                        tvRegion.text = "MULTAN-PHD"
-                    }
-                    4 -> {
-                        tvRegion.text = "KARACHI-PHD"
-                    }
-                    5 -> {
-                        tvRegion.text = "HYDERABAD-PHD"
-                    }
-                    6 -> {
-                        tvRegion.text = "RAWALPINDI-PHD"
-                    }
-                    7 -> {
-                        tvRegion.text = "QUETTA-PHD"
-                    }
-                    8 -> {
-                        tvRegion.text = "SUKKUR-PHD"
-                    }
-
-                    9 -> {
-                        tvRegion.text = "SAHIWAL-PHD"
-                    }
-
-                    10 -> {
-                        tvRegion.text = "MIRPUR KHAS-"
-                    }
-
-                    11 -> {
-                        tvRegion.text = "NAWABSHAH-PHD"
-                    }
-
-                    12 -> {
-                        tvRegion.text = "PESHAWAR-PHD"
-                    }
-
-                    13 -> {
-                        tvRegion.text = "KAMALIA-PHD"
-                    }
-
-                    14 -> {
-                        tvRegion.text = "LAHORE 1-PHD"
-                    }
-                    15 -> {
-                        tvRegion.text = "LAHORE 2-PHD"
-                    }
-                    16 -> {
-                        tvRegion.text = "FAISALABAD-SPD"
-                    }
-                    17 -> {
-                        tvRegion.text = "LAHORE-SPD"
-                    }
-                    18 -> {
-                        tvRegion.text = "GUJRANWALA-SPD"
-                    }
-                    19 -> {
-                        tvRegion.text = "MULTAN-SPD"
-                    }
-                    20 -> {
-                        tvRegion.text = "KARACHI-SPD"
-                    }
-                    21 -> {
-                        tvRegion.text = "HYDERABAD-SPD"
-                    }
-                    22 -> {
-                        tvRegion.text = "RAWALPINDI-SPD"
-                    }
-                    23 -> {
-                        tvRegion.text = "QUETTA-SPD"
-                    }
-                    24 -> {
-                        tvRegion.text = "SUKKUR-SPD"
-                    }
-                    25 -> {
-                        tvRegion.text = "SAHIWAL-SPD"
-                    }
-                    26 -> {
-                        tvRegion.text = "MIRPUR KHAS-PHD"
-                    }
-                    27 -> {
-                        tvRegion.text = "NAWABSHAH-SPD"
-                    }
-                    28 -> {
-                        tvRegion.text = "PESHAWAR-SPD"
-                    }
-                    29 -> {
-                        tvRegion.text = "KAMALIA-SPD"
-                    }
-                    30 -> {
-                        tvRegion.text = "FAISALABAD-AHD"
-                    }
-                    31 -> {
-                        tvRegion.text = "LAHORE-AHD"
-                    }
-                    ///FTD rem
-                    32 -> {
-                        tvRegion.text = "MULTAN-FTD"
-                    }
-                    33 -> {
-                        tvRegion.text = "KARACHI-FTD"
-                    }
-                    34 -> {
-                        tvRegion.text = "HYDERABAD-FTD"
-                    }
-                    35 -> {
-                        tvRegion.text = "RAWALPINDI-FTD"
-                    }
-                    36 -> {
-                        tvRegion.text = "QUETTA-FTD"
-                    }
-                    37 -> {
-                        tvRegion.text = "SUKKUR-FTD"
-                    }
-                    38 -> {
-                        tvRegion.text = "SAHIWAL-FTD"
+    private fun getAllCustomerGroup() {
+        val call = ServiceUtils.createService()
+            .customerGroup
+        call.enqueue(object : Callback<CustomerGroupResponse>{
+            override fun onResponse(
+                call: Call<CustomerGroupResponse>,
+                response: Response<CustomerGroupResponse>
+            ) {
+                if (response.isSuccessful){
+                    customerGroupList = response.body()?.Data ?: ArrayList()
+                }else {
+                    // error case
+                    when (response.code()) {
+                        404 -> setLog("TAG", "not found")
+                        500 -> setLog("TAG", "server broken")
+                        else -> setLog("TAG", "unknown error")
                     }
                 }
-                dialog.dismiss()
-
             }
-        dialog.show()
 
+            override fun onFailure(call: Call<CustomerGroupResponse>, t: Throwable) {
+                setLog("TAG", "Failure")
+            }
+
+        })
+    }
+
+    private fun customerListDialog(list: List<CustomerGroupListData>){
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.custom_dialog)
+        dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation_2
+        dialog.window!!.setGravity(Gravity.BOTTOM)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
+        dialog.window!!.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            width
+        )
+
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+
+        val adapterList = ArrayAdapter(requireContext(),
+            android.R.layout.simple_list_item_1,android.R.id.text1,list)
+        dialog.listView.adapter = adapterList
+        dialog.listView.setOnItemClickListener{parent, view, position, id ->
+            selectedCustomer = parent.getItemAtPosition(position) as CustomerGroupListData
+            tvCustomerGroup.text = selectedCustomer.toString()
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
 }

@@ -62,8 +62,11 @@ data class RegionData(
     val Author: String,
     val Editor: String,
     val GUID: String
-
-)
+){
+    override fun toString(): String {
+        return Title
+    }
+}
 
 /*
 data class RegionData(
