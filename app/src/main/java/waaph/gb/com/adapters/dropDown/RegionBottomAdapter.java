@@ -1,4 +1,4 @@
-package waaph.gb.com.utils;
+package waaph.gb.com.adapters.dropDown;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,16 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import waaph.gb.com.R;
+import waaph.gb.com.entities.cdf.GetAllRegionResponse;
+import waaph.gb.com.entities.cdf.RegionData;
 
-public class GeneralBottomAdapter extends ArrayAdapter<GeneralBottomAdapter.ListItemModel> {
+public class RegionBottomAdapter extends ArrayAdapter<RegionData> {
     private Context context;
     private String type;
     private LayoutInflater layoutInflater;
 
-    public GeneralBottomAdapter(Context context, String type, List<GeneralBottomAdapter.ListItemModel> list){
+    public RegionBottomAdapter(Context context, String type, ArrayList<RegionData> list){
         super(context, 0, list);
         this.context = context;
         this.type = type;
@@ -41,11 +44,11 @@ public class GeneralBottomAdapter extends ArrayAdapter<GeneralBottomAdapter.List
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        GeneralBottomAdapter.ListItemModel data = getItem(position);
+        RegionData data = getItem(position);
 
-        if (data.title != null) {
+        if (data.getTitle() != null) {
            // viewHolder.imageView.setImageResource(data.image);
-            viewHolder.tv_title.setText(data.title);
+            viewHolder.tv_title.setText(data.getTitle());
         } else {
 
         }
@@ -61,18 +64,6 @@ public class GeneralBottomAdapter extends ArrayAdapter<GeneralBottomAdapter.List
         public ViewHolder(View view){
            // imageView = view.findViewById(R.id.imageView);
             tv_title = view.findViewById(R.id.textView_title);
-        }
-    }
-
-    public static class ListItemModel {
-
-       // public int image;
-        public String title;
-
-
-        public ListItemModel(/*int image,*/ String title) {
-            //this.image = image;
-            this.title = title;
         }
     }
 }

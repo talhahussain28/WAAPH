@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import waaph.gb.com.R
 import waaph.gb.com.database.cdf.GeneralDatabase
 import waaph.gb.com.entities.cdf.*
+import waaph.gb.com.entities.cdf.GeneralEnt
 import waaph.gb.com.utils.*
 
 
