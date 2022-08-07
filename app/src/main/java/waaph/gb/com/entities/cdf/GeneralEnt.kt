@@ -43,3 +43,41 @@ data class GeneralEnt(
     var syncReqdFromServer: Boolean
 
 )
+
+// Input
+data class GetAllRegionResponse(
+    val Data: ArrayList<RegionData>
+)
+
+// Output
+data class RegionData(
+    val Title: String,
+    val Code: String,
+    val ASM: Boolean,
+    val RSM: Boolean,
+    val Active: String,
+    val ID: String,
+    val Modified: String,
+    val Created: String,
+    val Author: String,
+    val Editor: String,
+    val GUID: String
+
+)
+
+/*
+data class RegionData(
+    val Title: String,
+    val Code: Long,
+    val ASM: String,
+    val RSM: String,
+    val Active: Boolean,
+    val ID: Long,
+    val Modified: String,
+    val Created: String,
+    val Author: String,
+    val Editor: String,
+    val GUID: String
+
+)
+*/

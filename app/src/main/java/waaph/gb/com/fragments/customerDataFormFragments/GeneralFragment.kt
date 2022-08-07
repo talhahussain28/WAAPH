@@ -11,9 +11,6 @@ import android.widget.AdapterView
 import android.widget.ListView
 import kotlinx.android.synthetic.main.custom_dialog.*
 import kotlinx.android.synthetic.main.fragment_general.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import waaph.gb.com.R
 import waaph.gb.com.activities.CustomerDataFormActivity
 import waaph.gb.com.adapters.GeneralAdapter
@@ -23,6 +20,13 @@ import waaph.gb.com.model.CreateGeneralModel
 import waaph.gb.com.utils.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_customer_data_form.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import waaph.gb.com.adapters.dropDown.RegionBottomAdapter
+import waaph.gb.com.entities.cdf.GetAllRegionResponse
+import waaph.gb.com.entities.cdf.RegionData
+import waaph.gb.com.network.ServiceUtils
 import waaph.gb.com.utils.Constants.Companion.ARG_GENERAL
 
 
@@ -32,6 +36,8 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     private lateinit var list: ArrayList<CreateGeneralModel>
     private lateinit var generalDatabase: GeneralDatabase
     private var generalData : GeneralEnt? = null
+
+    private var regionList: ArrayList<RegionData>? = ArrayList()
 
     private var prefs: SaveInSharedPreference? = null
     private var gson = Gson()
@@ -72,10 +78,10 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
                 createGeneralItem()
             }
             R.id.customer -> {
-                customerDialog()
+//                customerDialog()
             }
             R.id.business -> {
-                businessDialog()
+//                businessDialog()
             }
             R.id.region -> {
                 regionDialog()
@@ -102,6 +108,8 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
         setTextWatchers()
         setCreateButtonStatus()
+
+        getAllRegion()
     }
 
     private fun setTextWatchers() {
@@ -230,6 +238,33 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
+    private fun getAllRegion() {
+        val call = ServiceUtils.createService()
+            .allRegion
+        call.enqueue(object : Callback<GetAllRegionResponse>{
+            override fun onResponse(
+                call: Call<GetAllRegionResponse>,
+                response: Response<GetAllRegionResponse>
+            ) {
+                if (response.isSuccessful){
+                    regionList = response.body()?.Data ?: ArrayList()
+                }else {
+                    // error case
+                    when (response.code()) {
+                        404 -> setLog("TAG", "not found")
+                        500 -> setLog("TAG", "server broken")
+                        else -> setLog("TAG", "unknown error")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetAllRegionResponse>, t: Throwable) {
+                setLog("TAG", "Failure")
+            }
+
+        })
+    }
+
     private fun customerDialog() {
 
         val dialog = Dialog(requireContext())
@@ -275,8 +310,8 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         list.add(GeneralBottomAdapter.ListItemModel("WHOL"))
 
 
-        val adapter = GeneralBottomAdapter(requireContext(), "", list)
-        listView.adapter = adapter
+        /*val adapter = GeneralBottomAdapter(requireContext(), "", list)
+        listView.adapter = adapter*/
         dialog.listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val data = parent.getItemAtPosition(position)
@@ -398,8 +433,8 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
            list.add(GeneralBottomAdapter.ListItemModel("CONS"))*/
 
 
-        val adapter = GeneralBottomAdapter(requireContext(), "", list)
-        listView.adapter = adapter
+        /*val adapter = GeneralBottomAdapter(requireContext(), "", list)
+        listView.adapter = adapter*/
         dialog.listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 val data = parent.getItemAtPosition(position)
@@ -446,7 +481,7 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         dialog.setCanceledOnTouchOutside(true)
 
         val listView = dialog.findViewById<ListView>(R.id.listView)
-        val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
+        /*val list: MutableList<GeneralBottomAdapter.ListItemModel> = ArrayList()
 
         list.add(GeneralBottomAdapter.ListItemModel("FAISALABAD-FTD"))
         list.add(GeneralBottomAdapter.ListItemModel("LAHORE-FTD"))
@@ -478,9 +513,9 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         list.add(GeneralBottomAdapter.ListItemModel("QUETTA-FTD"))
         list.add(GeneralBottomAdapter.ListItemModel("SUKKUR-FTD"))
         list.add(GeneralBottomAdapter.ListItemModel("SAHIWAL-FTD"))
+*/
 
-
-        val adapter = GeneralBottomAdapter(requireContext(), "", list)
+        val adapter = RegionBottomAdapter(requireContext(), "", regionList)
         listView.adapter = adapter
         dialog.listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
