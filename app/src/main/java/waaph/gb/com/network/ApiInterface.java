@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import waaph.gb.com.responses.BusinessTypeResponse;
 import waaph.gb.com.responses.CustomerGroupResponse;
 import waaph.gb.com.entities.cdf.GetAllRegionResponse;
 import waaph.gb.com.responses.LoginRequest;
@@ -22,10 +23,12 @@ public interface ApiInterface {
     Call<LoginResponse> login(@Body LoginRequest body);
 
     //GET
-
     @GET("Master/GetRegion")
     Call<GetAllRegionResponse> getAllRegion();
 
     @GET("Master/GetCustomerGroup")
     Call<CustomerGroupResponse> getCustomerGroup();
+
+    @GET("Master/GetBusinessType")
+    Call<BusinessTypeResponse> getBusinessType();
 }

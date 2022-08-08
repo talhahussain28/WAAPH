@@ -27,6 +27,8 @@ import retrofit2.Response
 import waaph.gb.com.entities.cdf.GetAllRegionResponse
 import waaph.gb.com.entities.cdf.RegionData
 import waaph.gb.com.network.ServiceUtils
+import waaph.gb.com.responses.BusinessTypeData
+import waaph.gb.com.responses.BusinessTypeResponse
 import waaph.gb.com.responses.CustomerGroupListData
 import waaph.gb.com.responses.CustomerGroupResponse
 import waaph.gb.com.utils.Constants.Companion.ARG_GENERAL
@@ -41,11 +43,13 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
 
     private var regionList: ArrayList<RegionData>? = ArrayList()
     private var customerGroupList: ArrayList<CustomerGroupListData>? = ArrayList()
+    private var businessTypeList: ArrayList<BusinessTypeData>? = ArrayList()
 
     private var prefs: SaveInSharedPreference? = null
     private var gson = Gson()
     private var selectedRegion: RegionData? = null
     private var selectedCustomer: CustomerGroupListData? = null
+    private var selectedBusinessType: BusinessTypeData? = null
 
     private var isUpdate = false
     private var isSTRN = ""
@@ -90,6 +94,11 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
                 }
             }
             R.id.business -> {
+                businessTypeList.let {
+                    if (it != null) {
+                        businessTypeDialog(it)
+                    }
+                }
 //                businessDialog()
             }
             R.id.region -> {
@@ -114,15 +123,10 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun initialize() {
-/*        list.add(CreateGeneralModel("Miletap"))
-        list.add(CreateGeneralModel("LuteBox"))
-        list.add(CreateGeneralModel("Pnc solution"))
-        list.add(CreateGeneralModel("Ibex"))
-        list.add(CreateGeneralModel("rajby"))*/
-
         setTextWatchers()
         setCreateButtonStatus()
 
+        getAllBusinessType()
         getAllCustomerGroup()
         getAllRegion()
     }
@@ -390,6 +394,59 @@ class GeneralFragment : BaseFragment(), View.OnClickListener {
         dialog.listView.setOnItemClickListener{parent, view, position, id ->
             selectedCustomer = parent.getItemAtPosition(position) as CustomerGroupListData
             tvCustomerGroup.text = selectedCustomer.toString()
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
+    private fun getAllBusinessType() {
+        val call = ServiceUtils.createService()
+            .businessType
+        call.enqueue(object : Callback<BusinessTypeResponse>{
+            override fun onResponse(
+                call: Call<BusinessTypeResponse>,
+                response: Response<BusinessTypeResponse>
+            ) {
+                if (response.isSuccessful){
+                    businessTypeList = (response.body()?.Data?: ArrayList())
+                }else {
+                    // error case
+                    when (response.code()) {
+                        404 -> setLog("TAG", "not found")
+                        500 -> setLog("TAG", "server broken")
+                        else -> setLog("TAG", "unknown error")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<BusinessTypeResponse>, t: Throwable) {
+                setLog("TAG", "Failure")
+            }
+
+        })
+    }
+
+    private fun businessTypeDialog(list: List<BusinessTypeData>){
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.custom_dialog)
+        dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation_2
+        dialog.window!!.setGravity(Gravity.BOTTOM)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
+        dialog.window!!.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            width
+        )
+
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+
+        val adapterList = ArrayAdapter(requireContext(),
+            android.R.layout.simple_list_item_1,android.R.id.text1,list)
+        dialog.listView.adapter = adapterList
+        dialog.listView.setOnItemClickListener{parent, view, position, id ->
+            selectedBusinessType = parent.getItemAtPosition(position) as BusinessTypeData
+            tvBusinessType.text = selectedBusinessType.toString()
             dialog.dismiss()
         }
         dialog.show()
