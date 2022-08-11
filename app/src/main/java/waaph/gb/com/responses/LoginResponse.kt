@@ -14,5 +14,5 @@ data class LoginResponse (
 )
 
 data class LoginResponseData (
-    val token : String
+    val Token : String
 )

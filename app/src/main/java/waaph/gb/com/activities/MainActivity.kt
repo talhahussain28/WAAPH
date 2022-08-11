@@ -83,7 +83,7 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         when (v?.id) {
             R.id.login -> {
 //                valdateEdittext()
-                /*emailST = email.text.toString().trim()
+                emailST = email.text.toString().trim()
                 passwordST = edit_text_password.text.toString()
                 if (emailST.isNotEmpty()) {
                     if (internetConnectionAvailable(2000)) {
@@ -94,11 +94,11 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
 
                 } else {
                     showAlertMessage("Alert", "Something went wrong")
-                }*/
+                }
 
-                val intent = Intent(this, BottomNavigationActivity::class.java)
+              /*  val intent = Intent(this, BottomNavigationActivity::class.java)
                 startActivity(intent)
-                finish()
+                finish()*/
 
             }
             R.id.tv_signup -> {
@@ -130,11 +130,14 @@ class MainActivity : BaseActivity(), View.OnClickListener, Callback<LoginRespons
         if (response.isSuccessful) {
             val loginResponse: LoginResponse? = response.body()
             if (loginResponse?.Result == true) {
-                prefs?.setString(Constants.ARG_TOKEN, loginResponse.Data[0].token)
-                showToast(loginResponse.Data[0].token)
+                prefs?.setString(Constants.ARG_TOKEN, loginResponse.Data[0].Token)
+                showToast(loginResponse.Data[0].Token)
+                val intent = Intent(this, BottomNavigationActivity::class.java)
+                startActivity(intent)
+                finish()
                 //intentStartActivityWithFinish(this,BottomNavigationActivity::class.java)
             } else {
-                showToast("loginResponse.message")
+                showToast(loginResponse?.Message)
             }
         } else {
             // error case
